@@ -1,5 +1,5 @@
 function App() {
-  return <div className='App'>budgetly</div>;
+  return <div className='App'></div>;
 }
 
 export default App;

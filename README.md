@@ -1,8 +1,10 @@
-# budgetly
+<p align="center">
+  <img src="client/public/logo.png" width="350" />
+</p>
 
 <img src=""/>
 
-[Live Demo]() 
+[Live Demo]()
 
 ## Intro
 
