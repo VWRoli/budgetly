@@ -1,5 +1,14 @@
+//Components
+import Dashboard from './Components/Dashboard/Dashboard';
+//Styles
+import { Wrapper } from './App.styles';
+
 function App() {
-  return <div className='App'></div>;
+  return (
+    <Wrapper>
+      <Dashboard />
+    </Wrapper>
+  );
 }
 
 export default App;
