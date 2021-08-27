@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //Components
 import Dashboard from './Components/Dashboard/Dashboard';
 //Styles
@@ -5,9 +6,11 @@ import { Wrapper } from './App.styles';
 
 function App() {
   return (
-    <Wrapper>
-      <Dashboard />
-    </Wrapper>
+    <Router>
+      <Wrapper>
+        <Dashboard />
+      </Wrapper>
+    </Router>
   );
 }
 
