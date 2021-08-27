@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  margin: auto;
-  align-self: flex-end;
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  line-height: 80px;
 `;
