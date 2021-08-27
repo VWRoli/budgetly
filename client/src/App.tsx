@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-//Components
+import { BrowserRouter as Router } from 'react-router-dom';
+// Components
 import Dashboard from './Components/Dashboard/Dashboard';
-//Styles
-import { Wrapper } from './App.styles';
+// Styles
+import Wrapper from './App.styles';
 
-function App() {
+function App(): JSX.Element {
   return (
     <Router>
       <Wrapper>
