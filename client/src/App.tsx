@@ -8,10 +8,10 @@ import Wrapper from './App.styles';
 function App(): JSX.Element {
   return (
     <Router>
+      <GlobalStyle />
       <Wrapper>
         <Dashboard />
       </Wrapper>
-      <GlobalStyle />
     </Router>
   );
 }
