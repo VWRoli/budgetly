@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import bgImage from './assets/bg.jpg';
 
 const Wrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    place-content: center;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: var(--primary-clr);
 
-    &::before {
+  /* &::before {
         content: '';
         position: absolute;
         z-index: -1;
@@ -17,6 +18,6 @@ const Wrapper = styled.div`
         height: 100%;
         background: url(${bgImage}) no-repeat center/cover;
         filter: grayscale(100%) blur(3px) opacity(70%);
-    }
+    } */
 `;
 export default Wrapper;

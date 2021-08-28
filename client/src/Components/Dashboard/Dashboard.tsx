@@ -10,7 +10,6 @@ import DashFooter from './DashFooter/DashFooter';
 const Dashboard: React.FC = (): JSX.Element => (
   <>
     <Container>
-      Dash
       <DashNav />
       <Summary />
       <Budget />
