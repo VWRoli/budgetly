@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,4 +27,12 @@ const GlobalStyle = createGlobalStyle`
 } 
 `;
 
-export default GlobalStyle;
+export const Container = styled.section`
+  width: 80vw;
+  height: 70vh;
+  color: var(--primary-text);
+  background-color: var(--primary-clr);
+  border-radius: var(--primary-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid #fff;
+`;

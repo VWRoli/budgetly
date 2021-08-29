@@ -3,18 +3,20 @@ import Budget from './Budget/Budget';
 import DashNav from './DashNav/DashNav';
 import Summary from './Summary/Summary';
 import Transactions from './Transactions/Transactions';
-// Styles
-import Container from './Dashboard.styles';
 import DashFooter from './DashFooter/DashFooter';
+// Styles
+import { MainDash, DashContainer } from './Dashboard.styles';
 
 const Dashboard: React.FC = (): JSX.Element => (
   <>
-    <Container>
+    <DashContainer>
       <DashNav />
-      <Summary />
-      <Budget />
-      <Transactions />
-    </Container>
+      <MainDash>
+        <Summary />
+        <Budget />
+        <Transactions />
+      </MainDash>
+    </DashContainer>
     <DashFooter />
   </>
 );

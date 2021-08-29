@@ -1,13 +1,11 @@
 import styled from 'styled-components';
+import { Container } from '../../globalStyles';
 
-const Container = styled.section`
-  width: 80vw;
-  height: 70vh;
-  color: var(--primary-text);
-  background-color: var(--primary-clr);
-  border-radius: var(--primary-radius);
-  box-shadow: var(--box-shadow);
-  border: 1px solid #fff;
+export const DashContainer = styled(Container)``;
+export const MainDash = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 2rem;
+  padding: 2rem;
 `;
-
-export default Container;
