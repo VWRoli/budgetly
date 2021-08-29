@@ -24,7 +24,8 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "import/extensions":  0,
-    "max-len": [2, 120]
+    "max-len": [2, 120],
+    "object-curly-newline": 0
   },
   "globals": {
     "React": true,
