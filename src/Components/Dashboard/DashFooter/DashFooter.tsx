@@ -1,5 +1,5 @@
 // Styles
-import LinkComponent from '../../utils/Link/LinkComponent';
+import LinkComponent from '../../common/Link/LinkComponent';
 import Footer from './DashFooter.styles';
 
 const DashFooter: React.FC = (): JSX.Element => (
