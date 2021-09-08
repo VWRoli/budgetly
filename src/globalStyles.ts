@@ -48,3 +48,8 @@ export const H2 = styled.h2`
   font-weight: 400;
   font-size: 24px;
 `;
+
+export const H3 = styled.h3`
+  font-weight: 400;
+  font-size: 20px;
+`;

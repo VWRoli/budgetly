@@ -11,6 +11,6 @@ export const BudgetHeader = styled.header`
   background-color: var(--light-clr);
   padding: 0.5rem;
   border-radius: var(--top-radius);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   text-align: center;
 `;
