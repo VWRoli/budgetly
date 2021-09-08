@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { Container } from '../../../globalStyles';
 
-const BudgetContainer = styled(Container)`
+export const BudgetContainer = styled(Container)`
   width: auto;
   height: auto;
   grid-column: 1 / 5;
-  padding: 1rem 0;
 `;
 
-export default BudgetContainer;
+export const BudgetHeader = styled.header`
+  background-color: var(--light-clr);
+  padding: 0.5rem;
+  border-radius: var(--top-radius);
+  margin-bottom: 1rem;
+  text-align: center;
+`;

@@ -1,12 +1,15 @@
-import BudgetContainer from './Budget.styles';
-import BudgetHeader from './BudgetHeader/BudgetHeader';
+import { H1 } from '../../../globalStyles';
+import { BudgetContainer, BudgetHeader } from './Budget.styles';
+import Header from './Header/Header';
 
 const Budget: React.FC = (): JSX.Element => (
   <BudgetContainer>
-    <BudgetHeader title="August 2021" left={5489} />
-    <BudgetHeader title="Monthly Bills" />
-    <BudgetHeader title="Everyday Expenses" />
-    <BudgetHeader title="Saving Goals" />
+    <BudgetHeader>
+      <H1>August 2021</H1>
+    </BudgetHeader>
+    <Header title="Monthly Bills" />
+    <Header title="Everyday Expenses" />
+    <Header title="Saving Goals" />
   </BudgetContainer>
 );
 
