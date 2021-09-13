@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: grid;
-  place-content: center;
-  background-color: var(--primary-clr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 `;
 export default Wrapper;

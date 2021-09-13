@@ -1,18 +1,19 @@
-import { BrowserRouter as Router } from 'react-router-dom';
 // Components
-import Dashboard from './Components/Dashboard/Dashboard';
+import Budget from './Components/Budget/Budget';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Summary from './Components/Summary/Summary';
 // Styles
-import { GlobalStyle } from './globalStyles';
 import Wrapper from './App.styles';
+import { GlobalStyle } from './globalStyles';
 
 function App(): JSX.Element {
   return (
-    <Router>
+    <Wrapper>
       <GlobalStyle />
-      <Wrapper>
-        <Dashboard />
-      </Wrapper>
-    </Router>
+      <Sidebar />
+      <Summary />
+      <Budget />
+    </Wrapper>
   );
 }
 
