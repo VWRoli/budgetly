@@ -8,12 +8,14 @@ import { GlobalStyle } from './globalStyles';
 
 function App(): JSX.Element {
   return (
-    <Wrapper>
-      <GlobalStyle />
-      <Sidebar />
-      <Summary />
-      <Budget />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <GlobalStyle />
+        <Sidebar />
+        <Summary />
+        <Budget />
+      </Wrapper>
+    </>
   );
 }
 
