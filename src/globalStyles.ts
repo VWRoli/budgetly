@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   font-size: 18px;
   --primary-clr: #017AFF;
   --white-clr: #fff;
-  //--hover-clr: #EDA458;
+  --hover-clr: #FF9601;
   --primary-text: #222;
   --secondary-text: #444444;
   --muted-clr: #999;
