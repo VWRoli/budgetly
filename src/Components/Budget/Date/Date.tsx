@@ -1,11 +1,11 @@
 //Styles
-import { DateWrapper } from './Date.styles';
+import { DateWrapper, MonthTitle, YearTitle } from './Date.styles';
 
 const Date: React.FC = (): JSX.Element => {
   return (
     <DateWrapper>
-      <h1>2021</h1>
-      <h2>August</h2>
+      <YearTitle>2021</YearTitle>
+      <MonthTitle>August</MonthTitle>
     </DateWrapper>
   );
 };
