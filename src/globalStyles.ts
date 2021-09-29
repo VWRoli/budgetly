@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 300;
   font-size: 18px;
   --primary-clr: #017AFF;
+  --secondary-clr: #57C9EE;
   --white-clr: #fff;
   --hover-clr: #FF9601;
   --primary-text: #222;
