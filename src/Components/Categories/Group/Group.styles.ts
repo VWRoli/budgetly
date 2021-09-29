@@ -8,4 +8,6 @@ export const StyledGroup = styled(Container)`
 export const GroupTitle = styled.h2`
   font-weight: 600;
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
 `;
