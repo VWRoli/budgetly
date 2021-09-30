@@ -1,21 +1,23 @@
-// Components
-import Budget from './Components/Budget/Budget';
-import Sidebar from './Components/Sidebar/Sidebar';
-import Categories from './Components/Categories/Categories';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// Layouts
+import UserLayout from './UserLayout';
+import PublicLayout from './PublicLayout';
+
 // Styles
 import Wrapper from './App.styles';
 import { GlobalStyle } from './globalStyles';
 
 function App(): JSX.Element {
   return (
-    <>
+    <Router>
       <Wrapper>
         <GlobalStyle />
-        <Sidebar />
-        <Categories />
-        <Budget />
+        <Switch>
+          <Route path="/user/dash" component={UserLayout} />
+          <Route path="/" component={PublicLayout} />
+        </Switch>
       </Wrapper>
-    </>
+    </Router>
   );
 }
 
