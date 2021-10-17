@@ -31,7 +31,6 @@
         "lint": "eslint 'src/**/*.{ts,tsx}'",
         "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
         "prepare": "husky install",
-        "pretty-quick": "pretty-quick --staged",
         "cy": "cypress open",
         "cyu": "cypress open-ct"
     },

@@ -15,7 +15,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
@@ -23,6 +23,11 @@ module.exports = {
     'react/prop-types': 0,
     'no-unused-vars': ['warn'],
     'import/prefer-default-export': 0,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
   globals: {
     React: true,
