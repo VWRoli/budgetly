@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: 1440px;
-  height: 900px;
+  width: 1240px;
+  height: 780px;
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(12, 1fr);

@@ -15,7 +15,7 @@ import UserReview from './UserReview/UserReview';
 const Sidebar: React.FC = (): JSX.Element => {
   return (
     <StyledSidebar>
-      <Logo src={logo} width="282px" alt="logo" />
+      <Logo src={logo} width="252px" alt="logo" />
       <Avatar src={avatar} alt="Photo by Juliana Stein from Pexels" />
       <ProfileDropdown>
         <Username>Username</Username>

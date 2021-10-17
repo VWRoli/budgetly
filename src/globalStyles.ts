@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
   --primary-clr: #017AFF;
   --secondary-clr: #57C9EE;
   --white-clr: #fff;

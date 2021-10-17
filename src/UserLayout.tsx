@@ -12,9 +12,9 @@ const UserLayout = () => {
       <Sidebar />
       <Budget />
       <Switch>
-        <Route path="/user/dash" component={Categories} />
-        <Route path="/user/reports" render={() => <Reports />} />
-        {/* <Route exact path="/accounts" component={Accounts} /> */}
+        <Route exact path="/user" render={() => <Categories />} />
+        <Route exact path="/user/reports" render={() => <Reports />} />
+        <Route exact path="/user/accounts" render={() => <Accounts />} />
       </Switch>
     </>
   );

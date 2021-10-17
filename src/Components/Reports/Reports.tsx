@@ -1,5 +1,5 @@
 const Reports = () => {
-  return <div>Reports</div>;
+  return <div>Coming Soon...</div>;
 };
 
 export default Reports;

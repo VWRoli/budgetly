@@ -13,7 +13,7 @@ function App(): JSX.Element {
       <Wrapper>
         <GlobalStyle />
         <Switch>
-          <Route path="/user/dash" component={UserLayout} />
+          <Route path="/user" component={UserLayout} />
           <Route path="/" component={PublicLayout} />
         </Switch>
       </Wrapper>

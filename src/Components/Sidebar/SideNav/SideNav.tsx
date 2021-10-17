@@ -16,33 +16,33 @@ const SideNav: React.FC = (): JSX.Element => {
       <StyledSideNav>
         <ListItem className="active">
           <FaCommentDollar />
-          <NavLink>Budget</NavLink>
+          <NavLink to="/user">Budget</NavLink>
         </ListItem>
         <ListItem>
           <GiPieChart />
-          <NavLink>Reports</NavLink>
+          <NavLink to="/user/reports">Reports</NavLink>
         </ListItem>
         <ListItem>
           <MdAccountBalance />
-          <NavLink>Accounts</NavLink>
+          <NavLink to="/user/accounts">Accounts</NavLink>
         </ListItem>
         <Collapse>
           <StyledSideNav>
             <ListItem>
               <BiSubdirectoryRight />
-              <NavLink>OTP Bank</NavLink>
+              {/*  <NavLink>OTP Bank</NavLink> */}
             </ListItem>
             <ListItem>
               <BiSubdirectoryRight />
-              <NavLink>Skrill</NavLink>
+              {/* <NavLink>Skrill</NavLink> */}
             </ListItem>
             <ListItem>
               <BiSubdirectoryRight />
-              <NavLink>Neteller</NavLink>
+              {/* <NavLink>Neteller</NavLink> */}
             </ListItem>
             <ListItem>
               <BiSubdirectoryRight />
-              <NavLink>Cash</NavLink>
+              {/* <NavLink>Cash</NavLink> */}
             </ListItem>
           </StyledSideNav>
         </Collapse>

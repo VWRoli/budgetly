@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledSideNav = styled.ul`
   list-style-type: none;
@@ -20,10 +21,12 @@ export const ListItem = styled.li`
   }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   font-weight: 400;
   font-size: 1.15rem;
   margin-left: 1rem;
+  color: var(--primary-clr);
+  text-decoration: none;
   ${ListItem}:hover & {
     font-weight: 600;
   }
