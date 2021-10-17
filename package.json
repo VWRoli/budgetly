@@ -48,6 +48,8 @@
         ]
     },
     "devDependencies": {
+        "@commitlint/cli": "^13.2.1",
+        "@commitlint/config-conventional": "^13.2.0",
         "@cypress/react": "^5.9.4",
         "@cypress/webpack-dev-server": "^1.5.0",
         "cypress": "^8.3.1",
