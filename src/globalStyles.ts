@@ -15,8 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   --primary-text: #222;
   --secondary-text: #444444;
   --muted-clr: #999;
+  --success-clr: #0BC677;
+  --error-clr: #F57282;
   /* --light-clr: #ffffff;
-  --success-clr: #4FF7C5;
   --info-clr: #236df6; */
   --primary-radius: 10px;
   --top-radius: 10px 10px 0 0;
