@@ -39,3 +39,12 @@ export const Outflow = styled.li`
   color: var(--error-clr);
   font-weight: 600;
 `;
+export const StyledMoreIcon = styled.li`
+  padding: 0.1rem 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+  svg {
+    font-size: 1.25rem;
+  }
+`;

@@ -17,8 +17,6 @@ export const GlobalStyle = createGlobalStyle`
   --muted-clr: #999;
   --success-clr: #0BC677;
   --error-clr: #F57282;
-  /* --light-clr: #ffffff;
-  --info-clr: #236df6; */
   --primary-radius: 10px;
   --top-radius: 10px 10px 0 0;
   --bottom-radius: 0 0 10px 10px;

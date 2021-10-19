@@ -6,6 +6,7 @@ import {
   Inflow,
   Outflow,
   Payee,
+  StyledMoreIcon,
   TransactionWrapper,
 } from './Transaction.styles';
 
@@ -17,7 +18,9 @@ const Transaction = () => {
       <Category>Books</Category>
       <Inflow>500$</Inflow>
       <Outflow>500$</Outflow>
-      <FiMoreHorizontal />
+      <StyledMoreIcon>
+        <FiMoreHorizontal />
+      </StyledMoreIcon>
     </TransactionWrapper>
   );
 };
