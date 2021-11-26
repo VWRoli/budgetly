@@ -1,0 +1,15 @@
+.welcome-msg {
+  padding: 0.25rem 1rem;
+  margin: 1.5rem;
+  background: $highlight-bg-clr;
+  box-shadow: $primary-box-shadow;
+  border-radius: $primary-border-radius;
+  color: $light-clr;
+  h3,
+  h4 {
+    margin: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

@@ -19,5 +19,10 @@ module.exports = {
       'off',
       { extensions: ['.js', '.ts', '.tsx', '.jsx'] },
     ],
+    'react/prop-types': 'off',
+  },
+  globals: {
+    React: true,
+    JSX: true,
   },
 };

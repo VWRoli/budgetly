@@ -1,11 +1,13 @@
 //Components
 import DashHeader from './DashHeader/DashHeader';
 import Summary from './Summary/Summary';
+import Welcome from './Welcome/Welcome';
 
 const Dashboard = () => {
   return (
     <>
       <DashHeader />
+      <Welcome />
       <Summary />
     </>
   );

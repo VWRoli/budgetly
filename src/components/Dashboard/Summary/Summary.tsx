@@ -4,13 +4,13 @@ const Summary = () => {
   return (
     <div className="summary-container">
       <div className="income">
-        <h3>Income</h3>
-        <h4>$2000</h4>
+        <h4>Income</h4>
+        <h3>$2000</h3>
       </div>
       <BsThreeDotsVertical />
       <div className="expense">
-        <h3>Expense</h3>
-        <h4>$1000</h4>
+        <h4>Expense</h4>
+        <h3>$1000</h3>
       </div>
     </div>
   );

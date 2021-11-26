@@ -10,7 +10,7 @@
     color: $muted-text-clr;
   }
   div {
-    border-radius: 8px;
+    border-radius: $primary-border-radius;
     text-align: center;
     h3,
     h4 {
@@ -21,8 +21,10 @@
 .income {
   background: $success-bg-clr;
   color: $success-text-clr;
+  box-shadow: $primary-box-shadow;
 }
 .expense {
   background: $error-bg-clr;
   color: $error-text-clr;
+  box-shadow: $primary-box-shadow;
 }
