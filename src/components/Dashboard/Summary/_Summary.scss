@@ -1,0 +1,28 @@
+.summary-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+
+  svg {
+    font-size: 2rem;
+    color: $muted-text-clr;
+  }
+  div {
+    border-radius: 8px;
+    text-align: center;
+    h3,
+    h4 {
+      margin: 1rem 2rem;
+    }
+  }
+}
+.income {
+  background: $success-bg-clr;
+  color: $success-text-clr;
+}
+.expense {
+  background: $error-bg-clr;
+  color: $error-text-clr;
+}
