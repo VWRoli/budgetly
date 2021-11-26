@@ -1,7 +1,7 @@
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 
-const DashHeader = () => {
+const DashHeader: React.FC = (): JSX.Element => {
   return (
     <header className="dashheader">
       <BiMenuAltLeft />

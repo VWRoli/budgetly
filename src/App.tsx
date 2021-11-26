@@ -3,12 +3,12 @@ import Dashboard from './components/Dashboard/Dashboard';
 //CSS
 import './css/main.min.css';
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <Dashboard />
     </div>
   );
-}
+};
 
 export default App;

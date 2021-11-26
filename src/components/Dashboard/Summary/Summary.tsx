@@ -1,6 +1,6 @@
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
-const Summary = () => {
+const Summary: React.FC = (): JSX.Element => {
   return (
     <div className="summary-container">
       <div className="income">
