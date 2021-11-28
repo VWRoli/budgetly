@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open",
+    "cy": "cypress open",
+    "cyu": "cypress open-ct",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"
   },
@@ -47,6 +48,8 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@cypress/react": "^5.10.3",
+    "@cypress/webpack-dev-server": "^1.7.0",
     "cypress": "^9.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.12.1",
