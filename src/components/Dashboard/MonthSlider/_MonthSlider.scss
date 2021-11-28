@@ -1,0 +1,19 @@
+.slider-container {
+  width: 100vw;
+  text-align: center;
+  margin: auto;
+  background-color: yellow;
+  border-radius: $primary-border-radius;
+  box-shadow: $primary-box-shadow;
+}
+.slick-slider {
+  border-radius: $primary-border-radius;
+}
+.slick-slide div {
+  background-color: $light-clr;
+  border-radius: $primary-border-radius;
+}
+.slick-track {
+  background-color: red;
+  border-radius: $primary-border-radius;
+}

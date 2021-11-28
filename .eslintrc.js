@@ -24,6 +24,7 @@ module.exports = {
       { extensions: ['.js', '.ts', '.tsx', '.jsx'] },
     ],
     'react/prop-types': 'off',
+    'no-unused-vars': 'warn',
   },
   globals: {
     React: true,
