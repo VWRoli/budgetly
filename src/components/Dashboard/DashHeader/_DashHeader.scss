@@ -1,8 +1,13 @@
 .dashheader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.75rem 0.5rem;
   color: $main-text-clr;
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
   svg {
     font-size: 1.5rem;
   }

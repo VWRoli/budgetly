@@ -9,10 +9,15 @@ $error-bg-clr: linear-gradient(
   rgba(254, 128, 129, 0.4)
 );
 $light-bg-clr: #f5f5fd;
-$highlight-bg-clr: linear-gradient(45deg, #9999b0, rgba(121, 86, 150, 0.65));
+//$highlight-bg-clr: linear-gradient(45deg, #9999b0, rgba(121, 86, 150, 0.65));
+$highlight-bg-clr: linear-gradient(
+  45deg,
+  rgba(140, 74, 242, 0.9),
+  rgba(88, 93, 249, 0.9)
+);
 $success-text-clr: #0b7e32;
 $error-text-clr: #860c0c;
-$main-text-clr: #222;
+$main-text-clr: #6651b6;
 $muted-text-clr: #bababa;
 $light-clr: #fff;
 $dark-clr: #000;

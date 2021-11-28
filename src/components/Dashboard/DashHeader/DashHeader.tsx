@@ -5,7 +5,7 @@ const DashHeader: React.FC = (): JSX.Element => {
   return (
     <header className="dashheader">
       <BiMenuAltLeft />
-      Dashboard
+      <h4>Dashboard</h4>
       <IoMdNotificationsOutline />
     </header>
   );
