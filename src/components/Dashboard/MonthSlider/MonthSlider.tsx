@@ -43,6 +43,7 @@ const MonthSlider = () => {
           />
         ))}
       </Slider>
+      <div className="year">{new Date().getFullYear()}</div>
     </div>
   );
 };
