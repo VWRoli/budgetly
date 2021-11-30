@@ -1,6 +1,7 @@
+//Components
 import Chip from '../../common/Chip/Chip';
 
-const Welcome = () => {
+const Welcome: React.FC = (): JSX.Element => {
   return (
     <div className="welcome-msg">
       <h3>Welcome, Demo User!</h3>

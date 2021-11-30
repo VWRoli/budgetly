@@ -3,7 +3,6 @@
   width: 100vw;
   text-align: center;
   margin: auto;
-  background-color: yellow;
   border-radius: $primary-border-radius;
   box-shadow: $primary-box-shadow;
 }
@@ -12,11 +11,12 @@
   bottom: -11px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #8b99a3;
-  padding: 3px 8px;
+  background-color: transparent;
   border-radius: $primary-border-radius;
-  font-size: 0.8rem;
   font-weight: 700;
   color: $light-clr;
   opacity: 0.9;
+  span {
+    font-size: 0.9rem;
+  }
 }
