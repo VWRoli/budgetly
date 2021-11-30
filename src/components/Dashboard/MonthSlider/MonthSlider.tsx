@@ -18,7 +18,7 @@ const monthList = [
   'December',
 ];
 
-const MonthSlider = () => {
+const MonthSlider: React.FC = (): JSX.Element => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const settings = {
