@@ -1,0 +1,22 @@
+.budget-item-wrapper {
+  background-color: $light-clr;
+  padding: 0.5rem;
+  width: 90vw;
+  margin: auto;
+  border-radius: $primary-border-radius;
+  box-shadow: $primary-box-shadow;
+  display: flex;
+  justify-content: space-between;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    font-size: 3rem;
+  }
+}

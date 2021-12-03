@@ -23,5 +23,6 @@ $muted-text-clr: #bababa;
 $light-clr: #fff;
 $dark-clr: #000;
 
-$primary-box-shadow: 5px 5px 10px #d0d0d7, -5px -5px 10px #ffffff;
+$primary-box-shadow: -2px -2px 5px rgba(190, 190, 190, 0.15),
+  2px 2px 5px rgba(190, 190, 190, 0.15);
 $primary-border-radius: 8px;
