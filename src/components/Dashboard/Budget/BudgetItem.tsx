@@ -1,6 +1,6 @@
-import { GiProgression } from 'react-icons/gi';
 //Components
 import Chip from 'src/components/common/Chip/Chip';
+import ProgressBar from 'src/components/common/ProgressBar/ProgressBar';
 
 const BudgetItem: React.FC = (): JSX.Element => {
   return (
@@ -12,7 +12,7 @@ const BudgetItem: React.FC = (): JSX.Element => {
         <p>Spent</p>
       </div>
       <div className="progress-wrapper">
-        <GiProgression />
+        <ProgressBar />
       </div>
     </div>
   );
