@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Slider from 'react-slick';
-import Chip from 'src/components/common/Chip/Chip';
 //Components
-import MonthCard from './MonthCard/MonthCard';
+import Chip from 'src/components/common/Chip/Chip';
+import MonthCard from './MonthCard';
 
 const monthList = [
   'January',

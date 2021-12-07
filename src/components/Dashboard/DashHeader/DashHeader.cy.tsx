@@ -1,4 +1,5 @@
 import { mount } from '@cypress/react';
+//Components
 import DashHeader from './DashHeader';
 
 describe('renders Dashheader', () => {

@@ -1,4 +1,5 @@
 import { GiProgression } from 'react-icons/gi';
+//Components
 import Chip from 'src/components/common/Chip/Chip';
 
 const BudgetItem: React.FC = (): JSX.Element => {
