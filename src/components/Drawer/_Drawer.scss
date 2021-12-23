@@ -1,0 +1,92 @@
+aside {
+  position: fixed;
+  width: 250px;
+  top: 0;
+  transform: translateX(-100%);
+  background-color: $main-text-clr;
+  color: $light-clr;
+  height: 100vh;
+  border-radius: 0 $primary-border-radius $primary-border-radius 0;
+  padding: 1rem;
+  padding-top: 2.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, width 0.3s ease;
+
+  #fa-times-icon {
+    font-size: 1.15rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  ul {
+    li {
+      padding: 1rem;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      border-radius: $primary-border-radius;
+      cursor: pointer;
+
+      svg {
+        margin-right: 0.5rem;
+        font-size: 1.15rem;
+      }
+    }
+    &:nth-child(2) {
+      border-bottom: 1px solid $muted-text-clr;
+    }
+
+    .placeholder-icon {
+      color: lighten($main-text-clr, 10);
+    }
+  }
+
+  button {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: $primary-border-radius;
+    border: none;
+    cursor: pointer;
+    background-color: darken($main-text-clr, 10);
+    color: $light-clr;
+    margin-top: 2rem;
+  }
+}
+.open {
+  transform: translateX(0%);
+}
+
+.secondary-nabvar {
+  background-color: lighten($main-text-clr, 10);
+  border-radius: $primary-border-radius;
+  margin-top: 1rem;
+
+  li {
+    &:first-child {
+      background-color: $main-text-clr;
+      border: 1px solid lighten($main-text-clr, 10);
+      border-radius: $primary-border-radius $primary-border-radius 0 0;
+    }
+    padding: 0.5rem 1rem;
+  }
+}
+.active {
+  background-color: lighten($main-text-clr, 10);
+}
+.overlay {
+  background-color: $dark-clr;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  overflow: hidden;
+}
+.overlay-open {
+  visibility: visible;
+  opacity: 0.5;
+}

@@ -2,9 +2,8 @@
 @import './variables';
 @import './global';
 @import '../components/common/Chip/Chip.scss';
-@import '../components/common/ProgressBar/ProgressBar';
 @import '../components/Dashboard/Dashboard.scss';
-@import '../components/Dashboard/DashHeader/DashHeader.scss';
+@import '../components/Header/Header.scss';
 @import '../components/Dashboard/Summary/Summary.scss';
 @import '../components/Dashboard/Welcome/Welcome.scss';
 @import '../components/Dashboard/MonthSlider/MonthSlider';
@@ -12,3 +11,4 @@
 @import '../components/Dashboard/Budget/Budget';
 @import '../components/Dashboard/Budget/CategoryTitle';
 @import '../components/Dashboard/Budget/BudgetItem';
+@import '../components/Drawer/Drawer';
