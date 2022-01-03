@@ -3,19 +3,28 @@ import 'react-circular-progressbar/dist/styles.css';
 //Components
 import Chip from 'src/components/common/Chip/Chip';
 
-const BudgetItem: React.FC = (): JSX.Element => {
+type Props = {
+  item: string;
+  value: number;
+};
+
+const BudgetItem: React.FC<Props> = ({ item, value }): JSX.Element => {
   return (
     <div className="budget-item-wrapper">
       <div>
         <h3>
-          Internet <Chip label={50} isAlternative />
+          {item} <Chip label={50} isAlternative />
         </h3>
         <p>Spent</p>
       </div>
-      <div className="progress-wrapper">
+      <div
+        className={
+          value === 100 ? 'progress-wrapper disabled' : 'progress-wrapper'
+        }
+      >
         <CircularProgressbar
-          value={65}
-          text={`${65}%`}
+          value={value}
+          text={`${value}%`}
           styles={buildStyles({
             strokeLinecap: 'round',
             textSize: '24px',

@@ -1,7 +1,11 @@
-const CategoryTitle: React.FC = (): JSX.Element => {
+type Props = {
+  title: string;
+};
+
+const CategoryTitle: React.FC<Props> = ({ title }): JSX.Element => {
   return (
     <div className="category-title">
-      <h4>Bills</h4>
+      <h4>{title}</h4>
       <p>Available to spend</p>
     </div>
   );

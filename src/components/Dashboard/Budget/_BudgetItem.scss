@@ -2,7 +2,6 @@
   background-color: $light-clr;
   padding: 0.5rem;
   width: 90vw;
-  margin: auto;
   border-radius: $primary-border-radius;
   box-shadow: $primary-box-shadow;
   display: flex;
@@ -15,4 +14,7 @@
 .progress-wrapper {
   width: 70px;
   height: 70px;
+}
+.disabled {
+  opacity: 0.5;
 }
