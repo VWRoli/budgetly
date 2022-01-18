@@ -1,4 +1,5 @@
 //Components
+import AddTransaction from '../AddTransaction/AddTransaction';
 import Budget from './Budget/Budget';
 import MonthSlider from './MonthSlider/MonthSlider';
 import Summary from './Summary/Summary';
@@ -11,6 +12,7 @@ const Dashboard: React.FC = (): JSX.Element => {
       <Summary />
       <MonthSlider />
       <Budget />
+      <AddTransaction />
     </>
   );
 };
