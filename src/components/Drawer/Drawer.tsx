@@ -2,6 +2,7 @@ import { FaTimes } from 'react-icons/fa';
 import { MdDashboard, MdAccountBalance } from 'react-icons/md';
 import { HiDocumentReport } from 'react-icons/hi';
 import { FiChevronDown } from 'react-icons/fi';
+import Logo from '../../assets/logo.svg';
 
 type Props = {
   isOpen: boolean;
@@ -29,7 +30,7 @@ const Drawer: React.FC<Props> = ({ isOpen, setIsOpen }): JSX.Element => {
             <MdAccountBalance /> Accounts
           </li>
         </ul>
-        <ul className="secondary-nabvar">
+        <ul className="secondary-navbar">
           <li>
             <FiChevronDown />
             Accounts
@@ -48,10 +49,9 @@ const Drawer: React.FC<Props> = ({ isOpen, setIsOpen }): JSX.Element => {
           </li>
         </ul>
         <button>Add Another Account</button>
-
-        <h2 style={{ position: 'fixed', bottom: 0, right: '50%' }}>
-          budgetly.cc
-        </h2>
+        <div className="logo-wrapper">
+          <img src={Logo} alt="Logo" />
+        </div>
       </aside>
     </>
   );

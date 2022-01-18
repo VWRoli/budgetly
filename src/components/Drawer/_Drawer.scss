@@ -56,7 +56,7 @@ aside {
   transform: translateX(0%);
 }
 
-.secondary-nabvar {
+.secondary-navbar {
   background-color: lighten($main-text-clr, 10);
   border-radius: $primary-border-radius;
   margin-top: 1rem;
@@ -89,4 +89,15 @@ aside {
 .overlay-open {
   visibility: visible;
   opacity: 0.5;
+}
+
+.logo-wrapper {
+  position: fixed;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 90%;
+  }
 }
