@@ -1,6 +1,6 @@
 import { MdAdd } from 'react-icons/md';
 
-const AddTransaction = () => {
+const AddTransaction: React.FC = (): JSX.Element => {
   return (
     <button className="addtransaction-btn">
       <MdAdd />
