@@ -1,8 +1,10 @@
 import { FaTimes } from 'react-icons/fa';
 import { MdDashboard, MdAccountBalance } from 'react-icons/md';
 import { HiDocumentReport } from 'react-icons/hi';
+import { VscArrowSwap } from 'react-icons/vsc';
 import { FiChevronDown } from 'react-icons/fi';
 import Logo from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 type Props = {
   isOpen: boolean;
@@ -19,15 +21,21 @@ const Drawer: React.FC<Props> = ({ isOpen, setIsOpen }): JSX.Element => {
       <aside className={isOpen ? 'open' : ''}>
         <FaTimes id="fa-times-icon" onClick={() => setIsOpen(false)} />
         <ul className="main-navbar">
-          <li className="active">
-            <MdDashboard /> Budget
+          <li className="active" onClick={() => setIsOpen(false)}>
+            <Link to="/budget">
+              <MdDashboard /> Budget
+            </Link>
           </li>
-          <li>
-            <HiDocumentReport />
-            Reports
+          <li onClick={() => setIsOpen(false)}>
+            <Link to="/reports">
+              <HiDocumentReport />
+              Reports (Soon...)
+            </Link>
           </li>
-          <li>
-            <MdAccountBalance /> Accounts
+          <li onClick={() => setIsOpen(false)}>
+            <Link to="/transactions">
+              <VscArrowSwap /> Transactions
+            </Link>
           </li>
         </ul>
         <ul className="secondary-navbar">

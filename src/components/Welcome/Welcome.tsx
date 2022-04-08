@@ -1,5 +1,5 @@
 //Components
-import Chip from '../../common/Chip/Chip';
+import Chip from '../common/Chip/Chip';
 
 const Welcome: React.FC = (): JSX.Element => {
   return (
