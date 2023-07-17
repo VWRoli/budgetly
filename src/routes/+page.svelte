@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div>
+  <Button on:click={() => clicked++} variant="raised">
+    <Label>Default</Label>
+  </Button>
+</div>
+
+<script>
+import Button, { Label } from '@smui/button';
+
+  let clicked = 0;
+</script>
