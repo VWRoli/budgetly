@@ -10,11 +10,16 @@
   $background: #fff,
   $error: color-palette.$red-900
 );
+@use '@material/typography/mdc-typography';
+@use '@material/typography/mixins' as typography;
 
 html,
 body {
   background-color: theme.$surface;
   color: theme.$on-surface;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
