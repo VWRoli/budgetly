@@ -9,31 +9,24 @@
 
 <Title>Register</Title>
 <Content>
-	<div class="form-wrapper">
+	<div class="flex flex-col">
 		<Textfield variant="outlined" bind:value={valueA} label="Email">
 			<Icon class="material-icons" slot="leadingIcon">email</Icon>
 		</Textfield>
-		<pre class="status" />
+		<div class="h-4" />
 		<Textfield variant="outlined" bind:value={valueB} label="Password">
 			<Icon class="material-icons" slot="leadingIcon">password</Icon>
 		</Textfield>
-		<pre class="status" />
+		<div class="h-4" />
 		<Textfield variant="outlined" bind:value={valueB} label="Confirm Password">
 			<Icon class="material-icons" slot="leadingIcon">password</Icon>
 		</Textfield>
-		<pre class="status" />
-		<Button href="/login" variant="raised">
+		<div class="h-4" />
+		<Button variant="raised">
 			<Label>Register</Label>
 		</Button>
-		<div class="mdc-typography--subtitle1">
+		<div class="mdc-typography--subtitle1 mt-4">
 			You already have an account? <a href="/auth/login">Login</a> here.
 		</div>
 	</div>
 </Content>
-
-<style>
-	.form-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
-</style>

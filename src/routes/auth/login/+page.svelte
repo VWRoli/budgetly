@@ -13,28 +13,20 @@
 
 <Title>Login</Title>
 <Content>
-	<div class="form-wrapper">
+	<div class="flex flex-col">
 		<Textfield variant="outlined" bind:value={valueA} label="Email">
 			<Icon class="material-icons" slot="leadingIcon">email</Icon>
 		</Textfield>
-		<pre class="status" />
+		<div class="h-4" />
 		<Textfield variant="outlined" bind:value={valueB} label="Password">
 			<Icon class="material-icons" slot="leadingIcon">password</Icon>
 		</Textfield>
-		<pre class="status" />
-		<pre class="status" />
+		<div class="h-4" />
 		<Button on:click={login} variant="raised">
 			<Label>Login</Label>
 		</Button>
-		<div class="mdc-typography--subtitle1">
-			Don't have an account yet? <a href="/auth/login">Register</a> here.
+		<div class="mdc-typography--subtitle1 mt-4">
+			Don't have an account yet? <a href="/auth/register">Register</a> here.
 		</div>
 	</div>
 </Content>
-
-<style>
-	.form-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
-</style>

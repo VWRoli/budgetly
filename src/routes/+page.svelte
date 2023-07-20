@@ -4,12 +4,12 @@
 	import Paper from '@smui/paper';
 </script>
 
-<div class="page">
+<div class="h-screen flex flex-col justify-center items-center">
 	<Paper color="primary" variant="outlined">
-		<div class="wrapper">
+		<div class="flex flex-col justify-around text-center min-w-[356px] min-h-[356px]">
 			<Title>budgetly</Title>
 			<Content>
-				<div class="button-wrapper">
+				<div class="flex flex-col">
 					<Button href="/auth/register">
 						<Label>Register</Label>
 					</Button>
@@ -22,25 +22,3 @@
 		</div>
 	</Paper>
 </div>
-
-<style>
-	.page {
-		height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		min-width: 356px;
-		min-height: 356px;
-		justify-content: space-around;
-		text-align: center;
-	}
-	.button-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
-</style>
