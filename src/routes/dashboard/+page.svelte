@@ -13,30 +13,16 @@
 	}
 </script>
 
-<div class="drawer-container">
+<main class="flex h-screen">
 	<CustomDrawer {itemClick} />
 
 	<AppContent>
-		<main>
-			{#if clicked === 'budget'}
-				<Budget />
-			{:else if clicked === 'reports'}
-				<Reports />
-			{:else if clicked === 'transactions'}
-				<Transaction />
-			{/if}
-		</main>
+		{#if clicked === 'budget'}
+			<Budget />
+		{:else if clicked === 'reports'}
+			<Reports />
+		{:else if clicked === 'transactions'}
+			<Transaction />
+		{/if}
 	</AppContent>
-</div>
-
-<style>
-	.drawer-container {
-		display: flex;
-		flex: 1;
-		height: 100vh;
-		border: 1px solid var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));
-		overflow: hidden;
-		z-index: 0;
-		width: 100%;
-	}
-</style>
+</main>
