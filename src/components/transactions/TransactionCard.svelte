@@ -2,8 +2,10 @@
 	import Card from '@smui/card';
 	import IconButton from '@smui/icon-button';
 	import Paper from '@smui/paper';
+	import Menu from '@smui/menu';
+	import List, { Item, Separator, Text } from '@smui/list';
 
-	let clicked = 0;
+	let menu: Menu;
 	const center = 'flex justify-between items-center';
 </script>
 
@@ -27,9 +29,21 @@
 			</div>
 		</div>
 		<div>
-			<IconButton class="material-icons" on:click={() => clicked++} title="More options"
+			<IconButton class="material-icons" on:click={() => menu.setOpen(true)} title="More options"
 				>more_vert</IconButton
 			>
+			<Menu bind:this={menu}>
+				<List>
+					<Item on:SMUI:action={() => console.log('Edit')}>
+						<Text>Edit</Text>
+					</Item>
+
+					<Separator />
+					<Item on:SMUI:action={() => console.log('Delete')}>
+						<Text>Delete</Text>
+					</Item>
+				</List>
+			</Menu>
 		</div>
 	</div>
 </Card>

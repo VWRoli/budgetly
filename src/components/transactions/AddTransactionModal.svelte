@@ -19,7 +19,7 @@
 		outlfow: null
 	};
 
-	export let setOpen = (value: boolean) => {};
+	export let toggleOpen = (value: boolean) => {};
 	const payees = ['Apple', 'Orange', 'Banana', 'Mango'];
 	const accounts = [
 		{ id: 1, name: 'Bank' },
@@ -39,13 +39,17 @@
 
 	const handleCreate = () => {
 		console.log(transaction);
-		setOpen(false);
+		toggleOpen(false);
 	};
 </script>
 
-<Dialog bind:open aria-labelledby="large-scroll-title" aria-describedby="large-scroll-content">
-	<Title id="large-scroll-title">Add transaction</Title>
-	<Content id="large-scroll-content">
+<Dialog
+	bind:open
+	aria-labelledby="add-transaction-title"
+	aria-describedby="add-transaction-content"
+>
+	<Title id="add-transaction-title">Add transaction</Title>
+	<Content id="add-transaction-content">
 		<div class="h-96 flex flex-col gap-5">
 			<Select variant="filled" label="Account" bind:value={transaction.accountId}>
 				<Option value="" />
@@ -83,7 +87,7 @@
 	</Content>
 	<Actions>
 		<Button color="secondary">
-			<Label on:click={() => setOpen(false)}>Cancel</Label>
+			<Label on:click={() => toggleOpen(false)}>Cancel</Label>
 		</Button>
 		<Button color="primary" variant="unelevated">
 			<Label on:click={handleCreate}>Create</Label>
