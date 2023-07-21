@@ -1,8 +1,7 @@
 <script lang="ts">
-	import Button, { Label } from '@smui/button';
-	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import Textfield from '@smui/textfield';
 	import type { IAccount } from '../../interfaces/account';
+	import ModalWrapper from './ModalWrapper.svelte';
 
 	export let open = false;
 
@@ -19,23 +18,8 @@
 	};
 </script>
 
-<Dialog
-	bind:open
-	aria-labelledby="add-transaction-title"
-	aria-describedby="add-transaction-content"
->
-	<Title id="add-transaction-title">Create account</Title>
-	<Content id="add-transaction-content">
-		<div class=" flex flex-col gap-5">
-			<Textfield variant="filled" bind:value={account.name} label="Name" />
-		</div>
-	</Content>
-	<Actions>
-		<Button color="secondary">
-			<Label on:click={() => toggleOpen(false)}>Cancel</Label>
-		</Button>
-		<Button color="primary" variant="unelevated">
-			<Label on:click={handleCreate}>Create</Label>
-		</Button>
-	</Actions>
-</Dialog>
+<ModalWrapper title="Create account" {open} {handleCreate} {toggleOpen}>
+	<div class=" flex flex-col gap-5">
+		<Textfield variant="filled" bind:value={account.name} label="Name" />
+	</div>
+</ModalWrapper>

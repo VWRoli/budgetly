@@ -1,12 +1,11 @@
 <script lang="ts">
-	import Button, { Label } from '@smui/button';
-	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import Select, { Option } from '@smui/select';
 	import Autocomplete from '@smui-extra/autocomplete';
 	import Textfield from '@smui/textfield';
 	import type { ITransaction } from '../../interfaces/transaction';
 	import { DateInput } from 'date-picker-svelte';
 	import { accounts } from '../../data/accounts';
+	import ModalWrapper from './ModalWrapper.svelte';
 
 	export let open = false;
 
@@ -40,13 +39,8 @@
 	};
 </script>
 
-<Dialog
-	bind:open
-	aria-labelledby="add-transaction-title"
-	aria-describedby="add-transaction-content"
->
-	<Title id="add-transaction-title">Create transaction</Title>
-	<Content id="add-transaction-content">
+<ModalWrapper title="Create transaction" {open} {handleCreate} {toggleOpen}>
+	<slot>
 		<div class="h-96 flex flex-col gap-5">
 			<Select variant="filled" label="Account" bind:value={transaction.accountId}>
 				<Option value="" />
@@ -81,13 +75,5 @@
 			</div>
 			<DateInput bind:value={transaction.date} />
 		</div>
-	</Content>
-	<Actions>
-		<Button color="secondary">
-			<Label on:click={() => toggleOpen(false)}>Cancel</Label>
-		</Button>
-		<Button color="primary" variant="unelevated">
-			<Label on:click={handleCreate}>Create</Label>
-		</Button>
-	</Actions>
-</Dialog>
+	</slot>
+</ModalWrapper>
