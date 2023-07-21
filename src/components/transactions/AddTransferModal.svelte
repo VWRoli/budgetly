@@ -4,6 +4,7 @@
 	import Select, { Option } from '@smui/select';
 	import Textfield from '@smui/textfield';
 	import { DateInput } from 'date-picker-svelte';
+	import { accounts } from '../../data/accounts';
 
 	export let open = false;
 
@@ -14,11 +15,6 @@
 		inflow: 0,
 		outflow: 0
 	};
-	const accounts = [
-		{ id: 1, name: 'Bank' },
-		{ id: 2, name: 'Wallet' },
-		{ id: 3, name: 'Cash' }
-	];
 
 	export let toggleOpen = (value: boolean) => {};
 	const handleCreate = () => {

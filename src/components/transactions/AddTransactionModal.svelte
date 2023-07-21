@@ -6,6 +6,7 @@
 	import Textfield from '@smui/textfield';
 	import type { ITransaction } from '../../interfaces/transaction';
 	import { DateInput } from 'date-picker-svelte';
+	import { accounts } from '../../data/accounts';
 
 	export let open = false;
 
@@ -21,11 +22,7 @@
 
 	export let toggleOpen = (value: boolean) => {};
 	const payees = ['Apple', 'Orange', 'Banana', 'Mango'];
-	const accounts = [
-		{ id: 1, name: 'Bank' },
-		{ id: 2, name: 'Wallet' },
-		{ id: 3, name: 'Cash' }
-	];
+
 	const categories = [
 		{ id: 1, name: 'Expenses' },
 		{ id: 2, name: 'Savings' },

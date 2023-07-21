@@ -31,3 +31,7 @@ a:visited {
 .mdc-drawer-app-content {
 	width: 100%;
 }
+.mdc-deprecated-list-item--selected,
+.mdc-deprecated-list-item--activated {
+	background-color: white;
+}
