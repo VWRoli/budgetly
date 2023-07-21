@@ -1,15 +1,22 @@
 <script lang="ts">
 	import Drawer, { Content } from '@smui/drawer';
 	import List, { Item, Text } from '@smui/list';
+	import IconButton from '@smui/icon-button';
 	import Paper, { Title } from '@smui/paper';
 	import { menuItems } from '../constants/menuItems';
 	import { accounts } from '../data/accounts';
 	import { capitalizeFirstLetter } from '../utils/helpers';
+	import CreateAccountModal from './CreateAccountModal.svelte';
 
 	export let itemClick = (label: string) => {};
 
 	let selectionIndex = 1;
 	let accountSelectionIndex = 0;
+	let open = false;
+
+	function toggleOpen(value: boolean) {
+		open = value;
+	}
 </script>
 
 <Drawer>
@@ -29,7 +36,14 @@
 
 			<div class="bg-white rounded-md">
 				<Paper color="primary" variant="outlined" class="mdc-theme--primary">
-					<Title><span class="text-black">Accounts</span></Title>
+					<Title>
+						<div class="flex items-center justify-between">
+							<span class="text-black">Accounts</span>
+							<IconButton on:click={() => (open = true)} style="color: black" class="material-icons"
+								>add</IconButton
+							>
+						</div>
+					</Title>
 					<List singleSelection selectedIndex={accountSelectionIndex}>
 						{#each accounts as account (account.id)}
 							<Item
@@ -49,3 +63,4 @@
 		</Paper>
 	</Content>
 </Drawer>
+<CreateAccountModal {open} {toggleOpen} />
