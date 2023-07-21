@@ -2,7 +2,7 @@
 	import Button, { Label } from '@smui/button';
 	import Dialog, { Title, Content, Actions } from '@smui/dialog';
 	import Textfield from '@smui/textfield';
-	import type { IAccount } from '../interfaces/account';
+	import type { IAccount } from '../../interfaces/account';
 
 	export let open = false;
 
@@ -24,7 +24,7 @@
 	aria-labelledby="add-transaction-title"
 	aria-describedby="add-transaction-content"
 >
-	<Title id="add-transaction-title">Add account</Title>
+	<Title id="add-transaction-title">Create account</Title>
 	<Content id="add-transaction-content">
 		<div class=" flex flex-col gap-5">
 			<Textfield variant="filled" bind:value={account.name} label="Name" />

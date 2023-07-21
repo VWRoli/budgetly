@@ -24,7 +24,7 @@
 </script>
 
 <Dialog bind:open aria-labelledby="add-transfer-title" aria-describedby="add-transfer-content">
-	<Title id="add-transfer-title">Add transfer</Title>
+	<Title id="add-transfer-title">Create transfer</Title>
 	<Content id="add-transfer-content">
 		<div class="h-96 flex flex-col gap-5">
 			<div>

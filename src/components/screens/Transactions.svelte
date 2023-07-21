@@ -2,8 +2,8 @@
 	import Paper from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import TransactionCard from '../transactions/TransactionCard.svelte';
-	import CreateTransactionModal from '../transactions/CreateTransactionModal.svelte';
-	import CreateTransferModal from '../transactions/CreateTransferModal.svelte';
+	import CreateTransactionModal from '../modals/CreateTransactionModal.svelte';
+	import CreateTransferModal from '../modals/CreateTransferModal.svelte';
 
 	let addTxnOpen = false;
 	let addTransferOpen = false;

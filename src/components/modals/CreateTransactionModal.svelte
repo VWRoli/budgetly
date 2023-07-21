@@ -45,7 +45,7 @@
 	aria-labelledby="add-transaction-title"
 	aria-describedby="add-transaction-content"
 >
-	<Title id="add-transaction-title">Add transaction</Title>
+	<Title id="add-transaction-title">Create transaction</Title>
 	<Content id="add-transaction-content">
 		<div class="h-96 flex flex-col gap-5">
 			<Select variant="filled" label="Account" bind:value={transaction.accountId}>

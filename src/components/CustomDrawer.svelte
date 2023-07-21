@@ -6,7 +6,7 @@
 	import { menuItems } from '../constants/menuItems';
 	import { accounts } from '../data/accounts';
 	import { capitalizeFirstLetter } from '../utils/helpers';
-	import CreateAccountModal from './CreateAccountModal.svelte';
+	import CreateAccountModal from './modals/CreateAccountModal.svelte';
 
 	export let itemClick = (label: string) => {};
 
