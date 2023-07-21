@@ -1,7 +1,14 @@
 <script lang="ts">
 	import Paper from '@smui/paper';
 	import Button, { Label } from '@smui/button';
-	import TransactionCard from '../TransactionCard.svelte';
+	import TransactionCard from '../transactions/TransactionCard.svelte';
+	import AddTransactionModal from '../transactions/AddTransactionModal.svelte';
+
+	let addTxnOpen = false;
+
+	function setOpen(value: boolean) {
+		addTxnOpen = value;
+	}
 </script>
 
 <div class="p-10 h-full">
@@ -9,7 +16,7 @@
 		<Button variant="outlined">
 			<Label>Add transfer</Label>
 		</Button>
-		<Button variant="unelevated">
+		<Button variant="unelevated" on:click={() => (addTxnOpen = true)}>
 			<Label>Add New Transaction</Label>
 		</Button>
 	</div>
@@ -22,3 +29,5 @@
 		</div>
 	</Paper>
 </div>
+
+<AddTransactionModal open={addTxnOpen} {setOpen} />
