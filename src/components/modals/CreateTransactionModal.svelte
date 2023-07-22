@@ -42,7 +42,7 @@
 <ModalWrapper title="Create transaction" {open} {handleCreate} {toggleOpen}>
 	<slot>
 		<div class="h-96 flex flex-col gap-5">
-			<Select variant="filled" label="Account" bind:value={transaction.accountId}>
+			<Select variant="outlined" label="Account" bind:value={transaction.accountId}>
 				<Option value="" />
 				{#each accounts as account}
 					<Option value={account.id}>{account.name}</Option>
@@ -53,20 +53,20 @@
 				options={payees}
 				bind:value={transaction.payee}
 				label="Payee"
-				textfield$variant="filled"
+				textfield$variant="outlined"
 			/>
 			<div>
-				<Textfield variant="filled" bind:value={transaction.inflow} label="Inflow" />
-				<Textfield variant="filled" bind:value={transaction.outlfow} label="Outlfow" />
+				<Textfield variant="outlined" bind:value={transaction.inflow} label="Inflow" />
+				<Textfield variant="outlined" bind:value={transaction.outlfow} label="Outlfow" />
 			</div>
 			<div>
-				<Select variant="filled" bind:value={transaction.categoryId} label="Fruit">
+				<Select variant="outlined" bind:value={transaction.categoryId} label="Fruit">
 					<Option value="" />
 					{#each categories as category}
 						<Option value={category.id}>{category.name}</Option>
 					{/each}
 				</Select>
-				<Select variant="filled" bind:value={transaction.subCategoryId} label="Fruit">
+				<Select variant="outlined" bind:value={transaction.subCategoryId} label="Fruit">
 					<Option value="" />
 					{#each subCategories as subCategory}
 						<Option value={subCategory.id}>{subCategory.name}</Option>

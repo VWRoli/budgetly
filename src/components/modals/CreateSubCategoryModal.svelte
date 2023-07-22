@@ -23,7 +23,7 @@
 <ModalWrapper title="Create Subcategory" {open} {handleCreate} {toggleOpen}>
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<Textfield variant="filled" bind:value={subCategory.title} label="Name" />
+			<Textfield variant="outlined" bind:value={subCategory.title} label="Name" />
 		</div>
 	</slot>
 </ModalWrapper>

@@ -23,7 +23,7 @@
 <ModalWrapper title="Create category" {open} {handleCreate} {toggleOpen}>
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<Textfield variant="filled" bind:value={category.title} label="Name" />
+			<Textfield variant="outlined" bind:value={category.title} label="Name" />
 		</div>
 	</slot>
 </ModalWrapper>

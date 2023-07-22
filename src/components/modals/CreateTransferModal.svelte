@@ -25,13 +25,13 @@
 <ModalWrapper title="Create transfer" {open} {handleCreate} {toggleOpen}>
 	<div class="h-96 flex flex-col gap-5">
 		<div>
-			<Select variant="filled" label="from Account" bind:value={transfer.fromAccountId}>
+			<Select variant="outlined" label="from Account" bind:value={transfer.fromAccountId}>
 				<Option value="" />
 				{#each accounts as account}
 					<Option value={account.id}>{account.name}</Option>
 				{/each}
 			</Select>
-			<Select variant="filled" label="to Account" bind:value={transfer.toAccountId}>
+			<Select variant="outlined" label="to Account" bind:value={transfer.toAccountId}>
 				<Option value="" />
 				{#each accounts as account}
 					<Option value={account.id}>{account.name}</Option>
@@ -39,8 +39,8 @@
 			</Select>
 		</div>
 		<div>
-			<Textfield variant="filled" bind:value={transfer.inflow} label="Inflow" />
-			<Textfield variant="filled" bind:value={transfer.outflow} label="Outlfow" />
+			<Textfield variant="outlined" bind:value={transfer.inflow} label="Inflow" />
+			<Textfield variant="outlined" bind:value={transfer.outflow} label="Outlfow" />
 		</div>
 		<DateInput bind:value={transfer.date} />
 	</div>

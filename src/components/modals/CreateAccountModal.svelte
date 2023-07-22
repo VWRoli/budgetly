@@ -20,6 +20,6 @@
 
 <ModalWrapper title="Create account" {open} {handleCreate} {toggleOpen}>
 	<div class=" flex flex-col gap-5">
-		<Textfield variant="filled" bind:value={account.name} label="Name" />
+		<Textfield variant="outlined" bind:value={account.name} label="Name" />
 	</div>
 </ModalWrapper>

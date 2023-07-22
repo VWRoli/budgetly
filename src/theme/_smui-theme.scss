@@ -35,3 +35,7 @@ a:visited {
 .mdc-deprecated-list-item--activated {
 	background-color: white;
 }
+.mdc-text-field--outlined .mdc-notched-outline--notched .mdc-notched-outline__notch {
+	border-left: 0;
+	border-right: 0;
+}

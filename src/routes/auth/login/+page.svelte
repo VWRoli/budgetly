@@ -18,11 +18,11 @@
 <Title>Login</Title>
 <Content>
 	<div class="flex flex-col">
-		<Textfield variant="outlined" bind:value={valueA} label="Email">
+		<Textfield variant="outlined" required bind:value={valueA} label="Email">
 			<Icon class="material-icons" slot="leadingIcon">email</Icon>
 		</Textfield>
 		<div class="h-4" />
-		<Textfield variant="outlined" bind:value={valueB} label="Password">
+		<Textfield variant="outlined" required bind:value={valueB} label="Password">
 			<Icon class="material-icons" slot="leadingIcon">password</Icon>
 		</Textfield>
 		<div class="h-4" />
