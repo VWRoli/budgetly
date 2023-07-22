@@ -7,9 +7,13 @@
 	let valueB = '';
 </script>
 
+<svelte:head>
+	<title>Register</title>
+</svelte:head>
+
 <Title>Register</Title>
 <Content>
-	<div class="flex flex-col">
+	<form class="flex flex-col">
 		<Textfield variant="outlined" bind:value={valueA} label="Email">
 			<Icon class="material-icons" slot="leadingIcon">email</Icon>
 		</Textfield>
@@ -28,5 +32,5 @@
 		<div class="mdc-typography--subtitle1 mt-4">
 			You already have an account? <a href="/auth/login">Login</a> here.
 		</div>
-	</div>
+	</form>
 </Content>

@@ -18,12 +18,12 @@
 		</Button>
 	</div>
 	<Paper variant="outlined" color="primary">
-		<div class="flex flex-col gap-5">
+		<section class="flex flex-col gap-5">
 			<BudgetItem />
 			<BudgetItem />
 			<BudgetItem />
 			<BudgetItem />
-		</div>
+		</section>
 	</Paper>
 </div>
 <CreateCategoryModal {open} {toggleOpen} />

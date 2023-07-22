@@ -26,12 +26,12 @@
 		</Button>
 	</div>
 	<Paper variant="outlined" color="primary">
-		<div class="flex flex-col gap-5 h-full">
+		<section class="flex flex-col gap-5 h-full">
 			<TransactionCard />
 			<TransactionCard />
 			<TransactionCard />
 			<TransactionCard />
-		</div>
+		</section>
 	</Paper>
 </div>
 

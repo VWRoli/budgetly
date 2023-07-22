@@ -11,6 +11,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Login</title>
+</svelte:head>
+
 <Title>Login</Title>
 <Content>
 	<div class="flex flex-col">

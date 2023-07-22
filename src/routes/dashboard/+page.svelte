@@ -13,6 +13,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Dashboard</title>
+</svelte:head>
+
 <main class="flex h-screen">
 	<CustomDrawer {itemClick} />
 
