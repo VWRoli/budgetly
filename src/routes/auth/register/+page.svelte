@@ -1,27 +1,22 @@
 <script lang="ts">
-	import Textfield from '@smui/textfield';
-	import Icon from '@smui/textfield/icon';
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
+	import { signupSchema } from '../../../utils/validationSchemas';
+	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
+	import { formValidation } from '../../../utils/helpers';
 
 	const formData = {
 		email: '',
 		password: '',
 		confirmPassword: ''
 	};
-	let errors = {};
+	let errors: any = {};
 
 	const handleSubmit = async () => {
+		errors = formValidation(signupSchema, formData);
+
+		console.log(errors);
 		console.log(formData);
-		// try {
-		// 	await schema.validate(values, { abortEarly: false });
-		// 	alert(JSON.stringify(values, null, 2));
-		// 	errors = {};
-		// } catch (err) {
-		// 	errors = err.inner.reduce((acc, err) => {
-		// 		return { ...acc, [err.path]: err.message };
-		// 	}, {});
-		// }
 	};
 </script>
 
@@ -32,37 +27,33 @@
 <Title>Register</Title>
 <Content>
 	<form class="flex flex-col">
-		<Textfield
-			invalid
-			variant="outlined"
-			type="email"
-			required
-			bind:value={formData.email}
+		<CustomTextInput
+			value={formData.email}
 			label="Email"
-		>
-			<Icon class="material-icons" slot="leadingIcon">email</Icon>
-		</Textfield>
+			icon="email"
+			error={errors.email}
+			helperText="Please enter a valid email address"
+		/>
+
 		<div class="h-4" />
-		<Textfield
-			type="password"
-			variant="outlined"
-			required
-			bind:value={formData.password}
+		<CustomTextInput
+			value={formData.password}
 			label="Password"
-		>
-			<Icon class="material-icons" slot="leadingIcon">password</Icon>
-		</Textfield>
+			icon="password"
+			error={errors.password}
+			helperText="Must contain one uppercase, one lowercase, one number and one special character"
+		/>
+
 		<div class="h-4" />
-		<Textfield
-			type="password"
-			variant="outlined"
-			required
-			bind:value={formData.confirmPassword}
+		<CustomTextInput
+			value={formData.confirmPassword}
 			label="Confirm Password"
-		>
-			<Icon class="material-icons" slot="leadingIcon">password</Icon>
-		</Textfield>
+			icon="password"
+			error={errors.confirmPassword}
+			helperText="Confirm your password"
+		/>
 		<div class="h-4" />
+
 		<Button on:click={handleSubmit} variant="raised">
 			<Label>Register</Label>
 		</Button>

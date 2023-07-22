@@ -1,14 +1,22 @@
 <script lang="ts">
-	import Textfield from '@smui/textfield';
-	import Icon from '@smui/textfield/icon';
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
-	let valueA = '';
-	let valueB = '';
+	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
+	import { loginSchema } from '../../../utils/validationSchemas';
+	import { formValidation } from '../../../utils/helpers';
 
-	function login() {
-		window.location.href = '/dashboard';
-	}
+	const formData = {
+		email: '',
+		password: ''
+	};
+	let errors: any = {};
+
+	const handleSubmit = async () => {
+		errors = formValidation(loginSchema, formData);
+		//window.location.href = '/dashboard';
+		console.log(errors);
+		console.log(formData);
+	};
 </script>
 
 <svelte:head>
@@ -17,20 +25,29 @@
 
 <Title>Login</Title>
 <Content>
-	<div class="flex flex-col">
-		<Textfield variant="outlined" required bind:value={valueA} label="Email">
-			<Icon class="material-icons" slot="leadingIcon">email</Icon>
-		</Textfield>
+	<form class="flex flex-col">
+		<CustomTextInput
+			value={formData.email}
+			label="Email"
+			icon="email"
+			error={errors.email}
+			helperText="Please enter a valid email address"
+		/>
 		<div class="h-4" />
-		<Textfield variant="outlined" required bind:value={valueB} label="Password">
-			<Icon class="material-icons" slot="leadingIcon">password</Icon>
-		</Textfield>
+		<CustomTextInput
+			value={formData.password}
+			label="Password"
+			icon="password"
+			error={errors.password}
+			helperText="Must contain one uppercase, one lowercase, one number and one special character"
+		/>
+
 		<div class="h-4" />
-		<Button on:click={login} variant="raised">
+		<Button on:click={handleSubmit} variant="raised">
 			<Label>Login</Label>
 		</Button>
 		<div class="mdc-typography--subtitle1 mt-4">
 			Don't have an account yet? <a href="/auth/register">Register</a> here.
 		</div>
-	</div>
+	</form>
 </Content>

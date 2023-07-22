@@ -15,10 +15,7 @@ export const signupSchema = Yup.object().shape({
 });
 
 export const loginSchema = Yup.object().shape({
-	username: Yup.string()
-		.min(6, 'Username must be at least 6 character')
-		.max(16, 'Username is too long - maximum 16 characters allowed')
-		.required('Username is required'),
+	email: Yup.string().email('Please enter a valid email').required('Email is required'),
 	password: Yup.string()
 		.required('Password is required')
 		.min(8, 'Password is too short - must be at least 8 characters long')
