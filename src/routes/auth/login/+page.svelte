@@ -3,7 +3,7 @@
 	import Button, { Label } from '@smui/button';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
 	import { loginSchema } from '../../../utils/validationSchemas';
-	import { formValidation } from '../../../utils/helpers';
+	import { validateForm } from '../../../utils/helpers';
 
 	const formData = {
 		email: '',
@@ -12,7 +12,7 @@
 	let errors: any = {};
 
 	const handleSubmit = async () => {
-		errors = formValidation(loginSchema, formData);
+		errors = await validateForm(loginSchema, formData);
 		//window.location.href = '/dashboard';
 		console.log(errors);
 		console.log(formData);
@@ -27,7 +27,7 @@
 <Content>
 	<form class="flex flex-col">
 		<CustomTextInput
-			value={formData.email}
+			bind:value={formData.email}
 			label="Email"
 			icon="email"
 			error={errors.email}
@@ -35,9 +35,10 @@
 		/>
 		<div class="h-4" />
 		<CustomTextInput
-			value={formData.password}
+			bind:value={formData.password}
 			label="Password"
 			icon="password"
+			type="password"
 			error={errors.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>

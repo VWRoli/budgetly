@@ -3,7 +3,7 @@
 	import Button, { Label } from '@smui/button';
 	import { signupSchema } from '../../../utils/validationSchemas';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
-	import { formValidation } from '../../../utils/helpers';
+	import { validateForm } from '../../../utils/helpers';
 
 	const formData = {
 		email: '',
@@ -13,7 +13,7 @@
 	let errors: any = {};
 
 	const handleSubmit = async () => {
-		errors = formValidation(signupSchema, formData);
+		errors = await validateForm(signupSchema, formData);
 
 		console.log(errors);
 		console.log(formData);
@@ -26,9 +26,9 @@
 
 <Title>Register</Title>
 <Content>
-	<form class="flex flex-col">
+	<form class="flex flex-col" on:submit|preventDefault={handleSubmit}>
 		<CustomTextInput
-			value={formData.email}
+			bind:value={formData.email}
 			label="Email"
 			icon="email"
 			error={errors.email}
@@ -37,24 +37,26 @@
 
 		<div class="h-4" />
 		<CustomTextInput
-			value={formData.password}
+			bind:value={formData.password}
 			label="Password"
 			icon="password"
+			type="password"
 			error={errors.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
 
 		<div class="h-4" />
 		<CustomTextInput
-			value={formData.confirmPassword}
+			bind:value={formData.confirmPassword}
 			label="Confirm Password"
 			icon="password"
+			type="password"
 			error={errors.confirmPassword}
 			helperText="Confirm your password"
 		/>
 		<div class="h-4" />
 
-		<Button on:click={handleSubmit} variant="raised">
+		<Button type="submit" variant="raised">
 			<Label>Register</Label>
 		</Button>
 		<div class="mdc-typography--subtitle1 mt-4">

@@ -1,18 +1,11 @@
-import type * as Yup from 'yup';
-
 export function capitalizeFirstLetter(string: string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
-interface FormData {
-	// Add properties according to your actual form data structure
-	[key: string]: any;
-}
 
-export const formValidation = (schema: Yup.ObjectSchema<FormData>, formData: FormData) => {
-	let errors: any = {};
+export async function validateForm(schema: any, data: any) {
+	let errors;
 	try {
-		schema.validateSync(formData, { abortEarly: false });
-		alert(JSON.stringify(formData, null, 2));
+		await schema.validate(data, { abortEarly: false });
 		errors = {};
 	} catch (err) {
 		errors = (err as any).inner.reduce((acc: any, err: any) => {
@@ -20,4 +13,4 @@ export const formValidation = (schema: Yup.ObjectSchema<FormData>, formData: For
 		}, {});
 	}
 	return errors;
-};
+}
