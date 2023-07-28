@@ -41,12 +41,34 @@ export const login = async (userData: ILoginUser) => {
 			const errorData = await response.json();
 			throw new Error(errorData.message || 'Login failed.');
 		}
-		console.log({ response });
 		const responseData = await response.json();
-		console.log(responseData);
 		return responseData;
 	} catch (error: any) {
 		// Handle fetch errors or any other exceptions
+		throw error;
+	}
+};
+
+export const getUser = async (token: string) => {
+	try {
+		const response = await fetch(`${API_URL}/users/me`, {
+			method: 'GET',
+			credentials: 'include',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: `Bearer ${token}`
+			}
+		});
+
+		if (!response.ok) {
+			// Handle error response (if any)
+			const errorData = await response.json();
+			throw new Error(errorData.message || 'User not found');
+		}
+
+		return await response.json();
+	} catch (error) {
 		throw error;
 	}
 };

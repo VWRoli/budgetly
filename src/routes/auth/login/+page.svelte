@@ -8,6 +8,10 @@
 	import Toast from '../../../components/common/Toast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { login } from '../../../api/auth';
+	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
+ 
+ export let form: ActionData;
 
 	const formData = {
 		email: '',
@@ -18,18 +22,18 @@
 	let toast: Snackbar;
 	let errorMessage = '';
 
-	const handleSubmit = async () => {
-		isLoading = true;
-		try {
-			errors = await validateForm(loginSchema, formData);
-			await login(formData);
-			window.location.href = '/dashboard';
-		} catch (error: any) {
-			errorMessage = error.message;
-			toast.open();
-		}
-		isLoading = false;
-	};
+	// const handleSubmit = async () => {
+	// 	isLoading = true;
+	// 	try {
+	// 		errors = await validateForm(loginSchema, formData);
+	// 		await login(formData);
+	// 		window.location.href = '/dashboard';
+	// 	} catch (error: any) {
+	// 		errorMessage = error.message;
+	// 		toast.open();
+	// 	}
+	// 	isLoading = false;
+	// };
 </script>
 
 <svelte:head>
@@ -38,12 +42,14 @@
 
 <Title>Login</Title>
 <Content>
-	<form class="flex flex-col">
-		<CustomTextInput
+	<form class="flex flex-col" method="post" use:enhance>
+			<CustomTextInput
 			bind:value={formData.email}
 			label="Email"
+			name="email"
 			icon="email"
-			error={errors.email}
+			type="email"
+			error={form?.error.email}
 			disabled={isLoading}
 			helperText="Please enter a valid email address"
 		/>
@@ -51,15 +57,16 @@
 		<CustomTextInput
 			bind:value={formData.password}
 			label="Password"
+			name="password"
 			icon="password"
 			type="password"
 			disabled={isLoading}
-			error={errors.password}
+			error={form?.error.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
 
 		<div class="h-4" />
-		<Button on:click={handleSubmit} variant="raised" disabled={isLoading}>
+		<Button type="submit"  variant="raised" disabled={isLoading}>
 			<Label>Login</Label>
 		</Button>
 		{#if isLoading}
@@ -71,7 +78,7 @@
 				Don't have an account yet? <a href="/auth/register">Register</a> here.
 			</div>
 		{/if}
-	</form>
+</form>
 </Content>
 
 <Toast bind:toast message={errorMessage} />

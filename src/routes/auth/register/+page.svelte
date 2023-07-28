@@ -9,6 +9,10 @@
 	import { register } from '../../../api/auth';
 	import Toast from '../../../components/common/Toast.svelte';
 	import type Snackbar from '@smui/snackbar';
+	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
+
+	export let form: ActionData;
 
 	const formData: IRegisterUser = {
 		email: '',
@@ -20,18 +24,18 @@
 	let toast: Snackbar;
 	let errorMessage = '';
 
-	const handleSubmit = async () => {
-		isLoading = true;
-		try {
-			errors = await validateForm(signupSchema, formData);
-			await register(formData);
-			window.location.href = '/dashboard';
-		} catch (error: any) {
-			errorMessage = error.message;
-			toast.open();
-		}
-		isLoading = false;
-	};
+	// const handleSubmit = async () => {
+	// 	isLoading = true;
+	// 	try {
+	// 		errors = await validateForm(signupSchema, formData);
+	// 		await register(formData);
+	// 		window.location.href = '/dashboard';
+	// 	} catch (error: any) {
+	// 		errorMessage = error.message;
+	// 		toast.open();
+	// 	}
+	// 	isLoading = false;
+	// };
 </script>
 
 <svelte:head>
@@ -40,13 +44,15 @@
 
 <Title>Register</Title>
 <Content>
-	<form class="flex flex-col" on:submit|preventDefault={handleSubmit}>
+	<form class="flex flex-col"  method="post" use:enhance>
 		<CustomTextInput
 			bind:value={formData.email}
 			label="Email"
+			name="email"
+			type="email"
 			icon="email"
 			disabled={isLoading}
-			error={errors.email}
+			error={form?.error.email}
 			helperText="Please enter a valid email address"
 		/>
 
@@ -56,8 +62,9 @@
 			label="Password"
 			icon="password"
 			type="password"
+			name="password"
 			disabled={isLoading}
-			error={errors.password}
+			error={form?.error.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
 
@@ -67,8 +74,9 @@
 			label="Confirm Password"
 			icon="password"
 			type="password"
+			name="confirmPassword"
 			disabled={isLoading}
-			error={errors.confirmPassword}
+			error={form?.error.confirmPassword}
 			helperText="Confirm your password"
 		/>
 		<div class="h-4" />
