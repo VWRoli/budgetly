@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
+	import CircularProgress from '@smui/circular-progress';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
 	import { loginSchema } from '../../../utils/validationSchemas';
 	import { validateForm } from '../../../utils/helpers';
@@ -13,10 +14,12 @@
 		password: ''
 	};
 	let errors: any = {};
+	let isLoading = false;
 	let toast: Snackbar;
 	let errorMessage = '';
 
 	const handleSubmit = async () => {
+		isLoading = true;
 		try {
 			errors = await validateForm(loginSchema, formData);
 			await login(formData);
@@ -25,6 +28,7 @@
 			errorMessage = error.message;
 			toast.open();
 		}
+		isLoading = false;
 	};
 </script>
 
@@ -40,6 +44,7 @@
 			label="Email"
 			icon="email"
 			error={errors.email}
+			disabled={isLoading}
 			helperText="Please enter a valid email address"
 		/>
 		<div class="h-4" />
@@ -48,17 +53,24 @@
 			label="Password"
 			icon="password"
 			type="password"
+			disabled={isLoading}
 			error={errors.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
 
 		<div class="h-4" />
-		<Button on:click={handleSubmit} variant="raised">
+		<Button on:click={handleSubmit} variant="raised" disabled={isLoading}>
 			<Label>Login</Label>
 		</Button>
-		<div class="mdc-typography--subtitle1 mt-4">
-			Don't have an account yet? <a href="/auth/register">Register</a> here.
-		</div>
+		{#if isLoading}
+			<div class="flex justify-center mt-4">
+				<CircularProgress style="height: 32px; width: 32px;" indeterminate />
+			</div>
+		{:else}
+			<div class="mdc-typography--subtitle1 mt-4">
+				Don't have an account yet? <a href="/auth/register">Register</a> here.
+			</div>
+		{/if}
 	</form>
 </Content>
 

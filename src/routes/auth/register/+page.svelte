@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
+	import CircularProgress from '@smui/circular-progress';
 	import { signupSchema } from '../../../utils/validationSchemas';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
 	import { validateForm } from '../../../utils/helpers';
@@ -15,10 +16,12 @@
 		confirmPassword: ''
 	};
 	let errors: any = {};
+	let isLoading = false;
 	let toast: Snackbar;
 	let errorMessage = '';
 
 	const handleSubmit = async () => {
+		isLoading = true;
 		try {
 			errors = await validateForm(signupSchema, formData);
 			await register(formData);
@@ -27,6 +30,7 @@
 			errorMessage = error.message;
 			toast.open();
 		}
+		isLoading = false;
 	};
 </script>
 
@@ -41,6 +45,7 @@
 			bind:value={formData.email}
 			label="Email"
 			icon="email"
+			disabled={isLoading}
 			error={errors.email}
 			helperText="Please enter a valid email address"
 		/>
@@ -51,6 +56,7 @@
 			label="Password"
 			icon="password"
 			type="password"
+			disabled={isLoading}
 			error={errors.password}
 			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
@@ -61,17 +67,24 @@
 			label="Confirm Password"
 			icon="password"
 			type="password"
+			disabled={isLoading}
 			error={errors.confirmPassword}
 			helperText="Confirm your password"
 		/>
 		<div class="h-4" />
 
-		<Button type="submit" variant="raised">
+		<Button type="submit" variant="raised" disabled={isLoading}>
 			<Label>Register</Label>
 		</Button>
-		<div class="mdc-typography--subtitle1 mt-4">
-			You already have an account? <a href="/auth/login">Login</a> here.
-		</div>
+		{#if isLoading}
+			<div class="flex justify-center mt-4">
+				<CircularProgress style="height: 32px; width: 32px;" indeterminate />
+			</div>
+		{:else}
+			<div class="mdc-typography--subtitle1 mt-4">
+				You already have an account? <a href="/auth/login">Login</a> here.
+			</div>
+		{/if}
 	</form>
 </Content>
 

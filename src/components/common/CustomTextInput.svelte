@@ -9,9 +9,10 @@
 	export let icon = '';
 	export let type = '';
 	export let helperText = '';
+	export let disabled = false;
 </script>
 
-<Textfield invalid={error ? true : false} {type} variant="outlined" bind:value {label}>
+<Textfield invalid={error ? true : false} {type} variant="outlined" bind:value {label} {disabled}>
 	<Icon class="material-icons" slot="leadingIcon">{icon}</Icon>
 	<HelperText slot="helper">
 		{#if helperText && !error}
