@@ -13,7 +13,7 @@
 					<Button href="/auth/register">
 						<Label>Register</Label>
 					</Button>
-
+					<div class="h-4" />
 					<Button href="/auth/login" variant="raised">
 						<Label>Login</Label>
 					</Button>

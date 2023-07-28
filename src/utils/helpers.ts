@@ -1,8 +1,15 @@
+import type * as Yup from 'yup';
+import type { ILoginUser } from '../interfaces/loginUser';
+import type { IRegisterUser } from '../interfaces/registerUser';
+
 export function capitalizeFirstLetter(string: string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export async function validateForm(schema: any, data: any) {
+export async function validateForm(
+	schema: Yup.ObjectSchema<IRegisterUser | ILoginUser>,
+	data: IRegisterUser | ILoginUser
+) {
 	let errors;
 	try {
 		await schema.validate(data, { abortEarly: false });

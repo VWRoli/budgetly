@@ -4,19 +4,29 @@
 	import { signupSchema } from '../../../utils/validationSchemas';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
 	import { validateForm } from '../../../utils/helpers';
+	import type { IRegisterUser } from '../../../interfaces/registerUser';
+	import { register } from '../../../api/auth';
+	import Toast from '../../../components/common/Toast.svelte';
+	import type Snackbar from '@smui/snackbar';
 
-	const formData = {
+	const formData: IRegisterUser = {
 		email: '',
 		password: '',
 		confirmPassword: ''
 	};
 	let errors: any = {};
+	let toast: Snackbar;
+	let errorMessage = '';
 
 	const handleSubmit = async () => {
-		errors = await validateForm(signupSchema, formData);
-
-		console.log(errors);
-		console.log(formData);
+		try {
+			errors = await validateForm(signupSchema, formData);
+			await register(formData);
+			window.location.href = '/dashboard';
+		} catch (error: any) {
+			errorMessage = error.message;
+			toast.open();
+		}
 	};
 </script>
 
@@ -64,3 +74,5 @@
 		</div>
 	</form>
 </Content>
+
+<Toast bind:toast message={errorMessage} />
