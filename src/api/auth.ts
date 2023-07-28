@@ -41,8 +41,9 @@ export const login = async (userData: ILoginUser) => {
 			const errorData = await response.json();
 			throw new Error(errorData.message || 'Login failed.');
 		}
-
+		console.log({ response });
 		const responseData = await response.json();
+		console.log(responseData);
 		return responseData;
 	} catch (error: any) {
 		// Handle fetch errors or any other exceptions
