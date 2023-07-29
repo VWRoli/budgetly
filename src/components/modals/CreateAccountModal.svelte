@@ -1,25 +1,16 @@
 <script lang="ts">
-	import Textfield from '@smui/textfield';
-	import type { IAccount } from '../../interfaces/account';
 	import ModalWrapper from './ModalWrapper.svelte';
+	import CustomTextInput from '../common/CustomTextInput.svelte';
 
 	export let open = false;
 
 	export let toggleOpen = (value: boolean) => {};
 
-	const account: IAccount = {
-		name: '',
-		budgetId: 1,
-		balance: 0
-	};
-	const handleCreate = () => {
-		console.log(account);
-		toggleOpen(false);
-	};
+	const action = '?/createAccount';
 </script>
 
-<ModalWrapper title="Create account" {open} {handleCreate} {toggleOpen}>
+<ModalWrapper title="Create account" {open} {toggleOpen} {action}>
 	<div class=" flex flex-col gap-5">
-		<Textfield variant="outlined" bind:value={account.name} label="Name" />
+		<CustomTextInput label="Name" name="name" type="text" />
 	</div>
 </ModalWrapper>

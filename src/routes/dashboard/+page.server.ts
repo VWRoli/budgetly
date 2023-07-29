@@ -2,7 +2,14 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { IBudget } from '../../interfaces/budget';
 import type { ECurrency } from '../../utils/enums/currency.enum';
-import { createBudget, fetchBudgets, fetchDefaultBudget } from '../../api';
+import {
+	createAccount,
+	createBudget,
+	fetchAccounts,
+	fetchBudgets,
+	fetchDefaultBudget,
+} from '../../api';
+import type { IAccount } from '../../interfaces/account';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -17,6 +24,7 @@ export async function load({ locals, cookies }) {
 		user,
 		defaultBudget: fetchDefaultBudget(user.defaultBudgetId, token as string),
 		budgets: fetchBudgets(user.id, token as string),
+		accounts: fetchAccounts(user.defaultBudgetId, token as string),
 	};
 }
 
@@ -43,5 +51,22 @@ export const actions: Actions = {
 		const budget = await createBudget(budgetData, token as string);
 
 		locals.defaultBudget = budget;
+	},
+	createAccount: async ({ request, locals, cookies }) => {
+		const formData = Object.fromEntries(await request.formData());
+		console.log({ formData });
+		const { name } = formData as {
+			name: string;
+		};
+		console.log({ locals });
+		const accountData: IAccount = {
+			name,
+			balance: 0,
+			budgetId: locals.user?.defaultBudgetId as number,
+		};
+		console.log({ accountData });
+		const token = cookies.get('AuthorizationToken');
+
+		await createAccount(accountData, token as string);
 	},
 };
