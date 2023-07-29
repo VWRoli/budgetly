@@ -3,7 +3,7 @@
 	import Transaction from '../../components/screens/Transactions.svelte';
 	import Budget from '../../components/screens/Budget.svelte';
 	import Reports from '../../components/screens/Reports.svelte';
-	import CustomDrawer from '../../components/CustomDrawer.svelte';
+	import CustomDrawer from '../../components/sidebar/CustomDrawer.svelte';
 	import { menuItems } from '../../constants/menuItems';
 
 	let clicked = menuItems[0].label;

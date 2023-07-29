@@ -20,7 +20,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 			const sessionUser: IUser = {
 				id: user.id,
-				email: user.email
+				email: user.email,
+				defaultBudgetId: user.defaultBudgetId,
+				budgetIds: user.budgetIds,
 			};
 			event.locals.user = sessionUser;
 		} catch (error) {

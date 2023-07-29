@@ -3,11 +3,12 @@
 	import List, { Item, Text } from '@smui/list';
 	import IconButton from '@smui/icon-button';
 	import Paper, { Title } from '@smui/paper';
-	import { menuItems } from '../constants/menuItems';
-	import { accounts } from '../data/accounts';
-	import { capitalizeFirstLetter } from '../utils/helpers';
-	import CreateAccountModal from './modals/CreateAccountModal.svelte';
+	import { menuItems } from '../../constants/menuItems';
+	import { accounts } from '../../data/accounts';
+	import { capitalizeFirstLetter } from '../../utils/helpers';
+	import CreateAccountModal from '../modals/CreateAccountModal.svelte';
 	import Button, { Label } from '@smui/button';
+	import BudgetMenu from './BudgetMenu.svelte';
 
 	export let itemClick = (label: string) => {};
 
@@ -25,6 +26,7 @@
 		<Paper color="primary" style="height: 100vh;">
 			<div class="flex flex-col justify-between h-full">
 				<div>
+					<BudgetMenu />
 					<List singleSelection selectedIndex={selectionIndex}>
 						{#each menuItems as item (item.id)}
 							<Item

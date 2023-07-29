@@ -3,37 +3,16 @@
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
-	import { loginSchema } from '../../../utils/validationSchemas';
-	import { validateForm } from '../../../utils/helpers';
 	import Toast from '../../../components/common/Toast.svelte';
 	import type Snackbar from '@smui/snackbar';
-	import { login } from '../../../api/auth';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
- 
- export let form: ActionData;
 
-	const formData = {
-		email: '',
-		password: ''
-	};
-	let errors: any = {};
+	export let form: ActionData;
+
 	let isLoading = false;
 	let toast: Snackbar;
 	let errorMessage = '';
-
-	// const handleSubmit = async () => {
-	// 	isLoading = true;
-	// 	try {
-	// 		errors = await validateForm(loginSchema, formData);
-	// 		await login(formData);
-	// 		window.location.href = '/dashboard';
-	// 	} catch (error: any) {
-	// 		errorMessage = error.message;
-	// 		toast.open();
-	// 	}
-	// 	isLoading = false;
-	// };
 </script>
 
 <svelte:head>
@@ -43,8 +22,7 @@
 <Title>Login</Title>
 <Content>
 	<form class="flex flex-col" method="post" use:enhance>
-			<CustomTextInput
-			bind:value={formData.email}
+		<CustomTextInput
 			label="Email"
 			name="email"
 			icon="email"
@@ -55,7 +33,6 @@
 		/>
 		<div class="h-4" />
 		<CustomTextInput
-			bind:value={formData.password}
 			label="Password"
 			name="password"
 			icon="password"
@@ -66,7 +43,7 @@
 		/>
 
 		<div class="h-4" />
-		<Button type="submit"  variant="raised" disabled={isLoading}>
+		<Button type="submit" variant="raised" disabled={isLoading}>
 			<Label>Login</Label>
 		</Button>
 		{#if isLoading}
@@ -78,7 +55,7 @@
 				Don't have an account yet? <a href="/auth/register">Register</a> here.
 			</div>
 		{/if}
-</form>
+	</form>
 </Content>
 
 <Toast bind:toast message={errorMessage} />

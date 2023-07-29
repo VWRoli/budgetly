@@ -2,11 +2,7 @@
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
-	import { signupSchema } from '../../../utils/validationSchemas';
 	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
-	import { validateForm } from '../../../utils/helpers';
-	import type { IRegisterUser } from '../../../interfaces/registerUser';
-	import { register } from '../../../api/auth';
 	import Toast from '../../../components/common/Toast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
@@ -14,28 +10,9 @@
 
 	export let form: ActionData;
 
-	const formData: IRegisterUser = {
-		email: '',
-		password: '',
-		confirmPassword: ''
-	};
-	let errors: any = {};
 	let isLoading = false;
 	let toast: Snackbar;
 	let errorMessage = '';
-
-	// const handleSubmit = async () => {
-	// 	isLoading = true;
-	// 	try {
-	// 		errors = await validateForm(signupSchema, formData);
-	// 		await register(formData);
-	// 		window.location.href = '/dashboard';
-	// 	} catch (error: any) {
-	// 		errorMessage = error.message;
-	// 		toast.open();
-	// 	}
-	// 	isLoading = false;
-	// };
 </script>
 
 <svelte:head>
@@ -44,9 +21,8 @@
 
 <Title>Register</Title>
 <Content>
-	<form class="flex flex-col"  method="post" use:enhance>
+	<form class="flex flex-col" method="post" use:enhance>
 		<CustomTextInput
-			bind:value={formData.email}
 			label="Email"
 			name="email"
 			type="email"
@@ -58,7 +34,6 @@
 
 		<div class="h-4" />
 		<CustomTextInput
-			bind:value={formData.password}
 			label="Password"
 			icon="password"
 			type="password"
@@ -70,7 +45,6 @@
 
 		<div class="h-4" />
 		<CustomTextInput
-			bind:value={formData.confirmPassword}
 			label="Confirm Password"
 			icon="password"
 			type="password"
