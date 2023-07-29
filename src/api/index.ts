@@ -27,3 +27,39 @@ export const createBudget = async (
 		throw error;
 	}
 };
+
+export const fetchDefaultBudget = async (
+	id: number,
+	token: string
+): Promise<IBudget> => {
+	const res = await fetch(`${API_URL}/budgets/budget/${id}`, {
+		method: 'GET',
+		credentials: 'include',
+		headers: {
+			Accept: 'application/json',
+			'content-type': 'application/json',
+			Authorization: token,
+		},
+	});
+	const data = await res.json();
+
+	return data;
+};
+
+export const fetchBudgets = async (
+	userId: number,
+	token: string
+): Promise<IBudget> => {
+	const res = await fetch(`${API_URL}/budgets/${userId}`, {
+		method: 'GET',
+		credentials: 'include',
+		headers: {
+			Accept: 'application/json',
+			'content-type': 'application/json',
+			Authorization: token,
+		},
+	});
+	const data = await res.json();
+
+	return data;
+};

@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import Menu from '@smui/menu';
 	import CreateBudgetModal from '../modals/CreateBudgetModal.svelte';
+	import type { IBudget } from '../../interfaces/budget';
 
 	let menu: Menu;
 	let clicked = 'nothing yet';
@@ -12,10 +13,12 @@
 	function toggleOpen(value: boolean) {
 		open = value;
 	}
-	console.log($page.data);
-	const defaultBudgetId = $page.data.user.defaultBudgetId;
+
+	const defaultBudget: IBudget = $page.data.defaultBudget;
+	const budgets: IBudget[] = $page.data.budgets;
+
 	function createOrOpen() {
-		if (!defaultBudgetId) {
+		if (!defaultBudget) {
 			toggleOpen(true);
 		} else {
 			menu.setOpen(true);
@@ -26,21 +29,18 @@
 <section class="mb-8">
 	<div class="text-center mb-4">{$page.data.user.email}</div>
 	<Button on:click={createOrOpen} style="background-color: white; width: 100%">
-		<Label>{defaultBudgetId ? defaultBudgetId : 'Create Budget'}</Label>
+		<Label>{defaultBudget ? defaultBudget.name : 'Create Budget'}</Label>
 	</Button>
 </section>
 
 <Menu bind:this={menu}>
 	<List>
-		<Item on:SMUI:action={() => (clicked = 'Cut')}>
-			<Text>Cut</Text>
-		</Item>
-		<Item on:SMUI:action={() => (clicked = 'Copy')}>
-			<Text>Copy</Text>
-		</Item>
-		<Item on:SMUI:action={() => (clicked = 'Paste')}>
-			<Text>Paste</Text>
-		</Item>
+		{#each budgets as budget}
+			<Item on:SMUI:action={() => (clicked = 'Cut')}>
+				<Text>{budget.name}</Text>
+			</Item>
+		{/each}
+
 		<Separator />
 		<Item on:SMUI:action={() => toggleOpen(true)}>
 			<Text>Create Budget</Text>

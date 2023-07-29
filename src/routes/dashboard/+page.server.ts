@@ -2,16 +2,21 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { IBudget } from '../../interfaces/budget';
 import type { ECurrency } from '../../utils/enums/currency.enum';
-import { createBudget } from '../../api';
+import { createBudget, fetchBudgets, fetchDefaultBudget } from '../../api';
 
-export async function load({ locals }) {
+export async function load({ locals, cookies }) {
 	const user = locals.user;
 
 	if (!user) {
 		throw redirect(307, '/auth/login');
 	}
+
+	const token = cookies.get('AuthorizationToken');
+
 	return {
 		user,
+		defaultBudget: fetchDefaultBudget(user.defaultBudgetId, token as string),
+		budgets: fetchBudgets(user.id, token as string),
 	};
 }
 
