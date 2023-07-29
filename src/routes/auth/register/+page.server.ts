@@ -29,18 +29,25 @@ export const actions: Actions = {
 		errors = await validateForm(signupSchema, userData);
 		if (Object.keys(errors).length > 0) {
 			return fail(400, {
-				error: errors
+				error: errors,
 			});
 		}
 
 		try {
-			await register(userData);
-			throw redirect(302, '/dashboard');
+			const res = await register(userData);
+
+			// Set the cookie
+			event.cookies.set('AuthorizationToken', `Bearer ${res.access_token}`, {
+				httpOnly: true,
+				path: '/',
+				secure: true,
+				sameSite: 'strict',
+				maxAge: 60 * 60 * 24, // 1 day
+			});
 		} catch (error) {
-			console.log({ error });
-			return fail(500, {
-				error
+			return fail(401, {
+				error,
 			});
 		}
-	}
+	},
 };
