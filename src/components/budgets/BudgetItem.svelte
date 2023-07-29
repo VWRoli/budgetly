@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card, { Content } from '@smui/card';
-	import List, { Group, Subheader } from '@smui/list';
+	import List from '@smui/list';
 	import BudgetItemRow from './BudgetItemRow.svelte';
 	import BudgetItemHeader from './BudgetItemHeader.svelte';
 </script>

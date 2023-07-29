@@ -7,6 +7,7 @@
 	import { accounts } from '../data/accounts';
 	import { capitalizeFirstLetter } from '../utils/helpers';
 	import CreateAccountModal from './modals/CreateAccountModal.svelte';
+	import Button, { Label } from '@smui/button';
 
 	export let itemClick = (label: string) => {};
 
@@ -21,44 +22,65 @@
 
 <Drawer>
 	<Content>
-		<Paper color="primary" style="height: 100%;">
-			<List singleSelection selectedIndex={selectionIndex}>
-				{#each menuItems as item (item.id)}
-					<Item
-						on:SMUI:action={() => (selectionIndex = item.id)}
-						selected={selectionIndex === item.id}
-						on:click={() => itemClick(item.label)}
-					>
-						<Text><span class="">{capitalizeFirstLetter(item.label)}</span></Text>
-					</Item>
-				{/each}
-			</List>
-
-			<div class="bg-white rounded-md">
-				<Paper color="primary" variant="outlined" class="mdc-theme--primary">
-					<Title>
-						<div class="flex items-center justify-between">
-							<span class="text-black">Accounts</span>
-							<IconButton on:click={() => (open = true)} style="color: black" class="material-icons"
-								>add</IconButton
-							>
-						</div>
-					</Title>
-					<List singleSelection selectedIndex={accountSelectionIndex}>
-						{#each accounts as account (account.id)}
+		<Paper color="primary" style="height: 100vh;">
+			<div class="flex flex-col justify-between h-full">
+				<div>
+					<List singleSelection selectedIndex={selectionIndex}>
+						{#each menuItems as item (item.id)}
 							<Item
-								on:SMUI:action={() => (accountSelectionIndex = account.id)}
-								selected={accountSelectionIndex === account.id}
-								on:click={() => itemClick(account.name)}
+								on:SMUI:action={() => (selectionIndex = item.id)}
+								selected={selectionIndex === item.id}
+								on:click={() => itemClick(item.label)}
 							>
-								<div class="flex items-center justify-between w-full">
-									<Text>{account.name}</Text>
-									<Text>{account.balance}</Text>
-								</div>
+								<Text>
+									<span>{capitalizeFirstLetter(item.label)}</span>
+								</Text>
 							</Item>
 						{/each}
 					</List>
-				</Paper>
+
+					<div class="bg-white rounded-md">
+						<Paper
+							color="primary"
+							variant="outlined"
+							class="mdc-theme--primary"
+						>
+							<Title>
+								<div class="flex items-center justify-between">
+									<span class="text-black">Accounts</span>
+									<IconButton
+										on:click={() => (open = true)}
+										style="color: black"
+										class="material-icons">add</IconButton
+									>
+								</div>
+							</Title>
+							<List singleSelection selectedIndex={accountSelectionIndex}>
+								{#each accounts as account (account.id)}
+									<Item
+										on:SMUI:action={() => (accountSelectionIndex = account.id)}
+										selected={accountSelectionIndex === account.id}
+										on:click={() => itemClick(account.name)}
+									>
+										<div class="flex items-center justify-between w-full">
+											<Text>{account.name}</Text>
+											<Text>{account.balance}</Text>
+										</div>
+									</Item>
+								{/each}
+							</List>
+						</Paper>
+					</div>
+				</div>
+				<form action="?/logout" method="post">
+					<Button
+						color="primary"
+						style="background-color: white; width: 100%"
+						type="submit"
+					>
+						<Label>Log out</Label>
+					</Button>
+				</form>
 			</div>
 		</Paper>
 	</Content>

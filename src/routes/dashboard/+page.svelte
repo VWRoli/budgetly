@@ -5,9 +5,7 @@
 	import Reports from '../../components/screens/Reports.svelte';
 	import CustomDrawer from '../../components/CustomDrawer.svelte';
 	import { menuItems } from '../../constants/menuItems';
-	
-	export let data;
-	
+
 	let clicked = menuItems[0].label;
 
 	function itemClick(label: string) {
@@ -19,9 +17,8 @@
 	<title>Dashboard</title>
 </svelte:head>
 
-<main class="flex h-screen">
+<main class="flex h-screen overflow-hidden">
 	<CustomDrawer {itemClick} />
-	Hello {data.user.email}
 	<AppContent>
 		{#if clicked === 'budget'}
 			<Budget />
