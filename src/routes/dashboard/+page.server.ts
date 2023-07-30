@@ -1,15 +1,10 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import type { IBudget } from '../../interfaces/budget';
+import type { IBudgetDto } from '../../interfaces/budget';
 import type { ECurrency } from '../../utils/enums/currency.enum';
-import {
-	createAccount,
-	createBudget,
-	fetchAccounts,
-	fetchBudgets,
-	fetchDefaultBudget,
-} from '../../api';
-import type { IAccount } from '../../interfaces/account';
+import { create, fetchData } from '../../api';
+import type { IAccountDto } from '../../interfaces/account';
+import type { ICategoryDto } from '../../interfaces/category';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -22,9 +17,16 @@ export async function load({ locals, cookies }) {
 
 	return {
 		user,
-		defaultBudget: fetchDefaultBudget(user.defaultBudgetId, token as string),
-		budgets: fetchBudgets(user.id, token as string),
-		accounts: fetchAccounts(user.defaultBudgetId, token as string),
+		defaultBudget: fetchData(
+			`/budgets/budget/${user.defaultBudgetId}`,
+			token as string
+		),
+		budgets: fetchData(`/budgets/${user.id}`, token as string),
+		accounts: fetchData(`/accounts/${user.defaultBudgetId}`, token as string),
+		categories: fetchData(
+			`/categories/${user.defaultBudgetId}`,
+			token as string
+		),
 	};
 }
 
@@ -41,32 +43,48 @@ export const actions: Actions = {
 			name: string;
 			currency: ECurrency;
 		};
-		const budgetData: IBudget = {
+		const budgetData: IBudgetDto = {
 			name,
 			currency,
 			userId: locals.user?.id as number,
 		};
 		const token = cookies.get('AuthorizationToken');
 
-		const budget = await createBudget(budgetData, token as string);
+		const budget = await create('/budgets', budgetData, token as string);
 
 		locals.defaultBudget = budget;
 	},
 	createAccount: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
-		console.log({ formData });
+
 		const { name } = formData as {
 			name: string;
 		};
-		console.log({ locals });
-		const accountData: IAccount = {
+
+		const accountData: IAccountDto = {
 			name,
 			balance: 0,
 			budgetId: locals.user?.defaultBudgetId as number,
 		};
-		console.log({ accountData });
+
 		const token = cookies.get('AuthorizationToken');
 
-		await createAccount(accountData, token as string);
+		await create('/accounts', accountData, token as string);
+	},
+	createCategory: async ({ request, locals, cookies }) => {
+		const formData = Object.fromEntries(await request.formData());
+
+		const { title } = formData as {
+			title: string;
+		};
+
+		const categoryData: ICategoryDto = {
+			title,
+			budgetId: locals.user?.defaultBudgetId as number,
+		};
+
+		const token = cookies.get('AuthorizationToken');
+
+		await create('/categories', categoryData, token as string);
 	},
 };

@@ -3,6 +3,9 @@
 	import Paper from '@smui/paper';
 	import CreateCategoryModal from '../modals/CreateCategoryModal.svelte';
 	import BudgetItem from '../budgets/BudgetItem.svelte';
+	import { page } from '$app/stores';
+
+	const categories = $page.data.categories;
 
 	let open = false;
 
@@ -18,11 +21,21 @@
 		</Button>
 	</div>
 	<Paper variant="outlined" color="primary">
-		<section class="flex flex-col gap-5">
-			<BudgetItem />
-			<BudgetItem />
-			<BudgetItem />
-			<BudgetItem />
+		<section class="flex flex-col gap-5 min-h-[500px]">
+			{#each categories as category}
+				<BudgetItem {category} />
+			{:else}
+				<div class="flex justify-center items-center flex-col h-[500px]">
+					<div
+						class="mdc-typography--headline6 flex justify-center items-center mb-4"
+					>
+						No items in this list
+					</div>
+					<Button variant="unelevated" on:click={() => (open = true)}>
+						<Label>Create category</Label>
+					</Button>
+				</div>
+			{/each}
 		</section>
 	</Paper>
 </div>
