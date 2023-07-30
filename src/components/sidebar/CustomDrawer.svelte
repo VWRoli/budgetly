@@ -4,14 +4,16 @@
 	import IconButton from '@smui/icon-button';
 	import Paper, { Title } from '@smui/paper';
 	import { menuItems } from '../../constants/menuItems';
-	import { accounts } from '../../data/accounts';
 	import { capitalizeFirstLetter } from '../../utils/helpers';
 	import CreateAccountModal from '../modals/CreateAccountModal.svelte';
 	import Button, { Label } from '@smui/button';
 	import BudgetMenu from './BudgetMenu.svelte';
+	import { page } from '$app/stores';
+	import type { IAccount } from '../../interfaces/account';
 
 	export let itemClick = (label: string) => {};
 
+	const accounts: IAccount[] = $page.data.accounts;
 	let selectionIndex = 1;
 	let accountSelectionIndex = 0;
 	let open = false;
@@ -60,7 +62,8 @@
 							<List singleSelection selectedIndex={accountSelectionIndex}>
 								{#each accounts as account (account.id)}
 									<Item
-										on:SMUI:action={() => (accountSelectionIndex = account.id)}
+										on:SMUI:action={() =>
+											(accountSelectionIndex = parseInt(account.id + ''))}
 										selected={accountSelectionIndex === account.id}
 										on:click={() => itemClick(account.name)}
 									>

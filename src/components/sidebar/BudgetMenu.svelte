@@ -2,12 +2,14 @@
 	import Button, { Label } from '@smui/button';
 	import List, { Item, Separator, Text } from '@smui/list';
 	import { page } from '$app/stores';
+	import IconButton from '@smui/icon-button';
+	import Tooltip, { Wrapper } from '@smui/tooltip';
 	import Menu from '@smui/menu';
 	import CreateBudgetModal from '../modals/CreateBudgetModal.svelte';
 	import type { IBudget } from '../../interfaces/budget';
+	import { MAX_ALLOWED_BUDGETS } from '../../constants/variables';
 
 	let menu: Menu;
-	let clicked = 'nothing yet';
 	let open = false;
 
 	function toggleOpen(value: boolean) {
@@ -16,6 +18,7 @@
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const budgets: IBudget[] = $page.data.budgets;
+	const maxBudgets = budgets.length === MAX_ALLOWED_BUDGETS;
 
 	function createOrOpen() {
 		if (!defaultBudget) {
@@ -29,22 +32,42 @@
 <section class="mb-8">
 	<div class="text-center mb-4">{$page.data.user.email}</div>
 	<Button on:click={createOrOpen} style="background-color: white; width: 100%">
-		<Label>{defaultBudget ? defaultBudget.name : 'Create Budget'}</Label>
+		{#if defaultBudget}
+			<Label>{defaultBudget.name} ({defaultBudget.currency})</Label>
+		{:else}
+			<Label>Create Budget</Label>
+		{/if}
 	</Button>
 </section>
 
-<Menu bind:this={menu}>
+<Menu bind:this={menu} style="width: 200px">
 	<List>
 		{#each budgets as budget}
-			<Item on:SMUI:action={() => (clicked = 'Cut')}>
-				<Text>{budget.name}</Text>
+			<Item on:SMUI:action={() => {}}>
+				<div class="flex justify-between items-center w-full">
+					<Text>{budget.name}</Text>
+					<Text>({budget.currency})</Text>
+					<IconButton
+						size="button"
+						on:click={() => (open = true)}
+						class="material-icons">edit</IconButton
+					>
+				</div>
 			</Item>
 		{/each}
 
 		<Separator />
-		<Item on:SMUI:action={() => toggleOpen(true)}>
-			<Text>Create Budget</Text>
-		</Item>
+		<Wrapper>
+			<Item disabled={maxBudgets} on:SMUI:action={() => toggleOpen(true)}>
+				<Text>Create Budget</Text>
+			</Item>
+			{#if maxBudgets}
+				<!-- content here -->
+				<Tooltip xPos="center"
+					>You have created the maxuimum allowed budgets ({MAX_ALLOWED_BUDGETS})</Tooltip
+				>
+			{/if}
+		</Wrapper>
 	</List>
 </Menu>
 

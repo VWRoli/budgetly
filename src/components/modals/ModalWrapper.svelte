@@ -12,7 +12,7 @@
 
 <Dialog bind:open on:SMUIDialog:closed={() => toggleOpen(false)}>
 	<Title>{title}</Title>
-	<form {action} method="post" use:enhance>
+	<form {action} method="post">
 		<Content>
 			<slot />
 		</Content>
