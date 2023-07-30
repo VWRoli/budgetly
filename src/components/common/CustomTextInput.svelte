@@ -3,7 +3,7 @@
 	import Icon from '@smui/textfield/icon';
 	import HelperText from '@smui/textfield/helper-text';
 
-	export let value = '';
+	export let value: number | string = '';
 	export let name = '';
 	export let error = '';
 	export let label = '';
@@ -13,7 +13,15 @@
 	export let disabled = false;
 </script>
 
-<Textfield input$name={name} invalid={error ? true : false} {type} variant="outlined" bind:value {label} {disabled}>
+<Textfield
+	input$name={name}
+	invalid={error ? true : false}
+	{type}
+	variant="outlined"
+	bind:value
+	{label}
+	{disabled}
+>
 	<Icon class="material-icons" slot="leadingIcon">{icon}</Icon>
 	<HelperText slot="helper">
 		{#if helperText && !error}

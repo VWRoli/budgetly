@@ -1,6 +1,7 @@
 export interface ISubCategoryDto {
 	title: string;
 	budgetId: number;
+	categoryId: number;
 }
 
 export interface ISubCategory extends ISubCategoryDto {

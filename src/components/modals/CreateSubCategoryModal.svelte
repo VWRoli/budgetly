@@ -1,29 +1,24 @@
 <script lang="ts">
-	import Textfield from '@smui/textfield';
-	import type { ISubCategory } from '../../interfaces/subCategory';
 	import ModalWrapper from './ModalWrapper.svelte';
+	import CustomTextInput from '../common/CustomTextInput.svelte';
 
 	export let open = false;
+	export let id: number;
 
 	export let toggleOpen = (value: boolean) => {};
-
-	const subCategory: ISubCategory = {
-		title: '',
-		budgetId: 1,
-		balance: 0,
-		budgeted: 0,
-		outflows: 0
-	};
-	const handleCreate = () => {
-		console.log(subCategory);
-		toggleOpen(false);
-	};
+	const action = '?/createSubCategory';
 </script>
 
-<ModalWrapper title="Create Subcategory" {open} {handleCreate} {toggleOpen}>
+<ModalWrapper title="Create Subcategory" {open} {toggleOpen} {action}>
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<Textfield variant="outlined" bind:value={subCategory.title} label="Name" />
+			<CustomTextInput label="Title" name="title" type="text" />
+			<CustomTextInput
+				label="CategoryID"
+				name="categoryId"
+				type="number"
+				bind:value={id}
+			/>
 		</div>
 	</slot>
 </ModalWrapper>

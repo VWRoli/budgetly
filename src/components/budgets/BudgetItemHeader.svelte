@@ -62,4 +62,4 @@
 		</div>
 	</div>
 </Item>
-<CreateSubCategoryModal {open} {toggleOpen} />
+<CreateSubCategoryModal {open} {toggleOpen} id={category.id} />

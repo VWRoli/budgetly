@@ -5,6 +5,7 @@ import type { ECurrency } from '../../utils/enums/currency.enum';
 import { create, fetchData } from '../../api';
 import type { IAccountDto } from '../../interfaces/account';
 import type { ICategoryDto } from '../../interfaces/category';
+import type { ISubCategoryDto } from '../../interfaces/subCategory';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -86,5 +87,23 @@ export const actions: Actions = {
 		const token = cookies.get('AuthorizationToken');
 
 		await create('/categories', categoryData, token as string);
+	},
+	createSubCategory: async ({ request, locals, cookies }) => {
+		const formData = Object.fromEntries(await request.formData());
+
+		const { title, categoryId } = formData as {
+			title: string;
+			categoryId: string;
+		};
+
+		const subCategoryData: ISubCategoryDto = {
+			title,
+			categoryId: +categoryId,
+			budgetId: locals.user?.defaultBudgetId as number,
+		};
+
+		const token = cookies.get('AuthorizationToken');
+
+		await create('/sub-categories', subCategoryData, token as string);
 	},
 };
