@@ -4,16 +4,19 @@
 	import IconButton from '@smui/icon-button';
 	import Paper, { Title } from '@smui/paper';
 	import { menuItems } from '../../constants/menuItems';
-	import { capitalizeFirstLetter } from '../../utils/helpers';
+	import { capitalizeFirstLetter, formatCurrency } from '../../utils/helpers';
 	import CreateAccountModal from '../modals/CreateAccountModal.svelte';
 	import Button, { Label } from '@smui/button';
 	import BudgetMenu from './BudgetMenu.svelte';
 	import { page } from '$app/stores';
 	import type { IAccount } from '../../interfaces/account';
+	import type { IBudget } from '../../interfaces/budget';
 
 	export let itemClick = (label: string) => {};
 
+	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const accounts: IAccount[] = $page.data.accounts;
+
 	let selectionIndex = 1;
 	let accountSelectionIndex = 0;
 	let open = false;
@@ -69,7 +72,13 @@
 									>
 										<div class="flex items-center justify-between w-full">
 											<Text>{account.name}</Text>
-											<Text>{account.balance}</Text>
+											<Text
+												>{formatCurrency(
+													account.balance,
+													defaultBudget.locale,
+													defaultBudget.currency
+												)}</Text
+											>
 										</div>
 									</Item>
 								{/each}

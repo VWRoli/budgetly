@@ -62,7 +62,6 @@
 				<Text>Create Budget</Text>
 			</Item>
 			{#if maxBudgets}
-				<!-- content here -->
 				<Tooltip xPos="center"
 					>You have created the maxuimum allowed budgets ({MAX_ALLOWED_BUDGETS})</Tooltip
 				>
