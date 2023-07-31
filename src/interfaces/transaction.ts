@@ -3,9 +3,10 @@ export interface ITransactionDto {
 	accountId: number;
 	categoryId: number;
 	subCategoryId: number;
+	budgetId: number;
 	date: Date;
 	inflow: null | number;
-	outlfow: null | number;
+	outflow: null | number;
 }
 
 export interface ITransaction extends ITransactionDto {

@@ -2,8 +2,8 @@
 	import Paper from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import TransactionCard from '../transactions/TransactionCard.svelte';
-	import CreateTransactionModal from '../modals/CreateTransactionModal.svelte';
-	import CreateTransferModal from '../modals/CreateTransferModal.svelte';
+	import TransactionModal from '../modals/TransactionModal.svelte';
+	import TransferModal from '../modals/TransferModal.svelte';
 
 	let createTxnOpen = false;
 	let createTransferOpen = false;
@@ -35,5 +35,5 @@
 	</Paper>
 </div>
 
-<CreateTransactionModal open={createTxnOpen} toggleOpen={toggleOpenTxn} />
-<CreateTransferModal open={createTransferOpen} toggleOpen={toggleOpenTransfer} />
+<TransactionModal open={createTxnOpen} toggleOpen={toggleOpenTxn} />
+<TransferModal open={createTransferOpen} toggleOpen={toggleOpenTransfer} />

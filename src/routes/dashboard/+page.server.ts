@@ -6,6 +6,7 @@ import { create, fetchData } from '../../api';
 import type { IAccountDto } from '../../interfaces/account';
 import type { ICategoryDto } from '../../interfaces/category';
 import type { ISubCategoryDto } from '../../interfaces/subCategory';
+import type { ITransactionDto } from '../../interfaces/transaction';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -26,6 +27,10 @@ export async function load({ locals, cookies }) {
 		accounts: fetchData(`/accounts/${user.defaultBudgetId}`, token as string),
 		categories: fetchData(
 			`/categories/${user.defaultBudgetId}`,
+			token as string
+		),
+		transactions: fetchData(
+			`/transactions/${user.defaultBudgetId}`,
 			token as string
 		),
 	};
@@ -105,5 +110,44 @@ export const actions: Actions = {
 		const token = cookies.get('AuthorizationToken');
 
 		await create('/sub-categories', subCategoryData, token as string);
+	},
+
+	createTransaction: async ({ request, locals, cookies }) => {
+		console.log('run');
+		const formData = Object.fromEntries(await request.formData());
+		console.log({ formData });
+		console.log(formData.date);
+		const {
+			payee,
+			accountId,
+			categoryId,
+			subCategoryId,
+			date,
+			inflow,
+			outflow,
+		} = formData as {
+			payee: string;
+			accountId: string;
+			categoryId: string;
+			subCategoryId: string;
+			date: string;
+			inflow: string;
+			outflow: string;
+		};
+
+		const transactionData: ITransactionDto = {
+			payee,
+			accountId: +accountId,
+			categoryId: +categoryId,
+			subCategoryId: +subCategoryId,
+			date: new Date(date),
+			inflow: inflow ? +inflow : null,
+			outflow: outflow ? +outflow : null,
+			budgetId: locals.user?.defaultBudgetId as number,
+		};
+		console.log({ transactionData });
+		const token = cookies.get('AuthorizationToken');
+
+		await create('/transactions', transactionData, token as string);
 	},
 };

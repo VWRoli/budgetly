@@ -2,7 +2,7 @@
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
-	import CustomTextInput from '../../../components/common/CustomTextInput.svelte';
+	import STextInput from '../../../components/common/STextInput.svelte';
 	import Toast from '../../../components/common/Toast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
@@ -22,7 +22,7 @@
 <Title>Register</Title>
 <Content>
 	<form class="flex flex-col" method="post" use:enhance>
-		<CustomTextInput
+		<STextInput
 			label="Email"
 			name="email"
 			type="email"
@@ -33,7 +33,7 @@
 		/>
 
 		<div class="h-4" />
-		<CustomTextInput
+		<STextInput
 			label="Password"
 			icon="password"
 			type="password"
@@ -44,7 +44,7 @@
 		/>
 
 		<div class="h-4" />
-		<CustomTextInput
+		<STextInput
 			label="Confirm Password"
 			icon="password"
 			type="password"

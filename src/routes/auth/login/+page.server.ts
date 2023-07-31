@@ -25,7 +25,7 @@ export const actions: Actions = {
 		errors = await validateForm(loginSchema, userData);
 		if (Object.keys(errors).length > 0) {
 			return fail(400, {
-				error: errors
+				error: errors,
 			});
 		}
 
@@ -34,16 +34,16 @@ export const actions: Actions = {
 
 			// Set the cookie
 			event.cookies.set('AuthorizationToken', `Bearer ${res.access_token}`, {
-				httpOnly: true,
+				httpOnly: false, //todo
 				path: '/',
 				secure: true,
 				sameSite: 'strict',
-				maxAge: 60 * 60 * 24 // 1 day
+				maxAge: 60 * 60 * 24, // 1 day
 			});
 		} catch (error) {
 			return fail(401, {
-				error
+				error,
 			});
 		}
-	}
+	},
 };

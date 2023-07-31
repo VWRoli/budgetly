@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ModalWrapper from './ModalWrapper.svelte';
-	import CustomTextInput from '../common/CustomTextInput.svelte';
+	import STextInput from '../common/STextInput.svelte';
 
 	export let open = false;
 
@@ -12,7 +12,7 @@
 <ModalWrapper title="Create category" {open} {toggleOpen} {action}>
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<CustomTextInput label="Title" name="title" type="text" />
+			<STextInput label="Title" name="title" type="text" />
 		</div>
 	</slot>
 </ModalWrapper>

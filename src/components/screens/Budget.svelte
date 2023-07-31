@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button, { Label } from '@smui/button';
 	import Paper from '@smui/paper';
-	import CreateCategoryModal from '../modals/CreateCategoryModal.svelte';
+	import CategoryModal from '../modals/CategoryModal.svelte';
 	import BudgetItem from '../budgets/BudgetItem.svelte';
 	import { page } from '$app/stores';
 
@@ -39,4 +39,4 @@
 		</section>
 	</Paper>
 </div>
-<CreateCategoryModal {open} {toggleOpen} />
+<CategoryModal {open} {toggleOpen} />

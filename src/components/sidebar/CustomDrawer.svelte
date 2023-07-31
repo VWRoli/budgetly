@@ -5,7 +5,7 @@
 	import Paper, { Title } from '@smui/paper';
 	import { menuItems } from '../../constants/menuItems';
 	import { capitalizeFirstLetter, formatCurrency } from '../../utils/helpers';
-	import CreateAccountModal from '../modals/CreateAccountModal.svelte';
+	import AccountModal from '../modals/AccountModal.svelte';
 	import Button, { Label } from '@smui/button';
 	import BudgetMenu from './BudgetMenu.svelte';
 	import { page } from '$app/stores';
@@ -99,4 +99,4 @@
 		</Paper>
 	</Content>
 </Drawer>
-<CreateAccountModal {open} {toggleOpen} />
+<AccountModal {open} {toggleOpen} />

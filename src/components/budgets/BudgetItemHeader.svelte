@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IconButton from '@smui/icon-button';
 	import { Item } from '@smui/list';
-	import CreateSubCategoryModal from '../modals/CreateSubCategoryModal.svelte';
+	import SubCategoryModal from '../modals/SubCategoryModal.svelte';
 	import type { ICategory } from '../../interfaces/category';
 	import { formatCurrency } from '../../utils/helpers';
 	import { page } from '$app/stores';
@@ -62,4 +62,4 @@
 		</div>
 	</div>
 </Item>
-<CreateSubCategoryModal {open} {toggleOpen} id={category.id} />
+<SubCategoryModal {open} {toggleOpen} id={category.id} />

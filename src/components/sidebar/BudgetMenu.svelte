@@ -5,7 +5,7 @@
 	import IconButton from '@smui/icon-button';
 	import Tooltip, { Wrapper } from '@smui/tooltip';
 	import Menu from '@smui/menu';
-	import CreateBudgetModal from '../modals/CreateBudgetModal.svelte';
+	import BudgetModal from '../modals/BudgetModal.svelte';
 	import type { IBudget } from '../../interfaces/budget';
 	import { MAX_ALLOWED_BUDGETS } from '../../constants/variables';
 
@@ -70,4 +70,4 @@
 	</List>
 </Menu>
 
-<CreateBudgetModal {open} {toggleOpen} />
+<BudgetModal {open} {toggleOpen} />

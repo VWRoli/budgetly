@@ -38,7 +38,7 @@ export const actions: Actions = {
 
 			// Set the cookie
 			event.cookies.set('AuthorizationToken', `Bearer ${res.access_token}`, {
-				httpOnly: true,
+				httpOnly: false, //todo
 				path: '/',
 				secure: true,
 				sameSite: 'strict',
