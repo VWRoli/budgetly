@@ -35,3 +35,13 @@ export const formatCurrency = (
 		maximumFractionDigits: locale === ELocale.HU ? 0 : 2,
 	}).format(amount);
 };
+
+export const formatDate = (date: Date, locale: ELocale) => {
+	let options: Intl.DateTimeFormatOptions = {
+		year: 'numeric',
+		month: 'numeric',
+		day: 'numeric',
+	};
+
+	return new Intl.DateTimeFormat(locale, options).format(new Date(date));
+};

@@ -23,11 +23,11 @@
 	{disabled}
 >
 	<Icon class="material-icons" slot="leadingIcon">{icon}</Icon>
-	<HelperText slot="helper">
-		{#if helperText && !error}
+	{#if helperText && !error}
+		<HelperText slot="helper">
 			{helperText}
-		{/if}
-	</HelperText>
+		</HelperText>
+	{/if}
 </Textfield>
 {#if error}
 	<span class="text-red-700 text-xs text-left">{error}</span>

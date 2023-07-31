@@ -48,35 +48,36 @@
 <ModalWrapper title="Create transaction" {open} {toggleOpen} {action}>
 	<slot>
 		<div class="min-h-[500px] flex flex-col gap-5">
-			<SSelect options={accountOptions} name="accountId" label="Account" />
-
+			<SSelect
+				placeholder="Account"
+				options={accountOptions}
+				name="accountId"
+			/>
 			<STextInput label="Payee" name="payee" type="text" />
-			<!-- <Autocomplete
-				options={['Store']}
-				label="Payee"
-				textfield$variant="outlined"
-			/> -->
-			<div class="flex">
+
+			<div class="flex gap-4">
 				<STextInput label="Inflow" name="inflow" type="number" />
 				<STextInput label="Outlfow" name="outflow" type="number" />
 			</div>
-			<div>
+			<div class="flex gap-4">
 				<SSelect
 					bind:value={selectedCategory}
 					options={categoryOptions}
 					name="categoryId"
-					label="Category"
+					placeholder="Category"
 					changeHandler={fetchSubCategories}
+					className="flex-1"
 				/>
 
 				<SSelect
 					disabled={!subCategoryOptions.length}
 					options={subCategoryOptions}
 					name="subCategoryId"
-					label="SubCategory"
+					placeholder="SubCategory"
+					className="flex-1"
 				/>
 			</div>
-			<DateInput name="date" bind:value={date} />
+			<DateInput bind:value={date} />
 			<input type="text" name="date" bind:value={date} class="hidden" />
 		</div>
 	</slot>

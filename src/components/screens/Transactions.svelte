@@ -4,6 +4,9 @@
 	import TransactionCard from '../transactions/TransactionCard.svelte';
 	import TransactionModal from '../modals/TransactionModal.svelte';
 	import TransferModal from '../modals/TransferModal.svelte';
+	import { page } from '$app/stores';
+
+	const transactions = $page.data.transactions;
 
 	let createTxnOpen = false;
 	let createTransferOpen = false;
@@ -27,10 +30,19 @@
 	</div>
 	<Paper variant="outlined" color="primary">
 		<section class="flex flex-col gap-5 h-full">
-			<TransactionCard />
-			<TransactionCard />
-			<TransactionCard />
-			<TransactionCard />
+			{#each transactions as transaction}
+				<TransactionCard {transaction} />
+			{:else}
+				<div class="flex justify-center items-center flex-col h-[500px]">
+					<div
+						class="mdc-typography--headline6 flex justify-center items-center mb-4"
+					>
+						No transactions yet.
+					</div>
+					<Button variant="unelevated" on:click={() => (createTxnOpen = true)}>
+						<Label>Create Transaction</Label>
+					</Button>
+				</div>{/each}
 		</section>
 	</Paper>
 </div>

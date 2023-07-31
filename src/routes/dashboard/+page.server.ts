@@ -30,7 +30,7 @@ export async function load({ locals, cookies }) {
 			token as string
 		),
 		transactions: fetchData(
-			`/transactions/${user.defaultBudgetId}`,
+			`/transactions/budget/${user.defaultBudgetId}`,
 			token as string
 		),
 	};
@@ -106,17 +106,15 @@ export const actions: Actions = {
 			categoryId: +categoryId,
 			budgetId: locals.user?.defaultBudgetId as number,
 		};
-
+		console.log(subCategoryData);
 		const token = cookies.get('AuthorizationToken');
 
 		await create('/sub-categories', subCategoryData, token as string);
 	},
 
 	createTransaction: async ({ request, locals, cookies }) => {
-		console.log('run');
 		const formData = Object.fromEntries(await request.formData());
-		console.log({ formData });
-		console.log(formData.date);
+
 		const {
 			payee,
 			accountId,
@@ -145,7 +143,6 @@ export const actions: Actions = {
 			outflow: outflow ? +outflow : null,
 			budgetId: locals.user?.defaultBudgetId as number,
 		};
-		console.log({ transactionData });
 		const token = cookies.get('AuthorizationToken');
 
 		await create('/transactions', transactionData, token as string);
