@@ -28,7 +28,11 @@
 			<Label>Create Transaction</Label>
 		</Button>
 	</div>
-	<Paper variant="outlined" color="primary">
+	<Paper
+		style="overflow-y: scroll; max-height: 80%"
+		variant="outlined"
+		color="primary"
+	>
 		<section class="flex flex-col gap-5 h-full">
 			{#each transactions as transaction}
 				<TransactionCard {transaction} />

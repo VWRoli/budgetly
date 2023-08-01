@@ -1,14 +1,9 @@
 <script lang="ts">
 	import Card from '@smui/card';
-	import IconButton from '@smui/icon-button';
 	import Paper from '@smui/paper';
 	import Menu from '@smui/menu';
-	import Chip, {
-		Set,
-		LeadingIcon,
-		TrailingIcon,
-		Text as ChipText,
-	} from '@smui/chips';
+	import IconButton from '@smui/icon-button';
+	import Chip, { Set, Text as ChipText } from '@smui/chips';
 	import List, { Item, Separator, Text } from '@smui/list';
 	import type { ITransaction } from '../../interfaces/transaction';
 	import { formatCurrency, formatDate } from '../../utils/helpers';
@@ -39,14 +34,22 @@
 				</div>
 				<div>
 					<div class="mdc-typography--headline5">{transaction.payee}</div>
-					<Set
-						chips={[transaction.category.title, transaction.subCategory.title]}
-						let:chip
-					>
-						<Chip {chip} shouldRemoveOnTrailingIconClick={false}>
-							<ChipText>{chip}</ChipText>
-						</Chip>
-					</Set>
+
+					{#if transaction.category?.title}
+						<Set
+							chips={[
+								transaction.category.title,
+								transaction.subCategory.title,
+							]}
+							let:chip
+						>
+							<Chip {chip} shouldRemoveOnTrailingIconClick={false}>
+								<ChipText>{chip}</ChipText>
+							</Chip>
+						</Set>
+					{:else}
+						<IconButton class="material-icons" disabled>star_border</IconButton>
+					{/if}
 				</div>
 			</article>
 			<div class="text-center">
