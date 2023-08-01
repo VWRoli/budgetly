@@ -4,9 +4,10 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#ff3e00'
-			}
-		}
+				primary: '#ff3e00',
+				secondary: 'rgba(0, 0, 0, 0.87)',
+			},
+		},
 	},
-	plugins: []
+	plugins: [],
 };

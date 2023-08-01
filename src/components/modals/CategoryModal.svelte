@@ -12,7 +12,7 @@
 <ModalWrapper title="Create category" {open} {toggleOpen} {action}>
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<STextInput label="Title" name="title" type="text" />
+			<STextInput placeholder="Title" name="title" type="text" />
 		</div>
 	</slot>
 </ModalWrapper>

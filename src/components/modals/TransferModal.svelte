@@ -36,8 +36,8 @@
 			name="toAccount"
 		/>
 		<div class="flex gap-4">
-			<STextInput label="Inflow" name="inflow" type="number" />
-			<STextInput label="Outlfow" name="outflow" type="number" />
+			<STextInput placeholder="Inflow" name="inflow" type="number" />
+			<STextInput placeholder="Outlfow" name="outflow" type="number" />
 		</div>
 		<DateInput bind:value={date} />
 		<input type="text" name="date" bind:value={date} class="hidden" />

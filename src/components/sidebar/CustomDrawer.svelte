@@ -24,6 +24,11 @@
 	function toggleOpen(value: boolean) {
 		open = value;
 	}
+	const handleClick = (item: { id: number; label: string }) => {
+		if (!defaultBudget) return;
+		selectionIndex = item.id;
+		itemClick(item.label);
+	};
 </script>
 
 <Drawer>
@@ -35,9 +40,9 @@
 					<List singleSelection selectedIndex={selectionIndex}>
 						{#each menuItems as item (item.id)}
 							<Item
-								on:SMUI:action={() => (selectionIndex = item.id)}
 								selected={selectionIndex === item.id}
-								on:click={() => itemClick(item.label)}
+								on:click={() => handleClick(item)}
+								disabled={!defaultBudget && item.id > 1}
 							>
 								<Text>
 									<span>{capitalizeFirstLetter(item.label)}</span>
@@ -57,6 +62,7 @@
 									<span class="text-black">Accounts</span>
 									<IconButton
 										on:click={() => (open = true)}
+										disabled={!defaultBudget}
 										style="color: black"
 										class="material-icons">add</IconButton
 									>
@@ -81,6 +87,12 @@
 											>
 										</div>
 									</Item>
+								{:else}
+									<div
+										class="mdc-typography--subtitle1 flex justify-center items-center mb-4"
+									>
+										No accounts yet
+									</div>
 								{/each}
 							</List>
 						</Paper>

@@ -21,12 +21,11 @@
 
 <Title>Register</Title>
 <Content>
-	<form class="flex flex-col" method="post" use:enhance>
+	<form class="flex flex-col min-w-[516px]" method="post" use:enhance>
 		<STextInput
-			label="Email"
+			placeholder="Email"
 			name="email"
 			type="email"
-			icon="email"
 			disabled={isLoading}
 			error={form?.error.email}
 			helperText="Please enter a valid email address"
@@ -34,8 +33,7 @@
 
 		<div class="h-4" />
 		<STextInput
-			label="Password"
-			icon="password"
+			placeholder="Password"
 			type="password"
 			name="password"
 			disabled={isLoading}
@@ -45,8 +43,7 @@
 
 		<div class="h-4" />
 		<STextInput
-			label="Confirm Password"
-			icon="password"
+			placeholder="Confirm Password"
 			type="password"
 			name="confirmPassword"
 			disabled={isLoading}

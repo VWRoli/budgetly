@@ -21,25 +21,21 @@
 
 <Title>Login</Title>
 <Content>
-	<form class="flex flex-col" method="post" use:enhance>
+	<form class="flex flex-col min-w-[516px]" method="post" use:enhance>
 		<STextInput
-			label="Email"
+			placeholder="Email"
 			name="email"
-			icon="email"
 			type="email"
 			error={form?.error.email}
 			disabled={isLoading}
-			helperText="Please enter a valid email address"
 		/>
 		<div class="h-4" />
 		<STextInput
-			label="Password"
+			placeholder="Password"
 			name="password"
-			icon="password"
 			type="password"
 			disabled={isLoading}
 			error={form?.error.password}
-			helperText="Must contain one uppercase, one lowercase, one number and one special character"
 		/>
 
 		<div class="h-4" />

@@ -7,6 +7,7 @@
 	import { page } from '$app/stores';
 
 	const transactions = $page.data.transactions;
+	const defaultBudget = $page.data.defaultBudget;
 
 	let createTxnOpen = false;
 	let createTransferOpen = false;
@@ -21,15 +22,23 @@
 
 <div class="p-10 h-full">
 	<div class="flex justify-end items-center py-5 gap-5">
-		<Button variant="outlined" on:click={() => (createTransferOpen = true)}>
+		<Button
+			variant="outlined"
+			disabled={!defaultBudget}
+			on:click={() => (createTransferOpen = true)}
+		>
 			<Label>Create transfer</Label>
 		</Button>
-		<Button variant="unelevated" on:click={() => (createTxnOpen = true)}>
+		<Button
+			variant="unelevated"
+			disabled={!defaultBudget}
+			on:click={() => (createTxnOpen = true)}
+		>
 			<Label>Create Transaction</Label>
 		</Button>
 	</div>
 	<Paper
-		style="overflow-y: scroll; max-height: 80%"
+		class="no-scrollbar overflow-y-auto max-h-[80%]"
 		variant="outlined"
 		color="primary"
 	>
@@ -43,7 +52,11 @@
 					>
 						No transactions yet.
 					</div>
-					<Button variant="unelevated" on:click={() => (createTxnOpen = true)}>
+					<Button
+						variant="unelevated"
+						disabled={!defaultBudget}
+						on:click={() => (createTxnOpen = true)}
+					>
 						<Label>Create Transaction</Label>
 					</Button>
 				</div>{/each}

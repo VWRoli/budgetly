@@ -19,10 +19,9 @@ export async function load({ locals, cookies }) {
 
 	return {
 		user,
-		defaultBudget: fetchData(
-			`/budgets/budget/${user.defaultBudgetId}`,
-			token as string
-		),
+		defaultBudget: user.defaultBudgetId
+			? fetchData(`/budgets/budget/${user.defaultBudgetId}`, token as string)
+			: null,
 		budgets: fetchData(`/budgets/${user.id}`, token as string),
 		accounts: fetchData(`/accounts/${user.defaultBudgetId}`, token as string),
 		categories: fetchData(

@@ -50,11 +50,11 @@
 				options={accountOptions}
 				name="accountId"
 			/>
-			<STextInput label="Payee" name="payee" type="text" />
+			<STextInput placeholder="Payee" name="payee" type="text" />
 
 			<div class="flex gap-4">
-				<STextInput label="Inflow" name="inflow" type="number" />
-				<STextInput label="Outlfow" name="outflow" type="number" />
+				<STextInput placeholder="Inflow" name="inflow" type="number" />
+				<STextInput placeholder="Outlfow" name="outflow" type="number" />
 			</div>
 			<div class="flex gap-4">
 				<SSelect

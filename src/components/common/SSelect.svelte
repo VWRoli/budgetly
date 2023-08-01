@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let options: string | { id: number; value: string }[];
+	export let options: string[] | { id: number; value: string }[];
 	export let name = '';
 	export let className = '';
 	export let value = '';

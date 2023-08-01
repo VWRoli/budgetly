@@ -11,6 +11,6 @@
 
 <ModalWrapper title="Create account" {open} {toggleOpen} {action}>
 	<div class=" flex flex-col gap-5">
-		<STextInput label="Name" name="name" type="text" />
+		<STextInput placeholder="Name" name="name" type="text" />
 	</div>
 </ModalWrapper>
