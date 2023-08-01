@@ -5,9 +5,19 @@
 	import TransactionModal from '../modals/TransactionModal.svelte';
 	import TransferModal from '../modals/TransferModal.svelte';
 	import { page } from '$app/stores';
+	import type { IBudget } from '../../interfaces/budget';
+	import type { ITransaction } from '../../interfaces/transaction';
+	import type { ISubCategory } from '../../interfaces/subCategory';
+	import type { ICategory } from '../../interfaces/category';
+	import type { IAccount } from '../../interfaces/account';
 
-	const transactions = $page.data.transactions;
-	const defaultBudget = $page.data.defaultBudget;
+	const accounts: IAccount[] = $page.data.accounts;
+	const categories: ICategory[] = $page.data.categories;
+	const transactions: ITransaction[] = $page.data.transactions;
+	const defaultBudget: IBudget = $page.data.defaultBudget;
+
+	const ableToCreateTransaction =
+		accounts.length && categories.length ? true : false;
 
 	let createTxnOpen = false;
 	let createTransferOpen = false;
@@ -24,14 +34,14 @@
 	<div class="flex justify-end items-center py-5 gap-5">
 		<Button
 			variant="outlined"
-			disabled={!defaultBudget}
+			disabled={!ableToCreateTransaction}
 			on:click={() => (createTransferOpen = true)}
 		>
 			<Label>Create transfer</Label>
 		</Button>
 		<Button
 			variant="unelevated"
-			disabled={!defaultBudget}
+			disabled={!ableToCreateTransaction}
 			on:click={() => (createTxnOpen = true)}
 		>
 			<Label>Create Transaction</Label>
@@ -52,9 +62,16 @@
 					>
 						No transactions yet.
 					</div>
+					<div
+						class="mdc-typography--subtitle1 flex justify-center items-center mb-4"
+					>
+						You need to create an Account, a Category and a SubCategory to be
+						able to create a transaction.
+					</div>
+
 					<Button
 						variant="unelevated"
-						disabled={!defaultBudget}
+						disabled={!ableToCreateTransaction}
 						on:click={() => (createTxnOpen = true)}
 					>
 						<Label>Create Transaction</Label>

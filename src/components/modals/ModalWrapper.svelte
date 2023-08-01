@@ -17,7 +17,7 @@
 			<slot />
 		</Content>
 		<Actions>
-			<Button color="secondary">
+			<Button type="button" color="secondary">
 				<Label on:click={() => toggleOpen(false)}>Cancel</Label>
 			</Button>
 			<Button

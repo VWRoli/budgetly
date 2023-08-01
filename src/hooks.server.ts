@@ -22,7 +22,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 				id: user.id,
 				email: user.email,
 				defaultBudgetId: user.defaultBudgetId,
-				budgetIds: user.budgetIds,
 			};
 			event.locals.user = sessionUser;
 		} catch (error) {
