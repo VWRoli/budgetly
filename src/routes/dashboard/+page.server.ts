@@ -147,4 +147,27 @@ export const actions: Actions = {
 
 		await create('/transactions', transactionData, token as string);
 	},
+	createTransfer: async ({ request, locals, cookies }) => {
+		const formData = Object.fromEntries(await request.formData());
+
+		const { fromAccount, toAccount, date, inflow, outflow } = formData as {
+			fromAccount: string;
+			toAccount: string;
+			date: string;
+			inflow: string;
+			outflow: string;
+		};
+
+		const transferData: ITransactionDto = {
+			payee: toAccount, //toAccount name
+			accountId: +fromAccount, //fromAccount
+			date: new Date(date),
+			inflow: inflow ? +inflow : null,
+			outflow: outflow ? +outflow : null,
+			budgetId: locals.user?.defaultBudgetId as number,
+		};
+		const token = cookies.get('AuthorizationToken');
+
+		await create('/transactions', transferData, token as string);
+	},
 };

@@ -1,7 +1,4 @@
 <script lang="ts">
-	import Autocomplete from '@smui-extra/autocomplete';
-	import Textfield from '@smui/textfield';
-	import type { ITransaction } from '../../interfaces/transaction';
 	import { DateInput } from 'date-picker-svelte';
 	import ModalWrapper from './ModalWrapper.svelte';
 	import STextInput from '../common/STextInput.svelte';

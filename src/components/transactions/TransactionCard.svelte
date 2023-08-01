@@ -12,6 +12,7 @@
 	const defaultBudget = $page.data.defaultBudget;
 
 	export let transaction: ITransaction;
+	const isTransfer = !transaction.category?.title;
 	let menu: Menu;
 	const center = 'flex justify-between items-center';
 	const amount = transaction.inflow
@@ -33,9 +34,12 @@
 					</Paper>
 				</div>
 				<div>
-					<div class="mdc-typography--headline5">{transaction.payee}</div>
+					<div class="mdc-typography--headline5">
+						{isTransfer ? `Transfer:` : ''}
+						{transaction.payee}
+					</div>
 
-					{#if transaction.category?.title}
+					{#if !isTransfer}
 						<Set
 							chips={[
 								transaction.category.title,

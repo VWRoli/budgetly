@@ -1,60 +1,45 @@
 <script lang="ts">
-	import Select, { Option } from '@smui/select';
-	import Textfield from '@smui/textfield';
 	import { DateInput } from 'date-picker-svelte';
 	import ModalWrapper from './ModalWrapper.svelte';
+	import SSelect from '../common/SSelect.svelte';
+	import { page } from '$app/stores';
+	import type { IAccount } from '../../interfaces/account';
+	import STextInput from '../common/STextInput.svelte';
 
 	export let open = false;
 
-	// const transfer = {
-	// 	date: new Date(),
-	// 	fromAccountId: 0,
-	// 	toAccountId: 0,
-	// 	inflow: 0,
-	// 	outflow: 0,
-	// };
+	const fromAccountOptions = $page.data.accounts.map((c: IAccount) => ({
+		id: c.id,
+		value: c.name,
+	}));
+	const toAccountOptions = $page.data.accounts.map((c: IAccount) => ({
+		id: c.name,
+		value: c.name,
+	}));
+	let date: Date;
 
 	export let toggleOpen = (value: boolean) => {};
 
-	const action = '?/createTransaction';
+	const action = '?/createTransfer';
 </script>
 
 <ModalWrapper title="Create transfer" {open} {toggleOpen} {action}>
-	<!-- <div class="h-96 flex flex-col gap-5">
-		<div>
-			<Select
-				variant="outlined"
-				label="from Account"
-				bind:value={transfer.fromAccountId}
-			>
-				<Option value="" />
-				{#each accounts as account}
-					<Option value={account.id}>{account.name}</Option>
-				{/each}
-			</Select>
-			<Select
-				variant="outlined"
-				label="to Account"
-				bind:value={transfer.toAccountId}
-			>
-				<Option value="" />
-				{#each accounts as account}
-					<Option value={account.id}>{account.name}</Option>
-				{/each}
-			</Select>
+	<div class="h-96 flex flex-col gap-5">
+		<SSelect
+			placeholder="From Account"
+			options={fromAccountOptions}
+			name="fromAccount"
+		/>
+		<SSelect
+			placeholder="To Account"
+			options={toAccountOptions}
+			name="toAccount"
+		/>
+		<div class="flex gap-4">
+			<STextInput label="Inflow" name="inflow" type="number" />
+			<STextInput label="Outlfow" name="outflow" type="number" />
 		</div>
-		<div>
-			<Textfield
-				variant="outlined"
-				bind:value={transfer.inflow}
-				label="Inflow"
-			/>
-			<Textfield
-				variant="outlined"
-				bind:value={transfer.outflow}
-				label="Outlfow"
-			/>
-		</div>
-		<DateInput bind:value={transfer.date} />
-	</div> -->
+		<DateInput bind:value={date} />
+		<input type="text" name="date" bind:value={date} class="hidden" />
+	</div>
 </ModalWrapper>

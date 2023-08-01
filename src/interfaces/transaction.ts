@@ -1,8 +1,8 @@
 export interface ITransactionDto {
 	payee: string;
 	accountId: number;
-	categoryId: number;
-	subCategoryId: number;
+	categoryId?: number;
+	subCategoryId?: number;
 	budgetId: number;
 	date: Date;
 	inflow: null | number;
