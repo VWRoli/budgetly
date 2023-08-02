@@ -8,7 +8,7 @@ import type { ICategoryDto } from '../../interfaces/category';
 import type { ISubCategoryDto } from '../../interfaces/subCategory';
 import type { ITransactionDto } from '../../interfaces/transaction';
 import { validateForm } from '../../utils/helpers';
-import { accountSchema } from '../../utils/validationSchemas';
+import { accountSchema } from '../../lib/validationSchemas';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -69,7 +69,6 @@ export const actions: Actions = {
 		const { name } = formData as {
 			name: string;
 		};
-
 		errors = await validateForm(accountSchema, formData);
 		if (Object.keys(errors).length > 0) {
 			return fail(400, {

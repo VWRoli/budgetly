@@ -3,15 +3,17 @@
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
 	import STextInput from '../../../components/common/STextInput.svelte';
-	import Toast from '../../../components/common/SToast.svelte';
+	import SToast from '../../../components/common/SToast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
+	import { ToastType } from '../../../utils/enums/toastType.enum';
 
 	export let form: ActionData;
 
 	let isLoading = false;
 	let toast: Snackbar;
+	let toastType: ToastType;
 	let message = '';
 
 	const submitLogin = () => {
@@ -24,6 +26,7 @@
 					break;
 				case 'failure':
 					message = result.data.error;
+					toastType = ToastType.ERROR;
 					toast.open();
 					break;
 				default:
@@ -77,4 +80,4 @@
 	</form>
 </Content>
 
-<Toast bind:toast {message} />
+<SToast bind:toast {message} {toastType} />

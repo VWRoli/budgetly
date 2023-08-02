@@ -8,11 +8,12 @@
 	export let action = '';
 
 	export let toggleOpen = (value: boolean) => {};
+	export let handleSubmit = () => {};
 </script>
 
 <Dialog bind:open on:SMUIDialog:closed={() => toggleOpen(false)}>
 	<Title>{title}</Title>
-	<form {action} method="post" class="p-4">
+	<form {action} method="post" class="p-4" use:enhance={handleSubmit}>
 		<Content>
 			<slot />
 		</Content>

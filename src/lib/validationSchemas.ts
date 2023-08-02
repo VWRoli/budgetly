@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { MAX_LENGTH_12, MIN_LENGTH } from '../constants/variables';
+import { MAX_LENGTH, MIN_LENGTH } from '../constants/variables';
 
 export const signupSchema = Yup.object().shape({
 	email: Yup.string()
@@ -19,14 +19,16 @@ export const signupSchema = Yup.object().shape({
 
 export const accountSchema = Yup.object().shape({
 	name: Yup.string()
+		.trim()
+		.transform((value) => (value === '' ? undefined : value))
 		.required('Name is required')
 		.min(
 			MIN_LENGTH,
 			`Name is too short - must be at least ${MIN_LENGTH} characters long`
 		)
 		.max(
-			MAX_LENGTH_12,
-			`Name is too long - must not be longer than ${MAX_LENGTH_12} characters long`
+			MAX_LENGTH,
+			`Name is too long - must not be longer than ${MAX_LENGTH} characters long`
 		),
 });
 export const budgetSchema = Yup.object().shape({
@@ -37,7 +39,7 @@ export const budgetSchema = Yup.object().shape({
 			`Name is too short - must be at least ${MIN_LENGTH} characters long`
 		)
 		.max(
-			MAX_LENGTH_12,
-			`Name is too long - must not be longer than ${MAX_LENGTH_12} characters long`
+			MAX_LENGTH,
+			`Name is too long - must not be longer than ${MAX_LENGTH} characters long`
 		),
 });

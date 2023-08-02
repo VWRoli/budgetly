@@ -1,7 +1,7 @@
 import { register } from '../../../api/auth';
 import type { IRegisterUser } from '../../../interfaces/registerUser';
 import { validateForm } from '../../../utils/helpers';
-import { signupSchema } from '../../../utils/validationSchemas';
+import { signupSchema } from '../../../lib/validationSchemas';
 import type { Actions, PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 

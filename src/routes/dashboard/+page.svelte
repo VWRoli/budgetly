@@ -5,12 +5,14 @@
 	import Reports from '../../components/screens/Reports.svelte';
 	import CustomDrawer from '../../components/sidebar/CustomDrawer.svelte';
 	import { menuItems } from '../../constants/menuItems';
+	import type { ActionData } from './$types';
 
 	let clicked = menuItems[0].label;
-
+	export let form: ActionData;
 	function itemClick(label: string) {
 		clicked = label;
 	}
+	console.log(form);
 </script>
 
 <svelte:head>
