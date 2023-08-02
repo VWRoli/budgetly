@@ -3,7 +3,6 @@
 	import STextInput from '../common/STextInput.svelte';
 
 	export let open = false;
-
 	export let toggleOpen = (value: boolean) => {};
 
 	const action = '?/createAccount';

@@ -3,7 +3,7 @@
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
 	import STextInput from '../../../components/common/STextInput.svelte';
-	import Toast from '../../../components/common/Toast.svelte';
+	import Toast from '../../../components/common/SToast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';

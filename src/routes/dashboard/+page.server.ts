@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { IBudgetDto } from '../../interfaces/budget';
 import type { ECurrency } from '../../utils/enums/currency.enum';
@@ -7,6 +7,8 @@ import type { IAccountDto } from '../../interfaces/account';
 import type { ICategoryDto } from '../../interfaces/category';
 import type { ISubCategoryDto } from '../../interfaces/subCategory';
 import type { ITransactionDto } from '../../interfaces/transaction';
+import { validateForm } from '../../utils/helpers';
+import { accountSchema } from '../../utils/validationSchemas';
 
 export async function load({ locals, cookies }) {
 	const user = locals.user;
@@ -62,9 +64,18 @@ export const actions: Actions = {
 	createAccount: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
 
+		let errors: any = {};
+
 		const { name } = formData as {
 			name: string;
 		};
+
+		errors = await validateForm(accountSchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
 
 		const accountData: IAccountDto = {
 			name,

@@ -20,12 +20,7 @@
 			<Button type="button" color="secondary">
 				<Label on:click={() => toggleOpen(false)}>Cancel</Label>
 			</Button>
-			<Button
-				on:click={() => toggleOpen(false)}
-				type="submit"
-				color="primary"
-				variant="unelevated"
-			>
+			<Button type="submit" color="primary" variant="unelevated">
 				<Label>Create</Label>
 			</Button>
 		</Actions>

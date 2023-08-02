@@ -3,7 +3,7 @@
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
 	import STextInput from '../../../components/common/STextInput.svelte';
-	import Toast from '../../../components/common/Toast.svelte';
+	import Toast from '../../../components/common/SToast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
@@ -12,7 +12,26 @@
 
 	let isLoading = false;
 	let toast: Snackbar;
-	let errorMessage = '';
+	let message = '';
+
+	const submitLogin = () => {
+		isLoading = true;
+		return async ({ result, update }: { result: any; update: any }) => {
+			console.log({ result });
+			switch (result.type) {
+				case 'success':
+					await update();
+					break;
+				case 'failure':
+					message = result.data.error;
+					toast.open();
+					break;
+				default:
+					await update();
+			}
+			isLoading = false;
+		};
+	};
 </script>
 
 <svelte:head>
@@ -21,7 +40,11 @@
 
 <Title>Login</Title>
 <Content>
-	<form class="flex flex-col min-w-[516px]" method="post" use:enhance>
+	<form
+		class="flex flex-col min-w-[516px]"
+		method="post"
+		use:enhance={submitLogin}
+	>
 		<STextInput
 			placeholder="Email"
 			name="email"
@@ -54,4 +77,4 @@
 	</form>
 </Content>
 
-<Toast bind:toast message={errorMessage} />
+<Toast bind:toast {message} />

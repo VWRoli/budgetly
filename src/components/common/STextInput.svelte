@@ -9,7 +9,6 @@
 </script>
 
 <fieldset class="flex flex-col">
-	
 	<input
 		{type}
 		{name}
@@ -19,9 +18,9 @@
 		class="border border-gray-400 py-3 px-4 rounded focus-visible:box-border focus-visible:border-primary focus-visible:border-2"
 	/>
 	{#if helperText && !error}
-		<span class="text-xs text-gray-400">{helperText}</span>
+		<small class="text-xs text-gray-400">{helperText}</small>
 	{/if}
 	{#if error}
-		<span class="text-red-700 text-xs text-left">{error}</span>
+		<small class="text-red-700 text-xs text-left">{error}</small>
 	{/if}
 </fieldset>
