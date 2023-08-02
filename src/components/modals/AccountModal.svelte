@@ -4,6 +4,7 @@
 	import type Snackbar from '@smui/snackbar';
 	import SToast from '../common/SToast.svelte';
 	import { ToastType } from '../../utils/enums/toastType.enum';
+	import type { ActionResult } from '@sveltejs/kit';
 
 	export let open = false;
 	export let toggleOpen = (value: boolean) => {};
@@ -15,7 +16,13 @@
 	const action = '?/createAccount';
 
 	const handleSubmit = () => {
-		return async ({ result, update }: { result: any; update: any }) => {
+		return async ({
+			result,
+			update,
+		}: {
+			result: ActionResult;
+			update: () => Promise<void>;
+		}) => {
 			switch (result.type) {
 				case 'success':
 					message = 'Account successfully created';
@@ -24,7 +31,7 @@
 					await update();
 					break;
 				case 'failure':
-					Object.values(result.data.error).forEach((value) => {
+					Object.values(result.data?.error).forEach((value) => {
 						message = value as string;
 						toastType = ToastType.ERROR;
 						toast.open();

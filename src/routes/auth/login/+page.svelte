@@ -19,7 +19,6 @@
 	const submitLogin = () => {
 		isLoading = true;
 		return async ({ result, update }: { result: any; update: any }) => {
-			console.log({ result });
 			switch (result.type) {
 				case 'success':
 					await update();

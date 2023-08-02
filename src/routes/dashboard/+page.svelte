@@ -12,7 +12,6 @@
 	function itemClick(label: string) {
 		clicked = label;
 	}
-	console.log(form);
 </script>
 
 <svelte:head>

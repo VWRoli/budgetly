@@ -8,9 +8,14 @@ import type { ICategoryDto } from '../../interfaces/category';
 import type { ISubCategoryDto } from '../../interfaces/subCategory';
 import type { ITransactionDto } from '../../interfaces/transaction';
 import { validateForm } from '../../utils/helpers';
-import { accountSchema } from '../../lib/validationSchemas';
+import {
+	accountSchema,
+	budgetSchema,
+	categorySchema,
+} from '../../lib/validationSchemas';
 
 export async function load({ locals, cookies }) {
+	console.log('Server load runs');
 	const user = locals.user;
 
 	if (!user) {
@@ -50,6 +55,14 @@ export const actions: Actions = {
 			name: string;
 			currency: ECurrency;
 		};
+
+		let errors: { [k: string]: string } = {};
+		errors = await validateForm(budgetSchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
 		const budgetData: IBudgetDto = {
 			name,
 			currency,
@@ -57,14 +70,19 @@ export const actions: Actions = {
 		};
 		const token = cookies.get('AuthorizationToken');
 
-		const budget = await create('/budgets', budgetData, token as string);
-
-		locals.defaultBudget = budget;
+		try {
+			const budget = await create('/budgets', budgetData, token as string);
+			locals.defaultBudget = budget;
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 	createAccount: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
 
-		let errors: any = {};
+		let errors: { [k: string]: string } = {};
 
 		const { name } = formData as {
 			name: string;
@@ -84,14 +102,29 @@ export const actions: Actions = {
 
 		const token = cookies.get('AuthorizationToken');
 
-		await create('/accounts', accountData, token as string);
+		try {
+			await create('/accounts', accountData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 	createCategory: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
 
+		let errors: { [k: string]: string } = {};
+
 		const { title } = formData as {
 			title: string;
 		};
+
+		errors = await validateForm(categorySchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
 
 		const categoryData: ICategoryDto = {
 			title,
@@ -100,25 +133,43 @@ export const actions: Actions = {
 
 		const token = cookies.get('AuthorizationToken');
 
-		await create('/categories', categoryData, token as string);
+		try {
+			await create('/categories', categoryData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 	createSubCategory: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
-
+		let errors: { [k: string]: string } = {};
+		console.log({ formData });
 		const { title, categoryId } = formData as {
 			title: string;
 			categoryId: string;
 		};
+		errors = await validateForm(categorySchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
 
 		const subCategoryData: ISubCategoryDto = {
 			title,
 			categoryId: +categoryId,
 			budgetId: locals.user?.defaultBudgetId as number,
 		};
-		console.log(subCategoryData);
 		const token = cookies.get('AuthorizationToken');
 
-		await create('/sub-categories', subCategoryData, token as string);
+		try {
+			await create('/sub-categories', subCategoryData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 
 	createTransaction: async ({ request, locals, cookies }) => {
@@ -154,7 +205,13 @@ export const actions: Actions = {
 		};
 		const token = cookies.get('AuthorizationToken');
 
-		await create('/transactions', transactionData, token as string);
+		try {
+			await create('/transactions', transactionData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 	createTransfer: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
@@ -177,6 +234,12 @@ export const actions: Actions = {
 		};
 		const token = cookies.get('AuthorizationToken');
 
-		await create('/transactions', transferData, token as string);
+		try {
+			await create('/transactions', transferData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
 	},
 };

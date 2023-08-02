@@ -31,8 +31,25 @@ export const accountSchema = Yup.object().shape({
 			`Name is too long - must not be longer than ${MAX_LENGTH} characters long`
 		),
 });
+export const categorySchema = Yup.object().shape({
+	title: Yup.string()
+		.trim()
+		.transform((value) => (value === '' ? undefined : value))
+		.required('Title is required')
+		.min(
+			MIN_LENGTH,
+			`Title is too short - must be at least ${MIN_LENGTH} characters long`
+		)
+		.max(
+			MAX_LENGTH,
+			`Title is too long - must not be longer than ${MAX_LENGTH} characters long`
+		),
+});
 export const budgetSchema = Yup.object().shape({
+	currency: Yup.string().required('Currency is required'),
 	name: Yup.string()
+		.trim()
+		.transform((value) => (value === '' ? undefined : value))
 		.required('Name is required')
 		.min(
 			MIN_LENGTH,
