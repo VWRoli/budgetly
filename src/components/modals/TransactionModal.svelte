@@ -13,11 +13,14 @@
 	import SToast from '../common/SToast.svelte';
 	import { ToastType } from '../../utils/enums/toastType.enum';
 	import type { ActionResult } from '@sveltejs/kit';
+	import { INCOME_FOR_THIS_MONTH } from '../../constants/variables';
 
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
 		id: c.id,
 		value: c.title,
 	}));
+	categoryOptions.unshift(INCOME_FOR_THIS_MONTH);
+
 	const accountOptions = $page.data.accounts.map((c: IAccount) => ({
 		id: c.id,
 		value: c.name,
@@ -59,7 +62,7 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					message = 'Account successfully created';
+					message = 'Transaction successfully created';
 					toastType = ToastType.SUCCESS;
 					toast.open();
 					await update();

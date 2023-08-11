@@ -12,6 +12,7 @@ import {
 	accountSchema,
 	budgetSchema,
 	categorySchema,
+	transactionSchema,
 } from '../../lib/validationSchemas';
 
 export async function load({ locals, cookies }) {
@@ -144,7 +145,7 @@ export const actions: Actions = {
 	createSubCategory: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
 		let errors: { [k: string]: string } = {};
-		console.log({ formData });
+
 		const { title, categoryId } = formData as {
 			title: string;
 			categoryId: string;
@@ -192,6 +193,14 @@ export const actions: Actions = {
 			inflow: string;
 			outflow: string;
 		};
+
+		let errors: { [k: string]: string } = {};
+		errors = await validateForm(transactionSchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
 
 		const transactionData: ITransactionDto = {
 			payee,

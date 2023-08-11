@@ -60,3 +60,23 @@ export const budgetSchema = Yup.object().shape({
 			`Name is too long - must not be longer than ${MAX_LENGTH} characters long`
 		),
 });
+export const transactionSchema = Yup.object().shape({
+	accountId: Yup.string().required('Account is required'),
+	payee: Yup.string()
+		.trim()
+		.transform((value) => (value === '' ? undefined : value))
+		.required('Payee is required')
+		.min(
+			MIN_LENGTH,
+			`Payee is too short - must be at least ${MIN_LENGTH} characters long`
+		)
+		.max(
+			MAX_LENGTH,
+			`Payee is too long - must not be longer than ${MAX_LENGTH} characters long`
+		),
+	inflow: Yup.string(),
+	outflow: Yup.string(),
+	category: Yup.string(),
+	subCategory: Yup.string(),
+	date: Yup.string().required('Date is required'),
+});
