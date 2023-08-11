@@ -5,6 +5,6 @@ export const load: PageServerLoad = (event) => {
 	const user = event.locals.user;
 
 	if (user) {
-		throw redirect(302, '/dashboard');
+		throw redirect(302, '/dashboard/budget');
 	}
 };

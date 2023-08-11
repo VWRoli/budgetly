@@ -11,43 +11,33 @@
 	import { page } from '$app/stores';
 	import type { IAccount } from '../../interfaces/account';
 	import type { IBudget } from '../../interfaces/budget';
-
-	export let itemClick = (label: string) => {};
+	import { enhance } from '$app/forms';
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const accounts: IAccount[] = $page.data.accounts;
 
-	let selectionIndex = 1;
-	let accountSelectionIndex = 0;
 	let open = false;
 
 	function toggleOpen(value: boolean) {
 		open = value;
 	}
-	const handleClick = (item: { id: number; label: string }) => {
-		if (!defaultBudget) return;
-		selectionIndex = item.id;
-		itemClick(item.label);
-	};
 </script>
 
-<Drawer>
+<Drawer class="absolute">
 	<Content>
 		<Paper color="primary" style="height: 100vh;">
 			<div class="flex flex-col justify-between h-full">
 				<div>
 					<BudgetMenu />
-					<List singleSelection selectedIndex={selectionIndex}>
+					<List singleSelection>
 						{#each menuItems as item (item.id)}
-							<Item
-								selected={selectionIndex === item.id}
-								on:click={() => handleClick(item)}
-								disabled={!defaultBudget && item.id > 1}
-							>
-								<Text>
-									<span>{capitalizeFirstLetter(item.label)}</span>
-								</Text>
-							</Item>
+							<a href={item.route}>
+								<Item selected={item.route === $page.route.id}>
+									<Text>
+										<span>{capitalizeFirstLetter(item.label)}</span>
+									</Text>
+								</Item>
+							</a>
 						{/each}
 					</List>
 
@@ -68,14 +58,9 @@
 									>
 								</div>
 							</Title>
-							<List singleSelection selectedIndex={accountSelectionIndex}>
+							<List>
 								{#each accounts as account (account.id)}
-									<Item
-										on:SMUI:action={() =>
-											(accountSelectionIndex = parseInt(account.id + ''))}
-										selected={accountSelectionIndex === account.id}
-										on:click={() => itemClick(account.name)}
-									>
+									<Item>
 										<div class="flex items-center justify-between w-full">
 											<Text>{account.name}</Text>
 											<Text
@@ -97,16 +82,16 @@
 							</List>
 						</Paper>
 					</div>
+					<form action="/dashboard/budget?/logout" method="post">
+						<Button
+							color="primary"
+							style="background-color: white; width: 100%"
+							type="submit"
+						>
+							<Label>Log out</Label>
+						</Button>
+					</form>
 				</div>
-				<form action="?/logout" method="post">
-					<Button
-						color="primary"
-						style="background-color: white; width: 100%"
-						type="submit"
-					>
-						<Label>Log out</Label>
-					</Button>
-				</form>
 			</div>
 		</Paper>
 	</Content>

@@ -1,15 +1,14 @@
 <script lang="ts">
 	import Paper from '@smui/paper';
 	import Button, { Label } from '@smui/button';
-	import TransactionCard from '../transactions/TransactionCard.svelte';
-	import TransactionModal from '../modals/TransactionModal.svelte';
-	import TransferModal from '../modals/TransferModal.svelte';
+	import TransactionCard from '../../../components/transactions/TransactionCard.svelte';
+	import TransactionModal from '../../../components/modals/TransactionModal.svelte';
+	import TransferModal from '../../../components/modals/TransferModal.svelte';
 	import { page } from '$app/stores';
-	import type { IBudget } from '../../interfaces/budget';
-	import type { ITransaction } from '../../interfaces/transaction';
-	import type { ISubCategory } from '../../interfaces/subCategory';
-	import type { ICategory } from '../../interfaces/category';
-	import type { IAccount } from '../../interfaces/account';
+	import type { IBudget } from '../../../interfaces/budget';
+	import type { ITransaction } from '../../../interfaces/transaction';
+	import type { ICategory } from '../../../interfaces/category';
+	import type { IAccount } from '../../../interfaces/account';
 
 	const accounts: IAccount[] = $page.data.accounts;
 	const categories: ICategory[] = $page.data.categories;

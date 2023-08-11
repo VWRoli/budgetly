@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Button, { Label } from '@smui/button';
 	import Paper from '@smui/paper';
-	import CategoryModal from '../modals/CategoryModal.svelte';
-	import BudgetItem from '../budgets/BudgetItem.svelte';
+	import CategoryModal from '../../../components/modals/CategoryModal.svelte';
+	import BudgetItem from '../../../components/budgets/BudgetItem.svelte';
 	import { page } from '$app/stores';
-	import BudgetModal from '../modals/BudgetModal.svelte';
-	import type { ICategory } from '../../interfaces/category';
-	import type { IBudget } from '../../interfaces/budget';
+	import BudgetModal from '../../../components/modals/BudgetModal.svelte';
+	import type { ICategory } from '../../../interfaces/category';
+	import type { IBudget } from '../../../interfaces/budget';
 
 	const categories: ICategory[] = $page.data.categories;
 	const defaultBudget: IBudget = $page.data.defaultBudget;
