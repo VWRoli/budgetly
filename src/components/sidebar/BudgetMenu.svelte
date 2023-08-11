@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button, { Label } from '@smui/button';
+	import Paper, { Title, Content } from '@smui/paper';
 	import List, { Item, Separator, Text } from '@smui/list';
 	import { page } from '$app/stores';
 	import IconButton from '@smui/icon-button';
@@ -8,6 +9,7 @@
 	import BudgetModal from '../modals/BudgetModal.svelte';
 	import type { IBudget } from '../../interfaces/budget';
 	import { MAX_ALLOWED_BUDGETS } from '../../constants/variables';
+	import { formatCurrency } from '../../utils/helpers';
 
 	let menu: Menu;
 	let open = false;
@@ -29,7 +31,7 @@
 	}
 </script>
 
-<section class="mb-8">
+<section>
 	<div class="text-center mb-4">{$page.data.user.email}</div>
 	<Button on:click={createOrOpen} style="background-color: white; width: 100%">
 		{#if defaultBudget}
@@ -38,6 +40,16 @@
 			<Label>Create Budget</Label>
 		{/if}
 	</Button>
+	<Paper class="p-2 text-center mt-4 mb-2" color="custom-green">
+		<Content>
+			<small> Available to Budget: </small>
+			{formatCurrency(
+				defaultBudget.availableToBudget,
+				defaultBudget.locale,
+				defaultBudget.currency
+			)}
+		</Content>
+	</Paper>
 </section>
 
 <Menu bind:this={menu} style="width: 200px">

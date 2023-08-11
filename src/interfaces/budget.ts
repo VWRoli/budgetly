@@ -9,4 +9,5 @@ export interface IBudgetDto {
 export interface IBudget extends IBudgetDto {
 	id: number;
 	locale: ELocale;
+	availableToBudget: number;
 }

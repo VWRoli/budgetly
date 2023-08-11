@@ -13,7 +13,7 @@
 	let message = '';
 	let toastType: ToastType;
 
-	const action = '?/createAccount';
+	const action = '/dashboard/budget?/createAccount';
 
 	const handleSubmit = () => {
 		return async ({

@@ -17,7 +17,7 @@
 
 	export let toggleOpen = (value: boolean) => {};
 
-	const action = '?/createBudget';
+	const action = '/dashboard/budget?/createBudget';
 
 	const currencyOptions = [
 		ECurrency.EUR as string,

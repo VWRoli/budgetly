@@ -13,6 +13,7 @@
 @use '@material/typography/mdc-typography';
 @use '@material/typography/mixins' as typography;
 
+@use '@smui/paper/mixins' as paper;
 // Make sure SMUI's import happens first, since it specifies variables.
 @use '@smui/snackbar/style' as smui-snackabar;
 // See https://github.com/material-components/material-components-web/tree/v14.0.0/packages/mdc-snackbar
@@ -26,7 +27,6 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 }
-
 a {
 	color: #40b3ff;
 }
@@ -67,6 +67,17 @@ a:visited {
 		theme-color.accessible-ink-color(color-palette.$red-500)
 	);
 }
+
+@include paper.paper-color(
+	custom-green,
+	color-palette.$green-600,
+	theme-color.accessible-ink-color(color-palette.$green-600)
+);
+
+.custom-green {
+	color: color-palette.$green-600;
+}
+
 /*HIDE NUMBER INPUT ARROWS*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

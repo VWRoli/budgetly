@@ -82,16 +82,16 @@
 							</List>
 						</Paper>
 					</div>
-					<form action="/dashboard/budget?/logout" method="post">
-						<Button
-							color="primary"
-							style="background-color: white; width: 100%"
-							type="submit"
-						>
-							<Label>Log out</Label>
-						</Button>
-					</form>
 				</div>
+				<form action="/dashboard/budget?/logout" method="post">
+					<Button
+						color="primary"
+						style="background-color: white; width: 100%"
+						type="submit"
+					>
+						<Label>Log out</Label>
+					</Button>
+				</form>
 			</div>
 		</Paper>
 	</Content>
