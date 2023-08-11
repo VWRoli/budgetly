@@ -45,7 +45,7 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					message = 'Account successfully created';
+					message = 'Budget successfully created';
 					toastType = ToastType.SUCCESS;
 					toast.open();
 					await update();

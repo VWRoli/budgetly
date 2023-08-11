@@ -26,7 +26,7 @@
 		}) => {
 			switch (result.type) {
 				case 'success':
-					message = 'Category successfully created';
+					message = 'SubCategory successfully created';
 					toastType = ToastType.SUCCESS;
 					toast.open();
 					await update();
@@ -46,7 +46,7 @@
 </script>
 
 <ModalWrapper
-	title="Create Subcategory"
+	title="Create SubCategory"
 	{open}
 	{toggleOpen}
 	{action}

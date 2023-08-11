@@ -9,6 +9,7 @@
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 
+	const cellClass = `col-span-3 flex items-center justify-end`;
 	let open = false;
 	export let category: ICategory;
 
@@ -23,7 +24,7 @@
 >
 	<div class="grid grid-cols-12 rounded w-full">
 		<div class="col-span-3">
-			<div class="mdc-typography--headline6">
+			<div class="mdc-typography--subtitle1 flex items-center">
 				{category.title}
 				<IconButton
 					size="button"
@@ -33,8 +34,8 @@
 				>
 			</div>
 		</div>
-		<div class="col-span-3">
-			<div class="mdc-typography--headline6">
+		<div class={cellClass}>
+			<div class="mdc-typography--subtitle2">
 				{formatCurrency(
 					category.budgeted,
 					defaultBudget.locale,
@@ -42,8 +43,8 @@
 				)}
 			</div>
 		</div>
-		<div class="col-span-3">
-			<div class="mdc-typography--headline6">
+		<div class={cellClass}>
+			<div class="mdc-typography--subtitle2">
 				{formatCurrency(
 					category.outflows,
 					defaultBudget.locale,
@@ -51,8 +52,8 @@
 				)}
 			</div>
 		</div>
-		<div class="col-span-3">
-			<div class="mdc-typography--headline6">
+		<div class={cellClass}>
+			<div class="mdc-typography--subtitle2">
 				{formatCurrency(
 					category.balance,
 					defaultBudget.locale,

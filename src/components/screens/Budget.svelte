@@ -33,7 +33,11 @@
 			<Label>Create category</Label>
 		</Button>
 	</div>
-	<Paper variant="outlined" color="primary">
+	<Paper
+		class="no-scrollbar overflow-y-auto max-h-[80%]"
+		variant="outlined"
+		color="primary"
+	>
 		<section class="flex flex-col gap-5 min-h-[500px]">
 			{#each categories as category}
 				<BudgetItem {category} />

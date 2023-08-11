@@ -9,6 +9,10 @@
 	import { fetchData } from '../../api';
 	import Cookies from 'js-cookie';
 	import type { IAccount } from '../../interfaces/account';
+	import type Snackbar from '@smui/snackbar';
+	import SToast from '../common/SToast.svelte';
+	import { ToastType } from '../../utils/enums/toastType.enum';
+	import type { ActionResult } from '@sveltejs/kit';
 
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
 		id: c.id,
@@ -19,9 +23,14 @@
 		value: c.name,
 	}));
 
+	let toast: Snackbar;
+	let message = '';
+	let toastType: ToastType;
+
 	let date: Date;
 	let selectedCategory = '';
 	let subCategoryOptions: { id: number; value: string }[] = [];
+
 	const token = Cookies.get('AuthorizationToken');
 
 	const fetchSubCategories = async (id: number) => {
@@ -36,13 +45,46 @@
 	};
 
 	export let open = false;
-
 	export let toggleOpen = (value: boolean) => {};
 
 	const action = '?/createTransaction';
+
+	const handleSubmit = () => {
+		return async ({
+			result,
+			update,
+		}: {
+			result: ActionResult;
+			update: () => Promise<void>;
+		}) => {
+			switch (result.type) {
+				case 'success':
+					message = 'Account successfully created';
+					toastType = ToastType.SUCCESS;
+					toast.open();
+					await update();
+					break;
+				case 'failure':
+					Object.values(result.data?.error).forEach((value) => {
+						message = value as string;
+						toastType = ToastType.ERROR;
+						toast.open();
+					});
+					break;
+				default:
+					await update();
+			}
+		};
+	};
 </script>
 
-<ModalWrapper title="Create transaction" {open} {toggleOpen} {action}>
+<ModalWrapper
+	title="Create transaction"
+	{open}
+	{toggleOpen}
+	{action}
+	{handleSubmit}
+>
 	<slot>
 		<div class="min-h-[500px] flex flex-col gap-5">
 			<SSelect
@@ -79,3 +121,5 @@
 		</div>
 	</slot>
 </ModalWrapper>
+
+<SToast bind:toast {message} {toastType} />
