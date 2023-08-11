@@ -24,7 +24,7 @@
 		</div>
 		<div class={cellClass}>
 			<div class="mdc-typography--subtitle2">
-				{formatCurrency(
+				{subCategory.outflows > 0 ? '-' : ''}{formatCurrency(
 					subCategory.outflows,
 					defaultBudget.locale,
 					defaultBudget.currency

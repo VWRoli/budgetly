@@ -35,30 +35,39 @@
 			</div>
 		</div>
 		<div class={cellClass}>
-			<div class="mdc-typography--subtitle2">
-				{formatCurrency(
-					category.budgeted,
-					defaultBudget.locale,
-					defaultBudget.currency
-				)}
+			<div class="mdc-typography--subtitle2 text-right">
+				<small>Budgeted</small>
+				<div>
+					{formatCurrency(
+						category.budgeted,
+						defaultBudget.locale,
+						defaultBudget.currency
+					)}
+				</div>
 			</div>
 		</div>
 		<div class={cellClass}>
-			<div class="mdc-typography--subtitle2">
-				{formatCurrency(
-					category.outflows,
-					defaultBudget.locale,
-					defaultBudget.currency
-				)}
+			<div class="mdc-typography--subtitle2 text-right">
+				<small>Outflows</small>
+				<div>
+					{category.outflows > 0 ? '-' : ''}{formatCurrency(
+						category.outflows,
+						defaultBudget.locale,
+						defaultBudget.currency
+					)}
+				</div>
 			</div>
 		</div>
 		<div class={cellClass}>
-			<div class="mdc-typography--subtitle2">
-				{formatCurrency(
-					category.balance,
-					defaultBudget.locale,
-					defaultBudget.currency
-				)}
+			<div class="mdc-typography--subtitle2 text-right">
+				<small>Balance</small>
+				<div>
+					{formatCurrency(
+						category.balance,
+						defaultBudget.locale,
+						defaultBudget.currency
+					)}
+				</div>
 			</div>
 		</div>
 	</div>
