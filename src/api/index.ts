@@ -70,3 +70,32 @@ export const create = async (
 		throw error;
 	}
 };
+
+export const updateBudgetedValue = async (
+	id: number,
+	payload: any,
+	token: string
+): Promise<any> => {
+	try {
+		const response = await fetch(`${API_URL}/sub-categories/${id}`, {
+			method: 'PUT',
+			credentials: 'include',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: token,
+			},
+			body: JSON.stringify(payload),
+		});
+		if (!response.ok) {
+			// Handle error response (if any)
+			const errorData = await response.json();
+			throw new Error(errorData.message);
+		}
+		const responseData = await response.json();
+		return responseData;
+	} catch (error: any) {
+		// Handle fetch errors or any other exceptions
+		throw error;
+	}
+};

@@ -80,3 +80,7 @@ export const transactionSchema = Yup.object().shape({
 	subCategory: Yup.string(),
 	date: Yup.string().required('Date is required'),
 });
+
+export const updateBudgetedSchema = Yup.object().shape({
+	amount: Yup.string().required('Amount is required'),
+});

@@ -4,17 +4,31 @@
 	import { formatCurrency } from '../../utils/helpers';
 	import { page } from '$app/stores';
 	import type { IBudget } from '../../interfaces/budget';
+	import BudgetModal from '../modals/BudgetModal.svelte';
+	import UpdateBudgetedModal from '../modals/UpdateBudgetedModal.svelte';
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const cellClass = `col-span-3 flex items-center justify-end`;
 	export let subCategory: ISubCategory;
+
+	let open = false;
+
+	function toggleOpen(value: boolean) {
+		open = value;
+	}
 </script>
 
-<Item>
+<Item class="border border-slate-200 h-auto rounded">
 	<div class="grid grid-cols-12 w-full">
 		<div class="col-span-3">{subCategory.title}</div>
 		<div class={cellClass}>
-			<div class="mdc-typography--subtitle2">
+			<div
+				role="button"
+				class="mdc-typography--subtitle2 border border-slate-300 px-4 hover:bg-slate-400"
+				on:click={() => toggleOpen(true)}
+				on:keydown={() => toggleOpen(true)}
+				tabindex="0"
+			>
 				{formatCurrency(
 					subCategory.budgeted,
 					defaultBudget.locale,
@@ -42,3 +56,5 @@
 		</div>
 	</div>
 </Item>
+
+<UpdateBudgetedModal {open} {toggleOpen} id={subCategory.id} />
