@@ -1,8 +1,7 @@
 import type * as Yup from 'yup';
-import type { ILoginUser } from '../interfaces/loginUser';
-import type { IRegisterUser } from '../interfaces/registerUser';
-import { ELocale } from './enums/locale.enum';
-import type { ECurrency } from './enums/currency.enum';
+import { ELocale } from '$lib/enums/locale.enum';
+import type { ECurrency } from '$lib/enums/currency.enum';
+import { ECalculator } from '$lib/enums/calculator';
 
 export function capitalizeFirstLetter(string: string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -41,4 +40,17 @@ export const formatDate = (date: Date, locale: ELocale) => {
 	};
 
 	return new Intl.DateTimeFormat(locale, options).format(new Date(date));
+};
+
+export const getCalcButtonType = (type: ECalculator) => {
+	switch (type) {
+		case ECalculator.CLEAR:
+			return 'secondary';
+		case ECalculator.OPERATOR:
+			return 'primary';
+		case ECalculator.EQUAL:
+			return 'secondary';
+		default:
+			return 'primary';
+	}
 };

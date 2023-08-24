@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Snackbar, { Label, Actions } from '@smui/snackbar';
 	import IconButton from '@smui/icon-button';
-	import { ToastType } from '../../utils/enums/toastType.enum';
+	import { ToastType } from '$lib/enums/toastType.enum';
 
 	export let message = '';
 	export let toastType: ToastType = ToastType.ERROR;

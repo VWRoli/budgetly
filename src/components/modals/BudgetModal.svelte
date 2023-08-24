@@ -1,13 +1,13 @@
 <script lang="ts">
 	import ModalWrapper from './ModalWrapper.svelte';
-	import { ECurrency } from '../../utils/enums/currency.enum';
 	import STextInput from '../common/STextInput.svelte';
 	import SSelect from '../common/SSelect.svelte';
 	import { page } from '$app/stores';
+	import { ECurrency } from '$lib/enums/currency.enum';
 	import type { IBudget } from '../../interfaces/budget';
 	import SToast from '../common/SToast.svelte';
 	import type { ActionResult } from '@sveltejs/kit';
-	import { ToastType } from '../../utils/enums/toastType.enum';
+	import { ToastType } from '$lib/enums/toastType.enum';
 	import type Snackbar from '@smui/snackbar';
 
 	const budgetCurrencies: string[] = $page.data.budgets.map(

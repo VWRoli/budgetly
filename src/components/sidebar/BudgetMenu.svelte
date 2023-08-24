@@ -8,8 +8,8 @@
 	import Menu from '@smui/menu';
 	import BudgetModal from '../modals/BudgetModal.svelte';
 	import type { IBudget } from '../../interfaces/budget';
-	import { MAX_ALLOWED_BUDGETS } from '../../constants/variables';
-	import { formatCurrency } from '../../utils/helpers';
+	import { MAX_ALLOWED_BUDGETS } from '$lib/constants/variables';
+	import { formatCurrency } from '$lib/utils/helpers';
 
 	let menu: Menu;
 	let open = false;

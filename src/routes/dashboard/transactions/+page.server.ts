@@ -2,8 +2,8 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { create } from '../../../api';
 import type { ITransactionDto } from '../../../interfaces/transaction';
-import { validateForm } from '../../../utils/helpers';
-import { transactionSchema } from '../../../lib/validationSchemas';
+import { validateForm } from '$lib/utils/helpers';
+import { transactionSchema } from '$lib/validationSchemas';
 
 export const actions: Actions = {
 	createTransaction: async ({ request, locals, cookies }) => {

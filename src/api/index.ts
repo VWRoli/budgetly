@@ -1,4 +1,4 @@
-import { API_URL } from '../constants/variables';
+import { API_URL } from '$lib/constants/variables';
 
 export const setDefaultBudget = async (
 	userId: number,

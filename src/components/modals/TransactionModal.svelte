@@ -11,9 +11,9 @@
 	import type { IAccount } from '../../interfaces/account';
 	import type Snackbar from '@smui/snackbar';
 	import SToast from '../common/SToast.svelte';
-	import { ToastType } from '../../utils/enums/toastType.enum';
+	import { ToastType } from '$lib/enums/toastType.enum';
 	import type { ActionResult } from '@sveltejs/kit';
-	import { INCOME_FOR_THIS_MONTH } from '../../constants/variables';
+	import { INCOME_FOR_THIS_MONTH } from '$lib/constants/variables';
 
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
 		id: c.id,

@@ -3,15 +3,14 @@
 	import List, { Item, Text } from '@smui/list';
 	import IconButton from '@smui/icon-button';
 	import Paper, { Title } from '@smui/paper';
-	import { menuItems } from '../../constants/menuItems';
-	import { capitalizeFirstLetter, formatCurrency } from '../../utils/helpers';
+	import { menuItems } from '$lib/constants/menuItems';
+	import { capitalizeFirstLetter, formatCurrency } from '$lib/utils/helpers';
 	import AccountModal from '../modals/AccountModal.svelte';
 	import Button, { Label } from '@smui/button';
 	import BudgetMenu from './BudgetMenu.svelte';
 	import { page } from '$app/stores';
 	import type { IAccount } from '../../interfaces/account';
 	import type { IBudget } from '../../interfaces/budget';
-	import { enhance } from '$app/forms';
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const accounts: IAccount[] = $page.data.accounts;

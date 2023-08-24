@@ -3,7 +3,7 @@
 	import STextInput from '../common/STextInput.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import SToast from '../common/SToast.svelte';
-	import { ToastType } from '../../utils/enums/toastType.enum';
+	import { ToastType } from '$lib/enums/toastType.enum';
 	import type { ActionResult } from '@sveltejs/kit';
 
 	export let open = false;

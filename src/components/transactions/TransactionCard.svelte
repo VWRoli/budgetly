@@ -6,7 +6,7 @@
 	import Chip, { Set, Text as ChipText } from '@smui/chips';
 	import List, { Item, Separator, Text } from '@smui/list';
 	import type { ITransaction } from '../../interfaces/transaction';
-	import { formatCurrency, formatDate } from '../../utils/helpers';
+	import { formatCurrency, formatDate } from '$lib/utils/helpers';
 	import { page } from '$app/stores';
 
 	const defaultBudget = $page.data.defaultBudget;

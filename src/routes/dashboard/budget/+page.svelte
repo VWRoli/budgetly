@@ -7,6 +7,7 @@
 	import BudgetModal from '../../../components/modals/BudgetModal.svelte';
 	import type { ICategory } from '../../../interfaces/category';
 	import type { IBudget } from '../../../interfaces/budget';
+	import SCalculator from '../../../components/common/SCalculator.svelte';
 
 	const categories: ICategory[] = $page.data.categories;
 	const defaultBudget: IBudget = $page.data.defaultBudget;
@@ -24,7 +25,8 @@
 </script>
 
 <div class="p-10 h-full">
-	<div class="flex justify-end items-center py-5 gap-5">
+	<div class="flex justify-end items-center py-5 gap-5 relative">
+		<SCalculator />
 		<Button
 			variant="unelevated"
 			disabled={!defaultBudget}

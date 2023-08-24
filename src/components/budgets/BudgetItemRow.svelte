@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Item } from '@smui/list';
 	import type { ISubCategory } from '../../interfaces/subCategory';
-	import { formatCurrency } from '../../utils/helpers';
+	import { formatCurrency } from '$lib/utils/helpers';
 	import { page } from '$app/stores';
 	import type { IBudget } from '../../interfaces/budget';
 	import BudgetModal from '../modals/BudgetModal.svelte';

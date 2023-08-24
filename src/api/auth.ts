@@ -1,4 +1,4 @@
-import { API_URL } from '../constants/variables';
+import { API_URL } from '$lib/constants/variables';
 import type { ILoginUser } from '../interfaces/loginUser';
 import type { IRegisterUser } from '../interfaces/registerUser';
 
@@ -7,9 +7,9 @@ export const register = async (userData: IRegisterUser) => {
 		const response = await fetch(`${API_URL}/auth/signup`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(userData)
+			body: JSON.stringify(userData),
 		});
 
 		if (!response.ok) {
@@ -31,9 +31,9 @@ export const login = async (userData: ILoginUser) => {
 		const response = await fetch(`${API_URL}/auth/signin`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(userData)
+			body: JSON.stringify(userData),
 		});
 
 		if (!response.ok) {
@@ -57,8 +57,8 @@ export const getUser = async (token: string) => {
 			headers: {
 				Accept: 'application/json',
 				'content-type': 'application/json',
-				Authorization: `Bearer ${token}`
-			}
+				Authorization: `Bearer ${token}`,
+			},
 		});
 
 		if (!response.ok) {

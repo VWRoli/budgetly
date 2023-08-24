@@ -1,5 +1,5 @@
-import type { ECurrency } from '../utils/enums/currency.enum';
-import type { ELocale } from '../utils/enums/locale.enum';
+import type { ECurrency } from '$lib/enums/currency.enum';
+import type { ELocale } from '$lib/enums/locale.enum';
 
 export interface IBudgetDto {
 	name: string;

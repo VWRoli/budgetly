@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { MAX_LENGTH, MIN_LENGTH } from '../constants/variables';
+import { MAX_LENGTH, MIN_LENGTH } from './constants/variables';
 
 export const signupSchema = Yup.object().shape({
 	email: Yup.string()

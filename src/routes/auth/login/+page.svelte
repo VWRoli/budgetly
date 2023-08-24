@@ -7,7 +7,7 @@
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import { ToastType } from '../../../utils/enums/toastType.enum';
+	import { ToastType } from '$lib/enums/toastType.enum';
 
 	export let form: ActionData;
 

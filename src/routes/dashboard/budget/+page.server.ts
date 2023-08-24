@@ -3,16 +3,16 @@ import type { Actions } from './$types';
 import { create, updateBudgetedValue } from '../../../api';
 import type { ICategoryDto } from '../../../interfaces/category';
 import type { ISubCategoryDto } from '../../../interfaces/subCategory';
-import { validateForm } from '../../../utils/helpers';
+import { validateForm } from '$lib/utils/helpers';
 import {
 	accountSchema,
 	budgetSchema,
 	categorySchema,
 	updateBudgetedSchema,
-} from '../../../lib/validationSchemas';
+} from '$lib/validationSchemas';
 import type { IAccountDto } from '../../../interfaces/account';
 import type { IBudgetDto } from '../../../interfaces/budget';
-import type { ECurrency } from '../../../utils/enums/currency.enum';
+import type { ECurrency } from '$lib/enums/currency.enum';
 
 export const actions: Actions = {
 	logout: async (event) => {
