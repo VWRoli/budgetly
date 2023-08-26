@@ -3,14 +3,10 @@
 	import Paper from '@smui/paper';
 	import CategoryModal from '../../../components/modals/CategoryModal.svelte';
 	import BudgetItem from '../../../components/budgets/BudgetItem.svelte';
-	import { page } from '$app/stores';
 	import BudgetModal from '../../../components/modals/BudgetModal.svelte';
-	import type { ICategory } from '../../../interfaces/category';
-	import type { IBudget } from '../../../interfaces/budget';
-	import SCalculator from '../../../components/common/SCalculator.svelte';
 
-	const categories: ICategory[] = $page.data.categories;
-	const defaultBudget: IBudget = $page.data.defaultBudget;
+	export let data;
+	$: ({ categories, defaultBudget } = data);
 
 	let openCategory = false;
 	let openBudget = false;
