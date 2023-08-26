@@ -52,7 +52,7 @@
 	{handleSubmit}
 >
 	<div class=" flex flex-col gap-5">
-		<STextInput placeholder="Name" name="name" type="text" />
+		<STextInput placeholder="Name" name="name" />
 	</div>
 </ModalWrapper>
 

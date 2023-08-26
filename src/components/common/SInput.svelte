@@ -3,6 +3,7 @@
 	export let name = '';
 	export let error = '';
 	export let placeholder = '';
+	export let type = '';
 	export let helperText = '';
 	export let disabled = false;
 	export let handleKeyDown = (e: KeyboardEvent) => {};
@@ -10,11 +11,11 @@
 
 <fieldset class="flex flex-col">
 	<input
-		type="text"
+		{type}
 		{name}
 		{disabled}
 		{placeholder}
-		bind:value
+		{value}
 		on:keydown={handleKeyDown}
 		class="border border-gray-400 py-3 px-4 rounded focus-visible:box-border focus-visible:border-primary focus-visible:border-2"
 	/>

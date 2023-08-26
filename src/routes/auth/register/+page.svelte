@@ -2,11 +2,11 @@
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
-	import STextInput from '../../../components/common/STextInput.svelte';
 	import Toast from '../../../components/common/SToast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
+	import SInput from '../../../components/common/SInput.svelte';
 
 	export let form: ActionData;
 
@@ -22,7 +22,7 @@
 <Title>Register</Title>
 <Content>
 	<form class="flex flex-col min-w-[516px]" method="post" use:enhance>
-		<STextInput
+		<SInput
 			placeholder="Email"
 			name="email"
 			type="email"
@@ -32,7 +32,7 @@
 		/>
 
 		<div class="h-4" />
-		<STextInput
+		<SInput
 			placeholder="Password"
 			type="password"
 			name="password"
@@ -42,7 +42,7 @@
 		/>
 
 		<div class="h-4" />
-		<STextInput
+		<SInput
 			placeholder="Confirm Password"
 			type="password"
 			name="confirmPassword"

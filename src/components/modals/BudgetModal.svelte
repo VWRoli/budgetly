@@ -67,7 +67,7 @@
 <ModalWrapper title="Create budget" {open} {toggleOpen} {action} {handleSubmit}>
 	<slot>
 		<div class="flex flex-col gap-5 min-w-[378px] min-h-[178px] pt-4">
-			<STextInput placeholder="Name" name="name" type="text" />
+			<STextInput placeholder="Name" name="name" />
 			<SSelect
 				placeholder="Currency"
 				options={filteredCurrencyOptions}

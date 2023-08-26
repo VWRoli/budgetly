@@ -54,7 +54,7 @@
 >
 	<slot>
 		<div class=" flex flex-col gap-5">
-			<STextInput placeholder="Title" name="title" type="text" />
+			<STextInput placeholder="Title" name="title" />
 			<input bind:value={id} type="text" name="categoryId" class="hidden" />
 		</div>
 	</slot>

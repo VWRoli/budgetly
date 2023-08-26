@@ -14,6 +14,7 @@
 	import { ToastType } from '$lib/enums/toastType.enum';
 	import type { ActionResult } from '@sveltejs/kit';
 	import { INCOME_FOR_THIS_MONTH } from '$lib/constants/variables';
+	import SInput from '../common/SInput.svelte';
 
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
 		id: c.id,
@@ -95,11 +96,11 @@
 				options={accountOptions}
 				name="accountId"
 			/>
-			<STextInput placeholder="Payee" name="payee" type="text" />
+			<STextInput placeholder="Payee" name="payee" />
 
 			<div class="flex gap-4">
-				<STextInput placeholder="Inflow" name="inflow" type="number" />
-				<STextInput placeholder="Outlfow" name="outflow" type="number" />
+				<SInput placeholder="Inflow" name="inflow" type="number" />
+				<SInput placeholder="Outlfow" name="outflow" type="number" />
 			</div>
 			<div class="flex gap-4">
 				<SSelect

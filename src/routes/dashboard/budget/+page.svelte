@@ -26,7 +26,6 @@
 
 <div class="p-10 h-full">
 	<div class="flex justify-end items-center py-5 gap-5 relative">
-		<SCalculator />
 		<Button
 			variant="unelevated"
 			disabled={!defaultBudget}

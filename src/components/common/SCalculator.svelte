@@ -2,8 +2,9 @@
 	import { fly } from 'svelte/transition';
 	import Keypad from './SKeypad.svelte';
 	import Paper from '@smui/paper';
+	import { ECalculator } from '../../lib/enums/calculator';
 
-	let numberInput = '';
+	export let numberInput = '';
 	let total = 0;
 
 	// private function
@@ -51,7 +52,7 @@
 <Paper
 	variant="outlined"
 	color="primary"
-	class="absolute top-0 left-0 z-50 bg-white"
+	class="absolute top-0 right-0 z-50 bg-white"
 >
 	<div class="results">
 		<div class="calculations">{numberInput}</div>
@@ -66,27 +67,35 @@
 	</div>
 
 	<div class="grid grid-cols-4 grid-rows-5 gap-2">
-		<Keypad expand={3} type="clear" clicked={clear} />
-		<Keypad type="operator" clicked={() => addToEquation('/')}>÷</Keypad>
+		<Keypad expand={3} type={ECalculator.CLEAR} clicked={clear} />
+		<Keypad type={ECalculator.OPERATOR} clicked={() => addToEquation('/')}
+			>÷</Keypad
+		>
 
 		<Keypad clicked={() => addToEquation(7)}>7</Keypad>
 		<Keypad clicked={() => addToEquation(8)}>8</Keypad>
 		<Keypad clicked={() => addToEquation(9)}>9</Keypad>
 
-		<Keypad type="operator" clicked={() => addToEquation('*')}>x</Keypad>
+		<Keypad type={ECalculator.OPERATOR} clicked={() => addToEquation('*')}
+			>x</Keypad
+		>
 		<Keypad clicked={() => addToEquation(4)}>4</Keypad>
 		<Keypad clicked={() => addToEquation(5)}>5</Keypad>
 		<Keypad clicked={() => addToEquation(6)}>6</Keypad>
 
-		<Keypad type="operator" clicked={() => addToEquation('-')}>-</Keypad>
+		<Keypad type={ECalculator.OPERATOR} clicked={() => addToEquation('-')}
+			>-</Keypad
+		>
 		<Keypad clicked={() => addToEquation(1)}>1</Keypad>
 		<Keypad clicked={() => addToEquation(2)}>2</Keypad>
 		<Keypad clicked={() => addToEquation(3)}>3</Keypad>
 
-		<Keypad type="operator" clicked={() => addToEquation('+')}>+</Keypad>
+		<Keypad type={ECalculator.OPERATOR} clicked={() => addToEquation('+')}
+			>+</Keypad
+		>
 		<Keypad expand={3} clicked={() => addToEquation(0)}>0</Keypad>
 
-		<Keypad type="equal" clicked={() => calculate()}>=</Keypad>
+		<Keypad type={ECalculator.EQUAL} clicked={() => calculate()}>=</Keypad>
 	</div>
 </Paper>
 

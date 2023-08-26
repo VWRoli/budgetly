@@ -4,7 +4,7 @@
 	import SSelect from '../common/SSelect.svelte';
 	import { page } from '$app/stores';
 	import type { IAccount } from '../../interfaces/account';
-	import STextInput from '../common/STextInput.svelte';
+	import SInput from '../common/SInput.svelte';
 
 	export let open = false;
 
@@ -36,8 +36,8 @@
 			name="toAccount"
 		/>
 		<div class="flex gap-4">
-			<STextInput placeholder="Inflow" name="inflow" type="number" />
-			<STextInput placeholder="Outlfow" name="outflow" type="number" />
+			<SInput placeholder="Inflow" name="inflow" type="number" />
+			<SInput placeholder="Outlfow" name="outflow" type="number" />
 		</div>
 		<DateInput bind:value={date} />
 		<input type="text" name="date" bind:value={date} class="hidden" />

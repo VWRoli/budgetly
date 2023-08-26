@@ -5,9 +5,11 @@
 	import type { ActionResult } from '@sveltejs/kit';
 	import { ToastType } from '$lib/enums/toastType.enum';
 	import type Snackbar from '@smui/snackbar';
+	import SCalculator from '../common/SCalculator.svelte';
 
 	export let open = false;
 	export let id: number;
+	let showCalculator = false;
 
 	export let toggleOpen = (value: boolean) => {};
 
@@ -16,6 +18,7 @@
 	let toast: Snackbar;
 	let message = '';
 	let toastType: ToastType;
+	let value: 0;
 
 	const handleSubmit = () => {
 		return async ({
@@ -44,15 +47,29 @@
 			}
 		};
 	};
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+			e.preventDefault();
+			showCalculator = true;
+		}
+	}
 </script>
 
 <ModalWrapper title="Update amount" {open} {toggleOpen} {action} {handleSubmit}>
 	<slot>
 		<div class="flex flex-col gap-5">
-			<STextInput placeholder="Amount" name="amount" type="number" />
+			<STextInput
+				placeholder="Amount"
+				name="amount"
+				bind:value
+				handleKeyDown={handleKeydown}
+			/>
 			<input type="text" name="id" bind:value={id} class="hidden" />
 		</div>
 	</slot>
 </ModalWrapper>
 
+{#if showCalculator}
+	<SCalculator numberInput={value + ''} />
+{/if}
 <SToast bind:toast {message} {toastType} />
