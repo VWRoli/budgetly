@@ -11,6 +11,7 @@
 	import { page } from '$app/stores';
 	import type { IAccount } from '../../interfaces/account';
 	import type { IBudget } from '../../interfaces/budget';
+	import { goto } from '$app/navigation';
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
 	const accounts: IAccount[] = $page.data.accounts;
@@ -19,6 +20,15 @@
 
 	function toggleOpen(value: boolean) {
 		open = value;
+	}
+
+	function handleRouteChange(id: number) {
+		let query = new URLSearchParams($page.url.searchParams.toString());
+		query.set('accountId', `${id}`);
+		goto(`/dashboard/transactions?${query.toString()}`, {
+			replaceState: true,
+			invalidateAll: true,
+		});
 	}
 </script>
 
@@ -59,16 +69,16 @@
 							</Title>
 							<List>
 								{#each accounts as account (account.id)}
-									<Item>
+									<Item on:SMUI:action={() => handleRouteChange(account.id)}>
 										<div class="flex items-center justify-between w-full">
 											<Text>{account.name}</Text>
-											<Text
-												>{formatCurrency(
+											<Text>
+												{formatCurrency(
 													account.balance,
 													defaultBudget.locale,
 													defaultBudget.currency
-												)}</Text
-											>
+												)}
+											</Text>
 										</div>
 									</Item>
 								{:else}

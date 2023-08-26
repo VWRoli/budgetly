@@ -34,6 +34,7 @@ export const fetchData = async (path: string, token: string): Promise<any> => {
 			throw new Error(errorData.message);
 		}
 		const responseData = await response.json();
+
 		return responseData;
 	} catch (error: any) {
 		// Handle fetch errors or any other exceptions

@@ -1,9 +1,31 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { create } from '../../../api';
-import type { ITransactionDto } from '../../../interfaces/transaction';
+import { create, fetchData } from '../../../api';
+import type {
+	ITransaction,
+	ITransactionDto,
+} from '../../../interfaces/transaction';
 import { validateForm } from '$lib/utils/helpers';
 import { transactionSchema } from '$lib/validationSchemas';
+import type { IUser } from '../../../interfaces/user';
+
+export async function load({ locals, cookies, url }) {
+	const user = locals.user as IUser;
+	const accountId = url.searchParams.get('accountId');
+	const token = cookies.get('AuthorizationToken');
+
+	return {
+		transactions: accountId
+			? ((await fetchData(
+					`/transactions/${accountId}`,
+					token as string
+			  )) as Promise<ITransaction[]>)
+			: ((await fetchData(
+					`/transactions/budget/${user.defaultBudgetId}`,
+					token as string
+			  )) as Promise<ITransaction[]>),
+	};
+}
 
 export const actions: Actions = {
 	createTransaction: async ({ request, locals, cookies }) => {

@@ -5,15 +5,13 @@
 	import TransactionModal from '../../../components/modals/TransactionModal.svelte';
 	import TransferModal from '../../../components/modals/TransferModal.svelte';
 	import { page } from '$app/stores';
-	import type { IBudget } from '../../../interfaces/budget';
-	import type { ITransaction } from '../../../interfaces/transaction';
 	import type { ICategory } from '../../../interfaces/category';
 	import type { IAccount } from '../../../interfaces/account';
 
+	export let data;
 	const accounts: IAccount[] = $page.data.accounts;
 	const categories: ICategory[] = $page.data.categories;
-	const transactions: ITransaction[] = $page.data.transactions;
-	const defaultBudget: IBudget = $page.data.defaultBudget;
+	$: ({ transactions } = data);
 
 	const ableToCreateTransaction =
 		accounts.length && categories.length ? true : false;
@@ -51,32 +49,34 @@
 		variant="outlined"
 		color="primary"
 	>
-		<section class="flex flex-col gap-5 h-full">
-			{#each transactions as transaction}
-				<TransactionCard {transaction} />
-			{:else}
-				<div class="flex justify-center items-center flex-col h-[500px]">
-					<div
-						class="mdc-typography--headline6 flex justify-center items-center mb-4"
-					>
-						No transactions yet.
-					</div>
-					<div
-						class="mdc-typography--subtitle1 flex justify-center items-center mb-4"
-					>
-						You need to create an Account, a Category and a SubCategory to be
-						able to create a transaction.
-					</div>
+		{#key transactions}
+			<section class="flex flex-col gap-5 h-full">
+				{#each transactions as transaction}
+					<TransactionCard {transaction} />
+				{:else}
+					<div class="flex justify-center items-center flex-col h-[500px]">
+						<div
+							class="mdc-typography--headline6 flex justify-center items-center mb-4"
+						>
+							No transactions yet.
+						</div>
+						<div
+							class="mdc-typography--subtitle1 flex justify-center items-center mb-4"
+						>
+							You need to create an Account, a Category and a SubCategory to be
+							able to create a transaction.
+						</div>
 
-					<Button
-						variant="unelevated"
-						disabled={!ableToCreateTransaction}
-						on:click={() => (createTxnOpen = true)}
-					>
-						<Label>Create Transaction</Label>
-					</Button>
-				</div>{/each}
-		</section>
+						<Button
+							variant="unelevated"
+							disabled={!ableToCreateTransaction}
+							on:click={() => (createTxnOpen = true)}
+						>
+							<Label>Create Transaction</Label>
+						</Button>
+					</div>{/each}
+			</section>
+		{/key}
 	</Paper>
 </div>
 
