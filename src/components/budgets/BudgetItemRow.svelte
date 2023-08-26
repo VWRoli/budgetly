@@ -4,7 +4,6 @@
 	import { formatCurrency } from '$lib/utils/helpers';
 	import { page } from '$app/stores';
 	import type { IBudget } from '../../interfaces/budget';
-	import BudgetModal from '../modals/BudgetModal.svelte';
 	import UpdateBudgetedModal from '../modals/UpdateBudgetedModal.svelte';
 
 	const defaultBudget: IBudget = $page.data.defaultBudget;
@@ -57,4 +56,9 @@
 	</div>
 </Item>
 
-<UpdateBudgetedModal {open} {toggleOpen} id={subCategory.id} />
+<UpdateBudgetedModal
+	{open}
+	{toggleOpen}
+	id={subCategory.id}
+	value={subCategory.budgeted}
+/>

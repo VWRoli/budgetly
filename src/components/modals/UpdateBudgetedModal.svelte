@@ -18,7 +18,7 @@
 	let toast: Snackbar;
 	let message = '';
 	let toastType: ToastType;
-	let value: 0;
+	export let value: number;
 
 	const handleSubmit = () => {
 		return async ({

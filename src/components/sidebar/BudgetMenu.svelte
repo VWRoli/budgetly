@@ -29,6 +29,15 @@
 			menu.setOpen(true);
 		}
 	}
+	function getColor(amount: number) {
+		if (amount > 0) {
+			return 'custom-green';
+		} else if (amount < 0) {
+			return 'custom-red';
+		} else {
+			return 'custom-blue';
+		}
+	}
 </script>
 
 <section>
@@ -40,13 +49,16 @@
 			<Label>Create Budget</Label>
 		{/if}
 	</Button>
-	<Paper class="p-2 text-center mt-4 mb-2" color="custom-green">
+	<Paper
+		class="p-2 text-center mt-4 mb-2"
+		color={getColor(defaultBudget?.availableToBudget)}
+	>
 		<Content>
 			<small> Available to Budget: </small>
 			{formatCurrency(
-				defaultBudget.availableToBudget,
-				defaultBudget.locale,
-				defaultBudget.currency
+				defaultBudget?.availableToBudget,
+				defaultBudget?.locale,
+				defaultBudget?.currency
 			)}
 		</Content>
 	</Paper>

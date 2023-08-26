@@ -25,6 +25,7 @@ export const formatCurrency = (
 	locale: ELocale,
 	currency: ECurrency
 ) => {
+	if (amount === undefined) return 0;
 	return new Intl.NumberFormat(locale, {
 		style: 'currency',
 		currency: currency.toUpperCase(),
