@@ -13,9 +13,9 @@
 	import type { IBudget } from '../../interfaces/budget';
 	import { goto } from '$app/navigation';
 
-	const defaultBudget: IBudget = $page.data.defaultBudget;
-	const accounts: IAccount[] = $page.data.accounts;
-
+	export let defaultBudget: IBudget | null;
+	export let accounts: IAccount[];
+	export let budgets: IBudget[];
 	let open = false;
 
 	function toggleOpen(value: boolean) {
@@ -37,7 +37,7 @@
 		<Paper color="primary" style="height: 100vh;">
 			<div class="flex flex-col justify-between h-full">
 				<div>
-					<BudgetMenu />
+					<BudgetMenu {defaultBudget} {budgets} />
 					<List singleSelection>
 						{#each menuItems as item (item.id)}
 							<a href={item.route}>
@@ -72,13 +72,15 @@
 									<Item on:SMUI:action={() => handleRouteChange(account.id)}>
 										<div class="flex items-center justify-between w-full">
 											<Text>{account.name}</Text>
-											<Text>
-												{formatCurrency(
-													account.balance,
-													defaultBudget.locale,
-													defaultBudget.currency
-												)}
-											</Text>
+											{#if defaultBudget}
+												<Text>
+													{formatCurrency(
+														account.balance,
+														defaultBudget.locale,
+														defaultBudget.currency
+													)}
+												</Text>
+											{/if}
 										</div>
 									</Item>
 								{:else}

@@ -100,3 +100,30 @@ export const updateBudgetedValue = async (
 		throw error;
 	}
 };
+
+export const updateDefaultBudget = async (
+	userId: number,
+	budgetId: number,
+	token: string
+): Promise<any> => {
+	console.log(userId, budgetId);
+	try {
+		const response = await fetch(`${API_URL}/budgets/${userId}/${budgetId}`, {
+			method: 'PUT',
+			credentials: 'include',
+			headers: {
+				Accept: 'application/json',
+				'content-type': 'application/json',
+				Authorization: token,
+			},
+		});
+		if (!response.ok) {
+			// Handle error response (if any)
+			const errorData = await response.json();
+			throw new Error(errorData.message);
+		}
+	} catch (error: any) {
+		// Handle fetch errors or any other exceptions
+		throw error;
+	}
+};

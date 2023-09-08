@@ -2,12 +2,12 @@
 	import { Content, Title } from '@smui/paper';
 	import Button, { Label } from '@smui/button';
 	import CircularProgress from '@smui/circular-progress';
-	import STextInput from '../../../components/common/STextInput.svelte';
 	import SToast from '../../../components/common/SToast.svelte';
 	import type Snackbar from '@smui/snackbar';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { ToastType } from '$lib/enums/toastType.enum';
+	import SInput from '../../../components/common/SInput.svelte';
 
 	export let form: ActionData;
 
@@ -47,7 +47,7 @@
 		method="post"
 		use:enhance={submitLogin}
 	>
-		<STextInput
+		<SInput
 			placeholder="Email"
 			name="email"
 			type="email"
@@ -55,7 +55,7 @@
 			disabled={isLoading}
 		/>
 		<div class="h-4" />
-		<STextInput
+		<SInput
 			placeholder="Password"
 			name="password"
 			type="password"

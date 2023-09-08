@@ -84,3 +84,6 @@ export const transactionSchema = Yup.object().shape({
 export const updateBudgetedSchema = Yup.object().shape({
 	amount: Yup.string().required('Amount is required'),
 });
+export const changeDefaultBudgetSchema = Yup.object().shape({
+	id: Yup.number().required('Budget ID is required'),
+});

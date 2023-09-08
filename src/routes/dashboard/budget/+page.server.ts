@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { create, updateBudgetedValue } from '../../../api';
+import { create, updateBudgetedValue, updateDefaultBudget } from '../../../api';
 import type { ICategoryDto } from '../../../interfaces/category';
 import type { ISubCategoryDto } from '../../../interfaces/subCategory';
 import { validateForm } from '$lib/utils/helpers';
@@ -8,6 +8,7 @@ import {
 	accountSchema,
 	budgetSchema,
 	categorySchema,
+	changeDefaultBudgetSchema,
 	updateBudgetedSchema,
 } from '$lib/validationSchemas';
 import type { IAccountDto } from '../../../interfaces/account';
@@ -166,6 +167,35 @@ export const actions: Actions = {
 		const token = cookies.get('AuthorizationToken');
 		try {
 			await updateBudgetedValue(+id, subCategoryData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
+	},
+
+	changeDefaultBudget: async ({ request, cookies, locals }) => {
+		const formData = Object.fromEntries(await request.formData());
+
+		let errors: { [k: string]: string } = {};
+
+		const { id } = formData as {
+			id: string;
+		};
+
+		errors = await validateForm(changeDefaultBudgetSchema, formData);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, {
+				error: errors,
+			});
+		}
+		const token = cookies.get('AuthorizationToken');
+		try {
+			const res = await updateDefaultBudget(
+				+(locals.user?.id as number),
+				+id,
+				token as string
+			);
 		} catch (error: any) {
 			return fail(400, {
 				error: { message: error.message },
