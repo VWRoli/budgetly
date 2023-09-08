@@ -6,7 +6,7 @@
 	import type { IBudget } from '../../interfaces/budget';
 	import UpdateBudgetedModal from '../modals/UpdateBudgetedModal.svelte';
 
-	const defaultBudget: IBudget = $page.data.defaultBudget;
+	$: defaultBudget = $page.data.defaultBudget as IBudget;
 	const cellClass = `col-span-3 flex items-center justify-end`;
 	export let subCategory: ISubCategory;
 
