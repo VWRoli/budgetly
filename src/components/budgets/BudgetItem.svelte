@@ -6,7 +6,7 @@
 	import type { ICategory } from '../../interfaces/category';
 
 	export let category: ICategory;
-	const subCategories = category.subCategories;
+	$: subCategories = category.subCategories;
 </script>
 
 <Card variant="outlined">
