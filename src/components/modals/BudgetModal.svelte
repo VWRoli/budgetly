@@ -20,10 +20,22 @@
 	const action = '/dashboard/budget?/createBudget';
 
 	const currencyOptions = [
-		ECurrency.EUR as string,
-		ECurrency.USD as string,
-		ECurrency.GBP as string,
-		ECurrency.HUF as string,
+		{
+			id: ECurrency.EUR as string,
+			value: ECurrency.EUR.toUpperCase() as string,
+		},
+		{
+			id: ECurrency.HUF as string,
+			value: ECurrency.HUF.toUpperCase() as string,
+		},
+		{
+			id: ECurrency.GBP as string,
+			value: ECurrency.GBP.toUpperCase() as string,
+		},
+		{
+			id: ECurrency.USD as string,
+			value: ECurrency.USD.toUpperCase() as string,
+		},
 	];
 
 	let toast: Snackbar;
@@ -32,7 +44,7 @@
 
 	//remove alredy existing currency options
 	const filteredCurrencyOptions = currencyOptions.filter(
-		(x) => !budgetCurrencies.includes(x)
+		(x) => !budgetCurrencies.includes(x.id)
 	);
 
 	const handleSubmit = () => {

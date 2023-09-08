@@ -1,13 +1,15 @@
 <script lang="ts">
-	export let options: string[] | { id: number; value: string }[];
+	export let options: { id: number | string; value: string }[];
 	export let name = '';
 	export let className = '';
 	export let value = '';
 	export let placeholder = '';
+	export let selected = '';
 	export let disabled = false;
 	export let changeHandler = (id: number) => {};
 </script>
 
+{selected}
 <select
 	{disabled}
 	bind:value
@@ -16,13 +18,9 @@
 	{name}
 >
 	{#if placeholder}
-		<option value="" disabled selected>{placeholder}</option>
+		<option value="" disabled>{placeholder}</option>
 	{/if}
 	{#each options as option}
-		<option value={typeof option === 'string' ? option : option.id}
-			>{typeof option === 'string'
-				? option.toUpperCase()
-				: option.value}</option
-		>
+		<option value={option.id}>{option.value}</option>
 	{/each}
 </select>

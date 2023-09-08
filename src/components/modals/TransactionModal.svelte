@@ -16,6 +16,8 @@
 	import { INCOME_FOR_THIS_MONTH } from '$lib/constants/variables';
 	import SInput from '../common/SInput.svelte';
 
+	$: accountId = $page.url.searchParams.get('accountId');
+
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
 		id: c.id,
 		value: c.title,
@@ -91,6 +93,7 @@
 >
 	<slot>
 		<div class="min-h-[500px] flex flex-col gap-5">
+			{accountId}
 			<SSelect
 				placeholder="Account"
 				options={accountOptions}
