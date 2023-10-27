@@ -44,7 +44,7 @@
 
 	//remove alredy existing currency options
 	const filteredCurrencyOptions = currencyOptions.filter(
-		(x) => !budgetCurrencies.includes(x.id)
+		(option) => !budgetCurrencies.some((cur) => cur === option.id)
 	);
 
 	const handleSubmit = () => {

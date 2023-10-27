@@ -88,16 +88,21 @@
 	<Paper
 		class="p-2 text-center mt-4 mb-2"
 		color={getColor(defaultBudget?.availableToBudget || 0)}
-		>{#if defaultBudget}
-			<Content>
-				<small> Available to Budget: </small>
-				{formatCurrency(
-					defaultBudget?.availableToBudget,
-					defaultBudget?.locale,
-					defaultBudget?.currency
-				)}
-			</Content>
-		{/if}
+	>
+		<Content>
+			<small> Available to Budget: </small>
+			{#if defaultBudget}
+				<small>
+					{formatCurrency(
+						defaultBudget?.availableToBudget,
+						defaultBudget?.locale,
+						defaultBudget?.currency
+					)}
+				</small>
+			{:else}
+				<small>0</small>
+			{/if}
+		</Content>
 	</Paper>
 </section>
 

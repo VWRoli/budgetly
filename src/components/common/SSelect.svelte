@@ -9,7 +9,7 @@
 	export let changeHandler = (id: number) => {};
 </script>
 
-{selected}
+
 <select
 	{disabled}
 	bind:value
@@ -21,6 +21,7 @@
 		<option value="" disabled>{placeholder}</option>
 	{/if}
 	{#each options as option}
+	//TODO selected option
 		<option value={option.id}>{option.value}</option>
 	{/each}
 </select>
