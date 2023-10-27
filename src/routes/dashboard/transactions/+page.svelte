@@ -4,17 +4,12 @@
 	import TransactionCard from '../../../components/transactions/TransactionCard.svelte';
 	import TransactionModal from '../../../components/modals/TransactionModal.svelte';
 	import TransferModal from '../../../components/modals/TransferModal.svelte';
-	import { page } from '$app/stores';
-	import type { ICategory } from '../../../interfaces/category';
-	import type { IAccount } from '../../../interfaces/account';
 
 	export let data;
-	const accounts: IAccount[] = $page.data.accounts;
-	const categories: ICategory[] = $page.data.categories;
-	$: ({ transactions } = data);
+	$: ({ transactions, accounts, categories } = data);
 
-	const ableToCreateTransaction =
-		accounts.length && categories.length ? true : false;
+	$: ableToCreateTransaction =
+		accounts?.length && categories?.length ? true : false;
 
 	let createTxnOpen = false;
 	let createTransferOpen = false;

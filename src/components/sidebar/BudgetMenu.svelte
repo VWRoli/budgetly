@@ -15,6 +15,7 @@
 	import type Snackbar from '@smui/snackbar';
 	import type { ActionResult } from '@sveltejs/kit';
 	import SToast from '../common/SToast.svelte';
+	import { goto } from '$app/navigation';
 
 	let menu: Menu;
 	let open = false;
@@ -61,6 +62,12 @@
 					toastType = ToastType.SUCCESS;
 					toast.open();
 					await update();
+
+					goto(`/dashboard/budget`, {
+						replaceState: true,
+						invalidateAll: true,
+					});
+
 					break;
 				case 'failure':
 					Object.values(result.data?.error).forEach((value) => {
