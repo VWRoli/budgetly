@@ -12,12 +12,17 @@
 	const defaultBudget = $page.data.defaultBudget;
 
 	export let transaction: ITransaction;
-	const isTransfer = !transaction.category?.title;
+
+	const isTransfer = transaction.payee.startsWith('Transfer:');
 	let menu: Menu;
 	const center = 'flex justify-between items-center';
 	const amount = transaction.inflow
 		? `+${transaction.inflow}`
 		: `-${transaction.outflow}`;
+
+	const chips = transaction.subCategory?.title
+		? [transaction.category?.title, transaction.subCategory?.title]
+		: [transaction.category?.title];
 </script>
 
 <Card padded variant="outlined">
@@ -35,24 +40,17 @@
 				</div>
 				<div>
 					<div class="mdc-typography--headline5">
-						{isTransfer ? `Transfer:` : ''}
 						{transaction.payee}
 					</div>
 
 					{#if !isTransfer}
-						<Set
-							chips={[
-								transaction.category.title,
-								transaction.subCategory.title,
-							]}
-							let:chip
-						>
+						<Set {chips} let:chip>
 							<Chip {chip} shouldRemoveOnTrailingIconClick={false}>
 								<ChipText>{chip}</ChipText>
 							</Chip>
 						</Set>
 					{:else}
-						<IconButton class="material-icons" disabled>star_border</IconButton>
+						<IconButton class="material-icons" disabled>sync_alt</IconButton>
 					{/if}
 				</div>
 			</article>

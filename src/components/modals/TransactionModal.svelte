@@ -93,7 +93,6 @@
 >
 	<slot>
 		<div class="min-h-[500px] flex flex-col gap-5">
-			{accountId}
 			<SSelect
 				placeholder="Account"
 				options={accountOptions}
