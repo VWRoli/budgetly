@@ -33,6 +33,8 @@
 					message = 'Amount successfully updated';
 					toastType = ToastType.SUCCESS;
 					toast.open();
+					id = result?.data?.id;
+
 					await update();
 					break;
 				case 'failure':
@@ -64,7 +66,7 @@
 				bind:value
 				handleKeyDown={handleKeydown}
 			/>
-			<input type="text" name="id" bind:value={id} class="hidden" />
+			<input type="text" name="id" bind:value={id} class="" />
 		</div>
 	</slot>
 </ModalWrapper>

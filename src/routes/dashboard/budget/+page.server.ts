@@ -76,6 +76,7 @@ export const actions: Actions = {
 
 		try {
 			await create('/sub-categories', subCategoryData, token as string);
+			return { categoryId: categoryId };
 		} catch (error: any) {
 			return fail(400, {
 				error: { message: error.message },
@@ -167,6 +168,7 @@ export const actions: Actions = {
 		const token = cookies.get('AuthorizationToken');
 		try {
 			await updateBudgetedValue(+id, subCategoryData, token as string);
+			return { id };
 		} catch (error: any) {
 			return fail(400, {
 				error: { message: error.message },

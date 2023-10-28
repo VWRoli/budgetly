@@ -17,7 +17,9 @@
 	}
 </script>
 
-<Item class="border border-slate-200 h-auto rounded">
+<Item
+	class="border border-slate-200 h-auto rounded odd:bg-white even:bg-slate-100"
+>
 	<div class="grid grid-cols-12 w-full">
 		<div class="col-span-3">{subCategory.title}</div>
 		<div class={cellClass}>

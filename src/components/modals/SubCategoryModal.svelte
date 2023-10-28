@@ -29,6 +29,8 @@
 					message = 'SubCategory successfully created';
 					toastType = ToastType.SUCCESS;
 					toast.open();
+					id = result?.data?.categoryId;
+
 					await update();
 					break;
 				case 'failure':
