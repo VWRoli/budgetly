@@ -46,7 +46,9 @@
 				)}
 			</div>
 		</div>
-		<div class={cellClass}>
+		<div
+			class={`${cellClass} ${subCategory.balance < 0 ? 'text-red-500' : ''}`}
+		>
 			<div class="mdc-typography--subtitle2">
 				{formatCurrency(
 					subCategory.balance,

@@ -66,7 +66,7 @@
 				bind:value
 				handleKeyDown={handleKeydown}
 			/>
-			<input type="text" name="id" bind:value={id} class="" />
+			<input type="text" name="id" bind:value={id} class="hidden" />
 		</div>
 	</slot>
 </ModalWrapper>

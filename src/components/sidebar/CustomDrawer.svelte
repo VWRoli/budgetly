@@ -73,7 +73,9 @@
 										<div class="flex items-center justify-between w-full">
 											<Text>{account.name}</Text>
 											{#if defaultBudget}
-												<Text>
+												<Text
+													class={`${account.balance < 0 ? 'text-red-500' : ''}`}
+												>
 													{formatCurrency(
 														account.balance,
 														defaultBudget.locale,

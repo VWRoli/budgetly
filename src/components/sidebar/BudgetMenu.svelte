@@ -130,7 +130,9 @@
 						on:click={() => menu.setOpen(false)}
 					>
 						<Text>{budget.name}</Text>
-						<Text>({budget.currency})</Text>
+						<Text 
+							>({budget.currency})</Text
+						>
 					</Button>
 					<input class="hidden" type="text" name="id" bind:value={budget.id} />
 					<IconButton
