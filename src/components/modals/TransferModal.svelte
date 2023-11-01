@@ -7,9 +7,10 @@
 	import SInput from '../common/SInput.svelte';
 
 	export let open = false;
+	$: fromAccountId = $page.url.searchParams.get('accountId');
 
 	const fromAccountOptions = $page.data.accounts.map((c: IAccount) => ({
-		id: c.id,
+		id: `${c.id}`,
 		value: c.name,
 	}));
 	const toAccountOptions = $page.data.accounts.map((c: IAccount) => ({
@@ -29,6 +30,7 @@
 			placeholder="From Account"
 			options={fromAccountOptions}
 			name="fromAccount"
+			value={fromAccountId || ''}
 		/>
 		<SSelect
 			placeholder="To Account"

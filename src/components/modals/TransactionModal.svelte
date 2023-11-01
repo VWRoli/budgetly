@@ -19,15 +19,16 @@
 	$: accountId = $page.url.searchParams.get('accountId');
 
 	const categoryOptions = $page.data.categories.map((c: ICategory) => ({
-		id: c.id,
+		id: `${c.id}`,
 		value: c.title,
 	}));
 	categoryOptions.unshift(INCOME_FOR_THIS_MONTH);
 
-	const accountOptions = $page.data.accounts.map((c: IAccount) => ({
-		id: c.id,
-		value: c.name,
-	}));
+	const accountOptions: { id: string; value: string }[] =
+		$page.data.accounts.map((c: IAccount) => ({
+			id: `${c.id}`,
+			value: c.name,
+		}));
 
 	let toast: Snackbar;
 	let message = '';
@@ -35,7 +36,7 @@
 
 	let date: Date;
 	let selectedCategory = '';
-	let subCategoryOptions: { id: number; value: string }[] = [];
+	let subCategoryOptions: { id: string; value: string }[] = [];
 
 	const token = Cookies.get('AuthorizationToken');
 
@@ -45,7 +46,7 @@
 			token as string
 		);
 		subCategoryOptions = subCategories.map((sc: ISubCategory) => ({
-			id: sc.id,
+			id: `${sc.id}`,
 			value: sc.title,
 		}));
 	};
@@ -59,9 +60,11 @@
 		return async ({
 			result,
 			update,
+			event,
 		}: {
 			result: ActionResult;
 			update: () => Promise<void>;
+			event: any;
 		}) => {
 			switch (result.type) {
 				case 'success':
@@ -97,6 +100,7 @@
 				placeholder="Account"
 				options={accountOptions}
 				name="accountId"
+				value={accountId || ''}
 			/>
 			<STextInput placeholder="Payee" name="payee" />
 
