@@ -22,7 +22,7 @@
 	let message = '';
 	let toastType: ToastType;
 
-	const isTransfer = transaction.payee.startsWith('Transfer:');
+	const isTransfer = transaction.isTransfer;
 	let menu: Menu;
 	const center = 'flex justify-between items-center';
 	const amount = transaction.inflow

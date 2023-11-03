@@ -1,5 +1,7 @@
 export interface ITransactionDto {
 	payee: string;
+	isTransfer: boolean;
+	transferAccountId?: number;
 	accountId: number;
 	categoryId?: number;
 	subCategoryId?: number;

@@ -14,7 +14,7 @@
 		value: c.name,
 	}));
 	const toAccountOptions = $page.data.accounts.map((c: IAccount) => ({
-		id: c.name,
+		id: c.id,
 		value: c.name,
 	}));
 	let date: Date;

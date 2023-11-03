@@ -66,6 +66,7 @@ export const actions: Actions = {
 			payee,
 			accountId: +accountId,
 			categoryId: +categoryId,
+			isTransfer: false,
 			subCategoryId: +subCategoryId,
 			date: new Date(date),
 			inflow: inflow ? +inflow : null,
@@ -85,17 +86,21 @@ export const actions: Actions = {
 	createTransfer: async ({ request, locals, cookies }) => {
 		const formData = Object.fromEntries(await request.formData());
 
-		const { fromAccount, toAccount, date, inflow, outflow } = formData as {
-			fromAccount: string;
-			toAccount: string;
-			date: string;
-			inflow: string;
-			outflow: string;
-		};
+		const { fromAccount, toAccount, transferAccountId, date, inflow, outflow } =
+			formData as {
+				fromAccount: string;
+				toAccount: string;
+				transferAccountId: string;
+				date: string;
+				inflow: string;
+				outflow: string;
+			};
 
 		const transferData: ITransactionDto = {
-			payee: toAccount, //toAccount name
+			payee: `placeholder`, //toAccount
 			accountId: +fromAccount, //fromAccount
+			isTransfer: true,
+			transferAccountId: +toAccount,
 			date: new Date(date),
 			inflow: inflow ? +inflow : null,
 			outflow: outflow ? +outflow : null,
