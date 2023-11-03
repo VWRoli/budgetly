@@ -53,6 +53,7 @@
 >
 	<div class=" flex flex-col gap-5">
 		<STextInput placeholder="Name" name="name" />
+		<STextInput placeholder="Starting Balance" name="balance" />
 	</div>
 </ModalWrapper>
 

@@ -119,8 +119,9 @@ export const actions: Actions = {
 
 		let errors: { [k: string]: string } = {};
 
-		const { name } = formData as {
+		const { name, balance } = formData as {
 			name: string;
+			balance: string;
 		};
 		errors = await validateForm(accountSchema, formData);
 		if (Object.keys(errors).length > 0) {
@@ -131,7 +132,7 @@ export const actions: Actions = {
 
 		const accountData: IAccountDto = {
 			name,
-			balance: 0,
+			balance: parseInt(balance),
 			budgetId: locals.user?.defaultBudgetId as number,
 		};
 
