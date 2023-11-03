@@ -8,10 +8,19 @@
 	import type { ITransaction } from '../../interfaces/transaction';
 	import { formatCurrency, formatDate } from '$lib/utils/helpers';
 	import { page } from '$app/stores';
+	import type { ActionResult } from '@sveltejs/kit';
+	import type Snackbar from '@smui/snackbar';
+	import { ToastType } from '../../lib/enums/toastType.enum';
+	import { enhance } from '$app/forms';
+	import SToast from '../common/SToast.svelte';
 
 	const defaultBudget = $page.data.defaultBudget;
 
 	export let transaction: ITransaction;
+
+	let toast: Snackbar;
+	let message = '';
+	let toastType: ToastType;
 
 	const isTransfer = transaction.payee.startsWith('Transfer:');
 	let menu: Menu;
@@ -23,6 +32,35 @@
 	const chips = transaction.subCategory?.title
 		? [transaction.category?.title, transaction.subCategory?.title]
 		: [transaction.category?.title];
+
+	const handleDelete = () => {
+		return async ({
+			result,
+			update,
+		}: {
+			result: ActionResult;
+			update: () => Promise<void>;
+		}) => {
+			switch (result.type) {
+				case 'success':
+					message = 'Transaction deleted successfully';
+					toastType = ToastType.SUCCESS;
+					toast.open();
+					await update();
+
+					break;
+				case 'failure':
+					Object.values(result.data?.error).forEach((value) => {
+						message = value as string;
+						toastType = ToastType.ERROR;
+						toast.open();
+					});
+					break;
+				default:
+					await update();
+			}
+		};
+	};
 </script>
 
 <Card padded variant="outlined">
@@ -80,11 +118,26 @@
 					</Item>
 
 					<Separator />
-					<Item on:SMUI:action={() => console.log('Delete')}>
-						<Text>Delete</Text>
-					</Item>
+					<form
+						action="/dashboard/transactions?/deleteTransaction"
+						method="POST"
+						use:enhance={handleDelete}
+					>
+						<button type="submit">
+							<Item>
+								<Text>Delete</Text>
+							</Item>
+						</button>
+						<input
+							type="text"
+							name="transactionId"
+							bind:value={transaction.id}
+							class="hidden"
+						/>
+					</form>
 				</List>
 			</Menu>
 		</div>
 	</div>
 </Card>
+<SToast bind:toast {message} {toastType} />

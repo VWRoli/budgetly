@@ -8,6 +8,7 @@ import type {
 import { validateForm } from '$lib/utils/helpers';
 import { transactionSchema } from '$lib/validationSchemas';
 import type { IUser } from '../../../interfaces/user';
+import { API_URL } from '../../../lib/constants/variables';
 
 export async function load({ locals, cookies, url }) {
 	const user = locals.user as IUser;
@@ -104,6 +105,29 @@ export const actions: Actions = {
 
 		try {
 			await create('/transactions', transferData, token as string);
+		} catch (error: any) {
+			return fail(400, {
+				error: { message: error.message },
+			});
+		}
+	},
+
+	deleteTransaction: async ({ request, cookies }) => {
+		const formData = Object.fromEntries(await request.formData());
+
+		const { transactionId } = formData as {
+			transactionId: string;
+		};
+		const token = cookies.get('AuthorizationToken');
+
+		try {
+			await fetch(`${API_URL}/transactions/${transactionId}`, {
+				method: 'DELETE',
+				credentials: 'include',
+				headers: {
+					Authorization: token as string,
+				},
+			});
 		} catch (error: any) {
 			return fail(400, {
 				error: { message: error.message },
