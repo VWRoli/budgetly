@@ -6,7 +6,7 @@
 	import TransferModal from '../../../components/modals/TransferModal.svelte';
 
 	export let data;
-	$: ({ transactions, accounts, categories } = data);
+	$: ({ transactions, accounts, categories, payees } = data);
 
 	$: ableToCreateTransaction =
 		accounts?.length && categories?.length ? true : false;
@@ -75,5 +75,5 @@
 	</Paper>
 </div>
 
-<TransactionModal open={createTxnOpen} toggleOpen={toggleOpenTxn} />
+<TransactionModal open={createTxnOpen} toggleOpen={toggleOpenTxn} {payees} />
 <TransferModal open={createTransferOpen} toggleOpen={toggleOpenTransfer} />

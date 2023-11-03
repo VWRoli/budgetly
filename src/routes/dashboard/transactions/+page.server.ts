@@ -24,6 +24,10 @@ export async function load({ locals, cookies, url }) {
 					`/transactions/budget/${user.defaultBudgetId}`,
 					token as string
 			  )) as Promise<ITransaction[]>),
+		payees: (await fetchData(
+			`/transactions/payees/${user.defaultBudgetId}`,
+			token as string
+		)) as Promise<string[]>,
 	};
 }
 

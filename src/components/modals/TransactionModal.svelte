@@ -52,19 +52,19 @@
 	};
 
 	export let open = false;
+	export let payees: string[] = [];
 	export let toggleOpen = (value: boolean) => {};
 
+	let fruits = ['Apple', 'Orange', 'Banana', 'Mango'];
 	const action = '?/createTransaction';
 
 	const handleSubmit = () => {
 		return async ({
 			result,
 			update,
-			event,
 		}: {
 			result: ActionResult;
 			update: () => Promise<void>;
-			event: any;
 		}) => {
 			switch (result.type) {
 				case 'success':
@@ -102,7 +102,7 @@
 				name="accountId"
 				value={accountId || ''}
 			/>
-			<STextInput placeholder="Payee" name="payee" />
+			<STextInput placeholder="Payee" name="payee" options={payees} />
 
 			<div class="flex gap-4">
 				<SInput placeholder="Inflow" name="inflow" type="number" />
