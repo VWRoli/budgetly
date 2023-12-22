@@ -7,19 +7,28 @@
 	import SInput from '../common/SInput.svelte';
 
 	export let open = false;
-	$: fromAccountId = $page.url.searchParams.get('accountId');
-
+	let selectedFromAccount: number;
 	const fromAccountOptions = $page.data.accounts.map((c: IAccount) => ({
 		id: `${c.id}`,
 		value: c.name,
 	}));
-	const toAccountOptions = $page.data.accounts.map((c: IAccount) => ({
-		id: c.id,
-		value: c.name,
-	}));
+
+	$: toAccountOptions = $page.data.accounts
+		.filter((el: IAccount) => el.id !== +$page.data.accountId)
+		.filter((el: IAccount) =>
+			!$page.data.accountId ? el.id !== +selectedFromAccount : el
+		)
+		.map((c: IAccount) => ({
+			id: c.id,
+			value: c.name,
+		}));
 	let date: Date;
 
 	export let toggleOpen = (value: boolean) => {};
+
+	const setValue = (id: number) => {
+		selectedFromAccount = id;
+	};
 
 	const action = '?/createTransfer';
 </script>
@@ -30,8 +39,10 @@
 			placeholder="From Account"
 			options={fromAccountOptions}
 			name="fromAccount"
-			value={fromAccountId || ''}
+			value={$page.data.accountId || ''}
+			changeHandler={setValue}
 		/>
+		{selectedFromAccount}
 		<SSelect
 			placeholder="To Account"
 			options={toAccountOptions}

@@ -58,13 +58,15 @@ export const create = async (
 			},
 			body: JSON.stringify(payload),
 		});
-
+		console.log(response);
 		if (!response.ok) {
 			// Handle error response (if any)
 			const errorData = await response.json();
+			console.log(errorData);
 			throw new Error(errorData.message);
 		}
 		const responseData = await response.json();
+		console.log(responseData);
 		return responseData;
 	} catch (error: any) {
 		// Handle fetch errors or any other exceptions

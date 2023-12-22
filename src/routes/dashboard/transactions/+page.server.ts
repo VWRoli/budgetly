@@ -29,6 +29,7 @@ export async function load({ locals, cookies, url }) {
 			`/transactions/payees/${user.defaultBudgetId}`,
 			token as string
 		)) as Promise<string[]>,
+		accountId,
 	};
 }
 
